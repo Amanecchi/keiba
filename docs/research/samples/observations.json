@@ -1,0 +1,11 @@
+{
+  "observed_on_jst": "2026-11-03",
+  "acquisition": "official_page_view_manual_observation",
+  "raw_provider_records_downloaded": false,
+  "samples": [
+    {"id": "argentina-2006", "race_date": "2006-11-05", "race_name": "アルゼンチン共和国杯", "winner": "トウショウナイト", "horse_number": 9, "win_payout_yen_per_100": 410, "place_payout_yen_per_100": 160, "source_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005200605021120061105%2FC3"},
+    {"id": "argentina-2025", "race_date": "2025-11-09", "race_name": "アルゼンチン共和国杯", "winner": "ミステリーウェイ", "horse_number": 13, "win_payout_yen_per_100": 2770, "place_payout_yen_per_100": 550, "source_url": "https://www.jra.go.jp/datafile/seiseki/replay/2025/101.html"},
+    {"id": "tenno-autumn-2026", "race_date": "2026-11-01", "race_name": "天皇賞（秋）", "winner": "ダノンデサイル", "source_url": "https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2026.html"},
+    {"id": "argentina-upcoming-2026", "race_date": "2026-11-08", "race_name": "アルゼンチン共和国杯", "entry_status": "not_yet_published_at_observation", "scheduled_entry_publication_date": "2026-11-05", "live_odds_verified": false, "source_url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html"}
+  ]
+}
