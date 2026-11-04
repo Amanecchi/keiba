@@ -1,0 +1,86 @@
+{
+  "observed_on_jst": "2026-11-04",
+  "selection": "not_selected_user_decides",
+  "minimum_history_years": 10,
+  "twenty_years_is_guideline": true,
+  "paid_data_services": false,
+  "pdf_or_ocr_pipeline": false,
+  "csv_probes": [
+    {
+      "url": "https://raw.githubusercontent.com/keibamar/keiba_ai_ver2.0/master/data/RaceResults/05_tokyo/2019_race_results.csv",
+      "size_bytes": 1394521,
+      "sha256": "783609763a5f311c6f1bfcc08d2046b8fb4d900f9cd6b4eb2ce8c666be6569f6",
+      "encoding": "utf-8-sig",
+      "header": [
+        "",
+        "着順",
+        "枠番",
+        "馬番",
+        "馬名",
+        "性齢",
+        "斤量",
+        "騎手",
+        "タイム",
+        "着差",
+        "単勝",
+        "人気",
+        "馬体重",
+        "調教師",
+        "course_len",
+        "weather",
+        "race_type",
+        "ground_state",
+        "date",
+        "class",
+        "horse_id",
+        "jockey_id",
+        "通過",
+        "上り"
+      ],
+      "rows": 7461,
+      "distinct_race_ids": 536,
+      "first_row_race_id": "201905010101",
+      "last_row_race_id": "201905050811",
+      "raw_redistributed": false
+    },
+    {
+      "url": "https://raw.githubusercontent.com/keibamar/keiba_ai_ver2.0/master/data/RaceReturns/05_tokyo/2019_race_returns.csv",
+      "size_bytes": 193270,
+      "sha256": "7255692692ad4e57a4bbc3d4ce3013e6af22397d5b8a864bbda1cca8b2608ce7",
+      "encoding": "utf-8-sig",
+      "header": [
+        "",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "rows": 5772,
+      "distinct_race_ids": 536,
+      "first_row_race_id": "201905010101",
+      "last_row_race_id": "201905050811",
+      "raw_redistributed": false
+    }
+  ],
+  "limitations": [
+    "CSVサンプルの成功は全期間の充足を保証しない",
+    "HTML候補は閲覧確認でありローカル収集コードの実証ではない",
+    "発売中オッズの自動取得は未実証"
+  ],
+  "repository_inspection": {
+    "repository": "keibamar/keiba_ai_ver2.0",
+    "path": "data/RaceResults/05_tokyo",
+    "listed_years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "continuous_complete_years_verified": false,
+    "license_verified": false
+  }
+}
