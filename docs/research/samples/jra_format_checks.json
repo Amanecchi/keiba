@@ -1,0 +1,73 @@
+{
+  "observed_on_jst": "2026-11-04",
+  "selected_provider": "JRA official",
+  "selection_authority": "user_request",
+  "acquisition": "official_page_view_and_public_search",
+  "provider_raw_files_downloaded": false,
+  "minimum_history_years": 10,
+  "excluded_methods": ["paid_data_service", "pdf_text_extraction", "ocr", "third_party_data_supplement"],
+  "checks": [
+    {
+      "id": "official_schedule_icalendar",
+      "format": "ics_in_zip",
+      "source_url": "https://www.jra.go.jp/keiba/common/calendar/ics2026.html",
+      "additional_official_page": "https://www.jra.go.jp/keiba/common/calendar/ics2024.html",
+      "linked_download_urls": [
+        "https://www.jra.go.jp/keiba/common/calendar/jrarace2026.zip",
+        "https://www.jra.go.jp/keiba/common/calendar/jrakaisai2026.zip"
+      ],
+      "status": "official_distribution_page_and_links_confirmed",
+      "download_link_tool_result": "unsupported_content_type_application_zip",
+      "archive_contents_inspected": false,
+      "continuous_history_years_verified": false,
+      "schedule_changes_supported_per_official_notice": false,
+      "decision": "optional_initial_schedule_input_only"
+    },
+    {
+      "id": "personal_betting_csv",
+      "format": "csv",
+      "source_urls": [
+        "https://www.jra.go.jp/dento/tohyo/service.html",
+        "https://www.jra.go.jp/dento/cjn/service.html"
+      ],
+      "status": "official_service_description_confirmed",
+      "scope": "account_holders_own_bets_and_betting_performance",
+      "bet_details_history_days_per_notice": 60,
+      "performance_history_per_notice": "current_and_previous_year",
+      "decision": "excluded_wrong_population_and_period"
+    },
+    {
+      "id": "calendar_json_candidate",
+      "format": "json_unverified",
+      "candidate_urls": [
+        "https://www.jra.go.jp/keiba/common/calendar/json/201611.json",
+        "https://www.jra.go.jp/keiba/common/calendar/json/202611.json"
+      ],
+      "status": "web_tool_could_not_access_body",
+      "http_404_verified": false,
+      "existence_verified": false,
+      "schema_verified": false,
+      "official_public_api_documentation_verified": false,
+      "decision": "not_an_adopted_endpoint"
+    },
+    {
+      "id": "bulk_results_csv_excel_json_xml",
+      "formats_searched": ["csv", "xls", "xlsx", "json", "xml", "zip", "api"],
+      "official_entry_points": [
+        "https://www.jra.go.jp/datafile/seiseki/",
+        "https://www.jra.go.jp/faq/pop02/1_6.html",
+        "https://www.jra.go.jp/sitemap/"
+      ],
+      "status": "no_suitable_free_distribution_confirmed_in_reviewed_sources",
+      "required_scope": "at_least_10_years_of_all_target_runners_results_payouts_and_prior_runs",
+      "nonexistence_proven": false,
+      "decision": "use_official_html_as_current_primary_candidate"
+    }
+  ],
+  "verification_limits": [
+    "General HTTP access to JRA is unavailable under this environment's network policy.",
+    "Web page text and official links were reviewed; downloaded provider HTML or ZIP files were not inspected.",
+    "Current page source scripts and browser XHR were not comprehensively inspected.",
+    "These observations are not parser fixtures or proof of full historical coverage or live odds acquisition."
+  ]
+}
