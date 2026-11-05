@@ -1,0 +1,48 @@
+{
+  "started_at": "2026-11-05T12:39:56.170396+00:00",
+  "finished_at": "2026-11-05T12:39:56.176920+00:00",
+  "tool_version": "0.1.0",
+  "status": "blocked_environment",
+  "stop_reason": "proxy_error",
+  "production_ready": false,
+  "ten_year_coverage_verified": false,
+  "feasibility_decision": "undetermined",
+  "requested_scope": {
+    "years": [
+      2016,
+      2021,
+      2025
+    ],
+    "race_name": "アルゼンチン共和国杯",
+    "limit_per_year": 1,
+    "profiles_per_race": 2,
+    "upcoming_requested": false,
+    "odds_requested": false
+  },
+  "metrics": {
+    "elapsed_seconds": 0.0065,
+    "http_attempts": 1,
+    "cache_hits": 0,
+    "received_bytes": 0,
+    "parsed_results": 0,
+    "parsed_profiles": 0,
+    "parsed_entries": 0
+  },
+  "discovery": [],
+  "resources": [
+    {
+      "kind": "year_index",
+      "url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html",
+      "context": "",
+      "status": "error",
+      "error_kind": "proxy_error",
+      "message": "接続プロキシで失敗しました。JRAへの到達は確認できません。"
+    }
+  ],
+  "limits": [
+    "少量取得の検証用。全件網羅性・全条件・期待値計算の完成を意味しません。",
+    "未取得・欠損・未公表を0や不的中へ変換しません。",
+    "手動転記、PDF/OCR、他社データによる補完は行いません。",
+    "馬リンクや必要列がない画面は不足として記録します。"
+  ]
+}
