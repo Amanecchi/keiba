@@ -1,0 +1,13 @@
+{
+  "url": "https://pypi.org/",
+  "method": "HEAD",
+  "response_date_utc": "2026-11-05T13:10:14Z",
+  "execution_network_enabled": true,
+  "inherited_proxy_preserved": true,
+  "exit_code": 0,
+  "http_connect": 200,
+  "http_code": 200,
+  "ssl_verify_result": 0,
+  "tls_verification_disabled": false,
+  "note": "同じプロキシ・CA設定でHTTPSトンネルと証明書検証・HTTP応答に成功。JRAへの接続成功を意味しない。"
+}

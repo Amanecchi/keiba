@@ -1,0 +1,23 @@
+{
+  "url": "https://www.jra.go.jp/",
+  "method": "HEAD",
+  "response_date_utc": "2026-11-05T13:07:58Z",
+  "execution_network_enabled": true,
+  "inherited_proxy_preserved": true,
+  "tls_verification_disabled": false,
+  "command": "curl --head --location --connect-timeout 10 --max-time 20 --proto '=https' --proto-redir '=https' --write-out '\\nhttp_code=%{http_code}\\nhttp_connect=%{http_connect}\\nssl_verify_result=%{ssl_verify_result}\\n' https://www.jra.go.jp/",
+  "exit_code": 56,
+  "http_connect": 403,
+  "http_code": "000",
+  "ssl_verify_result": 0,
+  "tunnel_response_headers": {
+    "content-length": "16",
+    "content-type": "text/plain",
+    "server": "envoy",
+    "connection": "close"
+  },
+  "stderr": "curl: (56) CONNECT tunnel failed, response 403",
+  "jra_tls_started": false,
+  "jra_http_received": false,
+  "note": "ツール実行結果の観測値を転記。ssl_verify_result=0はTLS開始前のためJRA証明書検証成功を意味しない。今回のHEAD確認ではトンネル拒否本文を受信・記録していない。"
+}

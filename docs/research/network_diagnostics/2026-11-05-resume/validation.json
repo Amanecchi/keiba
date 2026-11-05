@@ -1,0 +1,18 @@
+{
+  "base_commit": "d7edd6e44a2f93bd851ef74ae52d5860f26050c3",
+  "python": "3.12.14",
+  "install": "requirements-dev.lock + editable project",
+  "pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "............................................                             [100%]\n44 passed in 0.34s\n"
+  },
+  "static_and_dependencies": {
+    "command": ".venv/bin/ruff check src tests && .venv/bin/python -m pip check",
+    "exit_code": 0,
+    "stdout": "All checks passed!\nWARNING: The directory '/home/agent/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.\nNo broken requirements found.\n"
+  },
+  "network_tested_by_pytest": false,
+  "official_raw_downloads_this_task": 0,
+  "cli_acquisition_run_this_task": false
+}

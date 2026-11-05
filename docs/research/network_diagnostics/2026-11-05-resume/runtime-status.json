@@ -1,0 +1,16 @@
+{
+  "checked_at_utc": "2026-11-05T13:10:05.256Z",
+  "observations_current": true,
+  "observed_phase": "running",
+  "network_policy": {
+    "mode": "restricted",
+    "state": "enforced",
+    "allowed_hosts": [],
+    "presets": [
+      "package_managers"
+    ],
+    "jra_in_effective_allowed_hosts": false
+  },
+  "secrets_count": 0,
+  "note": "新タスクで再取得した適用状態。不要な環境識別子・資格情報は含めない。"
+}
