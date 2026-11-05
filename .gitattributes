@@ -1,0 +1,3 @@
+# Keep captured HTTP transcripts intact, including CRLF and empty header markers.
+# This exception applies only to saved diagnostic text, not code or documentation.
+docs/research/network_diagnostics/**/*.txt -whitespace
