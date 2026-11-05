@@ -1,0 +1,20 @@
+{
+  "observed_at_jst": "2026-11-05T21:51:57.233954+09:00",
+  "target": "www.jra.go.jp:443",
+  "route": "inherited HTTPS_PROXY",
+  "proxy_scheme": "http",
+  "proxy_host": "proxy",
+  "proxy_port": 8080,
+  "tls_started": false,
+  "proxy_tcp": "connected",
+  "connect_status_line": "HTTP/1.1 403 Forbidden",
+  "response_headers": {
+    "content-length": "16",
+    "content-type": "text/plain",
+    "date": "Thu, 05 Nov 2026 12:51:57 GMT",
+    "server": "envoy",
+    "connection": "close"
+  },
+  "proxy_error_body": "Domain forbidden",
+  "tls_status": "not_attempted_connect_denied"
+}

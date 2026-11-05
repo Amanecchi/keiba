@@ -1,0 +1,20 @@
+{
+  "spec_revision": "1",
+  "observed_spec_revision": "1",
+  "observations_current": true,
+  "observed_phase": "running",
+  "network_policy": {
+    "mode": "restricted",
+    "state": "enforced",
+    "allowed_hosts": [],
+    "presets": [
+      "package_managers"
+    ],
+    "jra_in_effective_hosts": [],
+    "effective_hosts_count": 144
+  },
+  "omitted_environment_identifiers": [
+    "environment_id",
+    "source_config_version_id"
+  ]
+}

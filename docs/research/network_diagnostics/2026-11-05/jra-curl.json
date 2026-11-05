@@ -1,0 +1,17 @@
+{
+  "observed_at_jst": "2026-11-05T21:51:36.128004+09:00",
+  "url": "https://www.jra.go.jp/",
+  "curl_exit_code": 56,
+  "metrics": {
+    "http_code": "000",
+    "http_connect": "403",
+    "ssl_verify_result": "0",
+    "remote_ip": "",
+    "remote_port": "-1",
+    "time_namelookup": "0.000483",
+    "time_connect": "0.001251",
+    "time_appconnect": "0.000000",
+    "time_total": "0.005977"
+  },
+  "verbose": "\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host proxy:8080 was resolved.\n* IPv6: (none)\n* IPv4: 172.31.1.221\n*   Trying 172.31.1.221:8080...\n* CONNECT tunnel: HTTP/1.1 negotiated\n* allocate connect buffer\n* Establish HTTP proxy tunnel to www.jra.go.jp:443\n> CONNECT www.jra.go.jp:443 HTTP/1.1\n> Host: www.jra.go.jp:443\n> User-Agent: curl/8.14.1\n> Proxy-Connection: Keep-Alive\n> \n< HTTP/1.1 403 Forbidden\n< content-length: 16\n< content-type: text/plain\n< date: Thu, 05 Nov 2026 12:51:35 GMT\n< server: envoy\n< connection: close\n< \n* CONNECT tunnel failed, response 403\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n* closing connection #0\ncurl: (56) CONNECT tunnel failed, response 403\n"
+}

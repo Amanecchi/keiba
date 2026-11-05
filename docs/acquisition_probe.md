@@ -8,6 +8,8 @@ PythonのCLI `jra-collect` を作成した。合成HTMLによる44件の自動�
 
 [実行記録JSON](research/samples/jra_acquisition_attempt_20261105.json) に失敗箇所と計測値を保存した。通信失敗までの時間を、収集の処理時間の見積もりには使わない。環境の許可対象にJRAドメインが含まれていないことも確認した。設定ファイルの書き換えや別経路による接続制限の回避は行わない。
 
+その後の [接続原因の切り分け](research/network_diagnostics/2026-11-05/report.md) で、プロキシのCONNECT応答が403、本文が `Domain forbidden` であることを確認した。JRAとのTLS接続・HTTP応答には未到達。新タスク向けの現在地は [引き継ぎ資料](../HANDOFF.md) を参照。
+
 このツールは作業1の技術検証用。分析本体・DB・検索画面・期待値計算はまだ実装していない。テスト用HTMLは [合成フィクスチャ](../tests/fixtures/README.md) であり、公式原本の代用として取得済み件数に数えない。
 
 ## 自動で行う処理

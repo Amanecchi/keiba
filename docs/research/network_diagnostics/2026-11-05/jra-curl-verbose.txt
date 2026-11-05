@@ -1,0 +1,25 @@
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host proxy:8080 was resolved.
+* IPv6: (none)
+* IPv4: 172.31.1.221
+*   Trying 172.31.1.221:8080...
+* CONNECT tunnel: HTTP/1.1 negotiated
+* allocate connect buffer
+* Establish HTTP proxy tunnel to www.jra.go.jp:443
+> CONNECT www.jra.go.jp:443 HTTP/1.1
+> Host: www.jra.go.jp:443
+> User-Agent: curl/8.14.1
+> Proxy-Connection: Keep-Alive
+> 
+< HTTP/1.1 403 Forbidden
+< content-length: 16
+< content-type: text/plain
+< date: Thu, 05 Nov 2026 12:51:35 GMT
+< server: envoy
+< connection: close
+< 
+* CONNECT tunnel failed, response 403
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* closing connection #0
+curl: (56) CONNECT tunnel failed, response 403
