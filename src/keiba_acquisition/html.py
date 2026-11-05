@@ -95,14 +95,15 @@ def grid(table: Tag) -> list[list[Tag]]:
 
 ALIASES = {
     "number": {"馬番"},
-    "horse": {"馬名"},
+    "horse": {"馬名", "馬名調教師名血統"},
+    "runner_details": {"性齢/毛色負担重量騎手名"},
     "finish": {"着順"},
     "frame": {"枠", "枠番"},
     "sex_age": {"性齢"},
     "jockey": {"騎手", "騎手名"},
     "popularity": {"人気", "単勝人気"},
     "win_odds": {"単勝", "単勝オッズ"},
-    "place_odds": {"複勝", "複勝オッズ"},
+    "place_odds": {"複勝", "複勝オッズ", "複勝(3着払い)", "複勝(2着払い)"},
     "corners": {"通過順位", "コーナー通過順位"},
     "trainer": {"調教師", "調教師名"},
     "affiliation": {"所属"},
@@ -155,18 +156,43 @@ def discover_results(body: bytes, base: str, race_name: str = "") -> list[dict]:
 
 
 def metadata(soup: BeautifulSoup) -> dict:
-    page_text = text(soup)
+    scope = soup.select_one(".race_header") or soup
+    page_text = text(scope)
+    normalized = clean(page_text)
     race_dates = dates(page_text)
     title = next(
         (text(h) for h in soup.find_all(["h2", "h3"]) if re.search(r"第\d+回", clean(text(h)))),
         None,
     )
+    if title is None:
+        legacy_title = soup.select_one("p.specialRace") or soup.select_one("th.header3")
+        title = text(legacy_title) if legacy_title else None
     course = re.search(r"コース[：:]\s*([\d,]+)\s*メートル", page_text)
+    legacy_course = re.search(r"(\d{3,4})m(?=芝|ダート|ダ|障害)", normalized)
+    meeting = re.search(
+        r"(\d+)回(札幌|函館|福島|新潟|東京|中山|中京|京都|阪神|小倉)(\d+)日", normalized
+    )
+    race_number = scope.select_one(".race_number")
+    number = re.search(r"(\d{1,2})レース", clean(text(race_number))) if race_number else None
+    if number is None:
+        number = re.search(r"(\d{1,2})R(?=第|[^A-Za-z0-9]|$)", normalized)
     return {
         "race_date": race_dates[0].isoformat() if race_dates else None,
         "title": title,
-        "distance_m": int(course[1].replace(",", "")) if course else None,
+        "distance_m": int(course[1].replace(",", ""))
+        if course
+        else (int(legacy_course[1]) if legacy_course else None),
+        "venue": meeting[2] if meeting else None,
+        "meeting_number": int(meeting[1]) if meeting else None,
+        "meeting_day": int(meeting[3]) if meeting else None,
+        "race_number": int(number[1]) if number else None,
     }
+
+
+def horse_id(url: str | None) -> str | None:
+    cname = parse_qs(urlsplit(url or "").query).get("CNAME", [""])[0]
+    match = re.fullmatch(r"pw01dud\d{2}(\d{10})/[0-9A-Fa-f]{2}", cname)
+    return match[1] if match else None
 
 
 def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
@@ -174,11 +200,10 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
     for rows, mapping in tables_with_headers(soup, required):
         entries = []
         for row in rows:
-            number = integer(cell_value(row, mapping, "number") or "")
+            number_text = cell_value(row, mapping, "number", images=False) or ""
+            number = integer(number_text)
             name = cell_value(row, mapping, "horse", images=False)
-            if number is None:
-                if name and clean(name) != "馬名":
-                    raise ParseError("馬名のある行の馬番を認識できません。")
+            if number is None and (not name or clean(name) == "馬名"):
                 continue
             if not name:
                 raise ParseError("馬番がある行の馬名を取得できません。")
@@ -194,6 +219,19 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
             cname = (
                 parse_qs(urlsplit(horse_url).query).get("CNAME", [None])[0] if horse_url else None
             )
+            # Thursday's detailed cards can publish horses before assigning numbers.
+            # Accept only genuinely blank numbers with an official horse identity.
+            if number is None and (result or clean(number_text) or not horse_id(horse_url)):
+                raise ParseError("馬名のある行の馬番を認識できません。")
+            name_node = horse_cell.select_one(".name a")
+            if name_node:
+                name = text(name_node, images=False)
+            details = row[mapping["runner_details"]] if "runner_details" in mapping else None
+            age_node = details.select_one(".age") if details else None
+            jockey_node = details.select_one(".jockey") if details else None
+            trainer_node = horse_cell.select_one(".trainer a")
+            division = horse_cell.select_one(".trainer .division")
+            sire_node = horse_cell.select_one(".sire")
             finish = cell_value(row, mapping, "finish")
             frame = cell_value(row, mapping, "frame") or ""
             frame_match = re.search(r"枠([1-8])", clean(frame))
@@ -205,13 +243,23 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
                     "horse_name": name,
                     "horse_url": horse_url,
                     "horse_source_key": cname,
+                    "horse_id": horse_id(horse_url),
                     "frame": int(frame_match[1]) if frame_match else integer(frame),
                     "finish": integer(finish or ""),
                     "finish_text": finish,
-                    "sex_age": cell_value(row, mapping, "sex_age"),
-                    "jockey": cell_value(row, mapping, "jockey"),
-                    "trainer": cell_value(row, mapping, "trainer"),
-                    "affiliation": cell_value(row, mapping, "affiliation"),
+                    "sex_age": text(age_node).split("/")[0]
+                    if age_node
+                    else cell_value(row, mapping, "sex_age"),
+                    "jockey": text(jockey_node)
+                    if jockey_node
+                    else cell_value(row, mapping, "jockey"),
+                    "trainer": text(trainer_node)
+                    if trainer_node
+                    else cell_value(row, mapping, "trainer"),
+                    "affiliation": clean(text(division)).strip("()")
+                    if division
+                    else cell_value(row, mapping, "affiliation"),
+                    "sire": re.sub(r"^父[：:]\s*", "", text(sire_node)) if sire_node else None,
                     "popularity": integer(cell_value(row, mapping, "popularity") or ""),
                     "win_odds": odds_value if re.fullmatch(r"\d+(?:\.\d+)?", odds_value) else None,
                     "win_odds_text": odds_text,
@@ -219,8 +267,12 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
                 }
             )
         if entries:
-            if len({e["horse_number"] for e in entries}) != len(entries):
+            numbered = [e["horse_number"] for e in entries if e["horse_number"] is not None]
+            if len(set(numbered)) != len(numbered):
                 raise ParseError("馬番が重複しています。結合セル等の形式を確認してください。")
+            identities = [e["horse_id"] for e in entries if e["horse_id"]]
+            if len(set(identities)) != len(identities):
+                raise ParseError("馬IDが重複しています。")
             return entries
     raise ParseError("出走馬の表を認識できません。")
 
@@ -245,15 +297,20 @@ def payouts(soup: BeautifulSoup) -> list[dict]:
     for table in soup.find_all("table"):
         for row in grid(table):
             values = [text(cell) for cell in row]
-            if not values or clean(values[0]) not in {"単勝", "複勝"}:
-                continue
-            numbers, amounts = [], []
-            for value in values[1:]:
-                if "円" in value:
-                    amounts += re.findall(r"([\d,]+)\s*円", value)
-                elif "人気" not in value:
-                    numbers += re.findall(r"\b\d{1,2}\b", value)
-            add(clean(values[0]), numbers, amounts)
+            labels = {"単勝", "複勝", "枠連", "馬連", "馬単", "ワイド", "3連複", "3連単", "WIN5"}
+            for index, label in enumerate(values):
+                kind = clean(label)
+                if kind not in {"単勝", "複勝"}:
+                    continue
+                numbers, amounts = [], []
+                for value in values[index + 1 :]:
+                    if clean(value) in labels:
+                        break
+                    if "円" in value:
+                        amounts += re.findall(r"([\d,]+)\s*円", value)
+                    elif "人気" not in value:
+                        numbers += re.findall(r"\b\d{1,2}\b", value)
+                add(kind, numbers, amounts)
     # Modern payout blocks can be definition lists rather than tables.
     for label in soup.find_all("dt"):
         kind = clean(text(label))
@@ -322,13 +379,16 @@ def parse_profile(body: bytes, base: str, target_date: date) -> dict:
                 continue
             finish_text = cell_value(row, mapping, "finish") or ""
             race_cell = row[mapping["race"]]
+            race_name = text(race_cell)
+            administrative = clean(race_name) in {"JRAへ転入", "JRAより転出", "JRA登録抹消"}
             run_url = next(
                 (url for a in race_cell.find_all("a") if (url := link_url(a, base))), None
             )
             runs.append(
                 {
                     "race_date": run_dates[0].isoformat(),
-                    "race_name": text(race_cell),
+                    "race_name": race_name,
+                    "record_type": "administrative" if administrative else "race",
                     "distance": cell_value(row, mapping, "distance"),
                     "finish_text": finish_text,
                     "finish": integer(finish_text),
@@ -339,13 +399,23 @@ def parse_profile(body: bytes, base: str, target_date: date) -> dict:
         run
         for run in runs
         if date.fromisoformat(run["race_date"]) < target_date
+        and run["record_type"] == "race"
         and not any(s in run["finish_text"] for s in ("取消", "除外", "取止"))
     ]
     prior.sort(key=lambda run: run["race_date"], reverse=True)
     previous = prior[0] if prior else None
     issues = ([] if sire else ["missing_sire"]) + ([] if previous else ["missing_previous_run"])
+    if previous and not previous["distance"]:
+        issues.append("missing_previous_distance")
+    if (
+        previous
+        and previous["finish"] is None
+        and not any(marker in previous["finish_text"] for marker in ("中止", "失格"))
+    ):
+        issues.append("unrecognized_previous_finish")
     return {
         "kind": "profile",
+        "horse_id": horse_id(base),
         "sire": sire,
         "target_date": target_date.isoformat(),
         "previous_run": previous,
@@ -362,6 +432,8 @@ def publication_state(soup: BeautifulSoup) -> str | None:
         return "not_yet_published"
     if any(marker in value for marker in ("発売前", "発売開始前", "発売しておりません")):
         return "not_on_sale"
+    if "オッズ" in value and any(marker in value for marker in ("未発表", "未公表")):
+        return "not_yet_published"
     return None
 
 
@@ -373,12 +445,16 @@ def parse_entries(body: bytes, base: str) -> dict:
         if state := publication_state(soup):
             return {"kind": "entries", "status": state, "entries": [], "issues": [state]}
         raise
+    issues = []
+    for field in ("horse_number", "frame"):
+        if any(entry[field] is None for entry in entries):
+            issues.append(f"unassigned_{field}")
     return {
         "kind": "entries",
         "status": "parsed",
         **metadata(soup),
         "entries": entries,
-        "issues": [],
+        "issues": issues,
     }
 
 
@@ -387,7 +463,7 @@ def parse_odds(body: bytes, base: str) -> dict:
     for rows, mapping in tables_with_headers(soup, {"number", "win_odds", "place_odds"}):
         values = []
         for row in rows:
-            number = integer(cell_value(row, mapping, "number") or "")
+            number = integer(cell_value(row, mapping, "number", images=False) or "")
             if number is None:
                 continue
             win = clean(cell_value(row, mapping, "win_odds") or "")
@@ -402,6 +478,15 @@ def parse_odds(body: bytes, base: str) -> dict:
             values.append(
                 {
                     "horse_number": number,
+                    "horse_id": next(
+                        (
+                            horse_id(url)
+                            for cell in row
+                            for a in cell.find_all("a")
+                            if (url := link_url(a, base)) and horse_id(url)
+                        ),
+                        None,
+                    ),
                     "win_odds": win if win_match else None,
                     "place_lower": place_match[1] if place_match else None,
                     "place_upper": place_match[2] if place_match else None,
@@ -416,7 +501,8 @@ def parse_odds(body: bytes, base: str) -> dict:
             timestamp = re.search(
                 r"(?:\d{1,2}月\d{1,2}日\s*)?\d{1,2}(?::|時)\d{2}分?\s*現在", text(soup)
             )
-            issues = [] if timestamp else ["missing_provider_timestamp"]
+            final = "最終オッズ" in clean(text(soup))
+            issues = [] if timestamp or final else ["missing_provider_timestamp"]
             if any(
                 value["availability"] == "quoted"
                 and (value["win_odds"] is None or value["place_lower"] is None)
@@ -426,6 +512,8 @@ def parse_odds(body: bytes, base: str) -> dict:
             return {
                 "kind": "odds",
                 "status": "parsed",
+                **metadata(soup),
+                "odds_state": "final" if final else "live",
                 "provider_timestamp_text": timestamp[0] if timestamp else None,
                 "odds": values,
                 "issues": issues,

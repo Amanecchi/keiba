@@ -2,7 +2,13 @@
 
 更新：2026-11-05（日本時間）。ユーザー指定により、手作業での転記を必要としない自動取得の成立を、採用継続の条件とする。
 
-## 現在の結果
+## 現在の結果（2026-11-05 再開後）
+
+JRAへのHTTPSは22:22（日本時間）に成功した。`unrestricted` / `enforced` の環境で、既存プロキシとCA設定を維持して実原本の調査を再開した。v0.2.0では `--database` を追加し、公式の公開フォーム（POST）・詳細結果・馬情報・最終単複オッズを利用できる。結果は [実原本検証報告](research/acquisition/2026-11-05/report.md) を参照。
+
+同一レースの2016〜2025年10開催・159頭で、結果・単複払戻・全馬の単勝最終オッズを自動取得・照合した。当時所属、発売中オッズの時刻と更新、全重賞の網羅性等は残件。終了コード2の `partial` を維持する。本体実装にはまだ進まない。自動テスト64件とruffに合格した。テストHTMLは引き続き合成データである。
+
+### 以前の環境制限の記録
 
 PythonのCLI `jra-collect` を作成した。合成HTMLによる44件の自動テストと静的チェックが通過している。一方、11月5日の実通信は最初の年度一覧でプロキシ接続に失敗し、取得原本0件だった。JRAの応答本文には到達しておらず、現行HTMLへの解析適合・取得所要時間・方式の実現可否は未判定。
 
@@ -23,7 +29,9 @@ PythonのCLI `jra-collect` を作成した。合成HTMLによる44件の自動�
 
 HTTP要求は直列、既定の最小間隔は2秒、タイムアウトは15秒。一時的な接続失敗・5xxは最大1回だけ再試行する。403・429ではジョブを停止する。JRA公式内の対象HTMLだけを取得し、PDF/OCR・他社補完は使わない。
 
-通常リンクと `doAction` の文字列引数を読み取り、公開URLへのGET要求として取得する。任意のJavaScript実行やブラウザ自動操作は含まない。実際の画面でフォーム送信・追加セッション処理等が必要かは原本取得後の検証事項。
+既存の通常リンクはGETで取得する。`--database` は保存版の開催日・競馬場・開催回日・レース番号から、公式の過去結果検索・年月選択・詳細結果リンクをたどる。年月の値とトークンは公開ページの選択肢と既知の文字列テンプレートから読み、存在しない値やチェックサムは生成しない。形式が変われば停止する。詳細結果の本文でも開催キーを照合し、最終単複オッズは全馬の馬番と10桁馬IDが一致したときだけ補完する。現在プロフィールの所属を過去へ適用しない。
+
+公開 `doAction` の画面遷移は、観測したフォームに合わせて `cname` をPOSTする。GETとPOSTは別の原本・ハッシュ・キャッシュとして保存し、要求メソッドも記録する。POSTは公式の対象閲覧画面のCNAMEだけを受け付ける。403・429時の停止、転送先の検査、TLS検証、直列・既定2秒間隔を維持する。任意のJavaScript実行、ブラウザ自動操作、ログインは含まない。
 
 ## PCでのセットアップ
 
@@ -37,14 +45,14 @@ Windows（PowerShell）：
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock -e .
-.\.venv\Scripts\python.exe -m keiba_acquisition.cli --years 2016,2021,2025
+.\.venv\Scripts\python.exe -m keiba_acquisition.cli --database --years 2016,2021,2025
 ```
 
 macOS / Linux：
 
 ```bash
 .venv/bin/python -m pip install -r requirements-dev.lock -e .
-.venv/bin/python -m keiba_acquisition.cli --years 2016,2021,2025
+.venv/bin/python -m keiba_acquisition.cli --database --years 2016,2021,2025
 ```
 
 どちらも既定ではアルゼンチン共和国杯を各年度1件、各レースの先頭2頭の馬情報を検証する。データの書き写しや各年の結果URLの手入力は不要。以降の例の `jra-collect` は仮想環境を有効化して実行するか、上記の `python -m keiba_acquisition.cli` に置き換える。
@@ -54,7 +62,7 @@ macOS / Linux：
 同じレースの10年度分へ広げる例：
 
 ```console
-jra-collect --years 2016:2025 --profiles-per-race 18
+jra-collect --database --years 2016:2025 --profiles-per-race 18
 ```
 
 これは同一レース系列の10年度の確認であり、全重賞10年分の網羅性を保証しない。レース名の部分一致は `--race-name`、年度ごとの結果取得上限は `--limit-per-year`、馬情報の取得上限は `--profiles-per-race` で指定できる。原本が安定して取れることと必要項目の充足を確認してから、対象区分全体へ広げる。
@@ -62,10 +70,12 @@ jra-collect --years 2016:2025 --profiles-per-race 18
 指定した今回レースも検証する例：
 
 ```console
-jra-collect --years 2016,2021,2025 --upcoming-url "https://www.jra.go.jp/keiba/race/101/syutsuba.html"
+jra-collect --database --years 2016,2021,2025 --upcoming-url "https://www.jra.go.jp/keiba/race/101/syutsuba.html"
 ```
 
-入口は公式が掲載する対象レースのURLを指定する。特定のレースに固定した収集方式ではない。出馬表・単複オッズへの導線を一意に選べない場合は、対象画面のURLを `--upcoming-url`・`--odds-url` へ直接指定して少量検証できる。データ本文の転記は行わない。公開前・発売前のページは成功した出走表・オッズとして数えない。
+入口は公式が掲載する対象レースのURLを指定する。特定のレースに固定した収集方式ではない。記事に公開予定の文が残っていても、日付を持つ詳細出馬表リンクが1つだけあればその先を検査し、記事の公開状態も記録する。枠・馬番未発表の詳細出馬表は、馬IDで出走馬を保持し、未割り当てを明示する。馬番に添えたブリンカー画像を番号として読まない。
+
+単複オッズの導線を一意に選べない場合は、対象画面のURLを `--odds-url` へ直接指定して少量検証できる。グローバルのオッズメニューを対象レースのオッズとして選ばない。今回のオッズは開催キーを照合し、過去の最終値を発売中の値として受け入れない。未発表・未発売を0倍へ置き換えない。データ本文の転記は行わない。
 
 年度一覧を経由せず、既知の公式結果を単独検証する例：
 
@@ -73,7 +83,7 @@ jra-collect --years 2016,2021,2025 --upcoming-url "https://www.jra.go.jp/keiba/r
 jra-collect --result-url "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005200605021120061105%2FC3"
 ```
 
-過去原本も取り直す場合は `--refresh-history` を付ける。通常の再実行では保存原本のハッシュを検査して再利用する。
+詳細結果URLに `--database` を付けた場合も、対象の最終単複オッズを追加検証する。省略時は従来の保存版/結果単独の処理を維持する。過去原本も取り直す場合は `--refresh-history` を付ける。通常の再実行では保存原本のハッシュを検査して再利用する。
 
 ## 出力と終了コード
 

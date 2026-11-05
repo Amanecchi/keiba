@@ -165,4 +165,62 @@ def test_single_and_place_odds_link_is_selected_by_label(tmp_path, fixture_bytes
     session = Session([Response(body), Response(fixture_bytes("odds.html"))])
     probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
     probe.upcoming("https://www.jra.go.jp/keiba/race/101/syutsuba.html", None)
-    assert session.calls[-1][0].endswith("CNAME=sample-odds%2Ftoken")
+    assert session.methods[-1] == "POST"
+    assert session.calls[-1][0] == "https://www.jra.go.jp/JRADB/accessO.html"
+    assert session.calls[-1][1]["data"] == {"cname": "sample-odds/token"}
+
+
+@pytest.mark.parametrize("wrong", ["different_race", "historical_final"])
+def test_current_card_rejects_other_race_or_historical_odds(tmp_path, fixture_bytes, wrong):
+    body = fixture_bytes("odds.html")
+    if wrong == "different_race":
+        body = body.replace("5回東京2日".encode(), "5回京都2日".encode())
+    else:
+        body = body.replace("11月9日 14時05分現在".encode(), "最終オッズ".encode())
+    session = Session([Response(fixture_bytes("entries.html")), Response(body)])
+    probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
+    probe.upcoming("https://www.jra.go.jp/keiba/race/101/syutsuba.html", None)
+    assert probe.records[-1]["status"] == "error"
+    assert probe.records[-1]["error_kind"] == "parse_error"
+
+
+def test_global_odds_menu_is_not_used_as_a_race_specific_link(tmp_path, fixture_bytes):
+    body = fixture_bytes("entries.html").replace(b"sample-odds/token", b"pw15oli00/6D")
+    session = Session([Response(body)])
+    probe = Probe(Client(tmp_path, session=session), progress=lambda _: None)
+    probe.upcoming("https://www.jra.go.jp/keiba/race/101/syutsuba.html", None)
+    assert len(session.calls) == 1
+    assert probe.records[-1]["error_kind"] == "missing_odds_link"
+
+
+def test_pending_article_can_follow_one_published_detail_without_following_menu(
+    tmp_path, fixture_bytes
+):
+    landing = """<meta charset="utf-8"><p>出馬表は11月5日に公開予定です。</p>
+      <a href="/JRADB/accessD.html?CNAME=pw01dli00/AA">出馬表メニュー</a>
+      <a href="/JRADB/accessD.html?CNAME=pw01dde0105202505021120251109/AA">出馬表</a>""".encode()
+    session = Session(
+        [
+            Response(landing),
+            Response(fixture_bytes("entries.html")),
+            Response(fixture_bytes("odds.html")),
+        ]
+    )
+    probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
+    probe.upcoming("https://www.jra.go.jp/keiba/race/101/syutsuba.html", None)
+    assert probe.records[0]["publication_state"] == "not_yet_published"
+    assert "pw01dde" in session.calls[1][0]
+    assert probe.records[-1]["status"] == "parsed"
+
+
+def test_explicit_static_odds_url_keeps_get_transport(tmp_path, fixture_bytes):
+    session = Session(
+        [Response(fixture_bytes("entries.html")), Response(fixture_bytes("odds.html"))]
+    )
+    probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
+    probe.upcoming(
+        "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+        "https://www.jra.go.jp/datafile/seiseki/sample/odds.html",
+    )
+    assert session.methods == ["GET", "GET"]
+    assert probe.records[-1]["status"] == "parsed"

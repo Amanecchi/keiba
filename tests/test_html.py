@@ -157,3 +157,86 @@ def test_inverted_place_odds_are_not_accepted(fixture_bytes):
     result = parse_odds(body, BASE)
     assert result["odds"][0]["place_lower"] is None
     assert "missing_odds_values" in result["issues"]
+
+
+def test_legacy_side_by_side_payouts_never_include_other_bets():
+    from bs4 import BeautifulSoup
+    from keiba_acquisition.html import payouts
+
+    body = """<table>
+      <tr><td>単勝</td><td>1</td><td>500円</td><td>1番人気</td>
+          <td>馬連</td><td>1-2</td><td>900円</td><td>2番人気</td></tr>
+      <tr><td rowspan="2">複勝</td><td rowspan="2">1<br>2</td>
+          <td rowspan="2">150円<br>180円</td><td rowspan="2">1番人気<br>2番人気</td>
+          <td>ワイド</td><td>1-2</td><td>300円</td></tr>
+      <tr><td>3連単</td><td>1-2-3</td><td>2000円</td></tr>
+    </table>"""
+    assert payouts(BeautifulSoup(body, "html.parser")) == [
+        {"bet_type": "単勝", "horse_number": 1, "yen_per_100": 500},
+        {"bet_type": "複勝", "horse_number": 1, "yen_per_100": 150},
+        {"bet_type": "複勝", "horse_number": 2, "yen_per_100": 180},
+    ]
+
+
+def test_legacy_race_identity_and_distance_do_not_require_modern_headers():
+    from bs4 import BeautifulSoup
+    from keiba_acquisition.html import metadata
+
+    body = """<table><tr><th class="header3">第５回 架空記念</th></tr></table>
+      <p>2016年11月6日（日） 5回東京2日</p><p class="specialRace">11R 第5回 架空記念</p>
+      <table><tr><td>2500m</td><td>芝・左</td></tr></table>"""
+    parsed = metadata(BeautifulSoup(body, "html.parser"))
+    assert parsed["race_date"] == "2016-11-06" and parsed["distance_m"] == 2500
+    assert parsed["venue"] == "東京" and parsed["race_number"] == 11
+    assert parsed["meeting_number"] == 5 and parsed["meeting_day"] == 2
+
+
+def test_detailed_card_before_number_assignment_preserves_horse_identity():
+    body = """<meta charset="utf-8"><table><thead><tr><th>枠</th><th>馬番</th>
+      <th>馬名<br>調教師名<br>血統</th><th>性齢/毛色<br>負担重量<br>騎手名</th></tr></thead>
+      <tbody><tr><td></td><td><img alt="ブリンカー着用"></td><td class="horse">
+      <div class="name"><a href="/JRADB/accessU.html?CNAME=pw01dud002020000001/AA">架空馬A</a></div>
+      <p class="trainer"><a>架空調教師</a><span class="division">(美浦)</span></p>
+      <ul><li class="sire"><span>父：</span>架空種牡馬</li></ul></td>
+      <td><p class="age">牡5/鹿</p><p class="jockey"><a>架空騎手</a></p></td></tr></tbody></table>""".encode()
+    parsed = parse_entries(body, BASE)
+    entry = parsed["entries"][0]
+    assert entry["horse_number"] is None and entry["frame"] is None
+    assert entry["horse_name"] == "架空馬A" and entry["horse_id"] == "2020000001"
+    assert entry["sire"] == "架空種牡馬" and entry["affiliation"] == "美浦"
+    assert entry["jockey"] == "架空騎手" and entry["sex_age"] == "牡5"
+    assert parsed["issues"] == ["unassigned_horse_number", "unassigned_frame"]
+
+
+def test_final_odds_are_distinguished_from_live_quotes(fixture_bytes):
+    body = fixture_bytes("odds.html").replace(
+        "11月9日 14時05分現在".encode(), "最終オッズ".encode()
+    )
+    body = body.replace("複勝オッズ".encode(), "複勝（3着払い）".encode())
+    parsed = parse_odds(body, BASE)
+    assert parsed["odds_state"] == "final" and parsed["provider_timestamp_text"] is None
+    assert parsed["issues"] == [] and parsed["odds"][0]["win_odds"] == "12.0"
+
+
+def test_unpublished_odds_are_not_final_or_zero_quotes():
+    parsed = parse_odds("<p>今週のオッズは未発表です。</p>".encode(), BASE)
+    assert parsed["status"] == "not_yet_published" and parsed["odds"] == []
+
+
+def test_registration_transfer_is_not_a_previous_race(fixture_bytes):
+    body = fixture_bytes("profile.html").replace(
+        b"</table>",
+        "<tr><td>2025.10.12</td><td>JRAへ転入</td><td></td><td></td></tr></table>".encode(),
+    )
+    parsed = parse_profile(body, BASE, date(2025, 11, 2))
+    assert parsed["previous_run"]["race_date"] == "2025-10-05"
+    assert any(run["record_type"] == "administrative" for run in parsed["history"])
+    assert parsed["issues"] == []
+
+
+def test_did_not_finish_is_a_real_previous_start(fixture_bytes):
+    body = fixture_bytes("profile.html").replace(b"<td>3</td>", "<td>中止</td>".encode())
+    parsed = parse_profile(body, BASE, date(2025, 11, 2))
+    assert parsed["previous_run"]["race_date"] == "2025-10-05"
+    assert parsed["previous_run"]["finish"] is None
+    assert parsed["previous_run"]["finish_text"] == "中止" and parsed["issues"] == []

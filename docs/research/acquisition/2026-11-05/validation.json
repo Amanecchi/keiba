@@ -1,0 +1,455 @@
+{
+  "status": "partial",
+  "started_at": "2026-11-05T13:54:53.224645+00:00",
+  "finished_at": "2026-11-05T13:55:26.253540+00:00",
+  "tool_version": "0.2.0",
+  "metrics": {
+    "elapsed_seconds": 33.0289,
+    "http_attempts": 0,
+    "cache_hits": 219,
+    "received_bytes": 0,
+    "parsed_results": 10,
+    "parsed_profiles": 159,
+    "parsed_entries": 159,
+    "parsed_historical_odds": 10,
+    "parsed_current_entries": 0
+  },
+  "unique_raw_pages_verified": 180,
+  "years": [
+    {
+      "year": 2016,
+      "race_date": "2016-11-06",
+      "entries": 15,
+      "horse_ids": 15,
+      "win_odds": 15,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201605021120161106%2F03",
+      "result_sha256": "cb42d71416dbc2fe9bc445bdf56244c311224249e8e55d18008d61eb5aec7d0e",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005201605021120161106Z%2F45",
+        "raw_path": "raw/c389678e3f9e7177e9c478d6c09c4de12a059b5a3749b9c207c13d50aabce15b.html",
+        "sha256": "a805c86bf6995584d6bedba5b5a8867a6865e3a945b9a3dd000c0f642782295f",
+        "fetched_at": "2026-11-05T13:38:13.303464+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.5993,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:11,5,13,1,8,12,6,3,14,10,15,2,4,9,7"
+      ]
+    },
+    {
+      "year": 2017,
+      "race_date": "2017-11-05",
+      "entries": 16,
+      "horse_ids": 16,
+      "win_odds": 16,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2017/098.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201705021120171105%2F4D",
+      "result_sha256": "0d720b161bfb121385c21974c813fd5c23727767ae54603f35ac2e68e0fb745e",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005201705021120171105Z%2F8F",
+        "raw_path": "raw/2da6eeac94e1f2b7a7ce21465995731489d79f06b73cf4a68993da252fcdf2c2.html",
+        "sha256": "674183becb5f4a80584b7d0dac063970fa25de06e19731540aac953eee94b30b",
+        "fetched_at": "2026-11-05T13:38:27.167666+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.8753,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:4,7,1,11,8,5,9,3,6,13,2,15,16,12,14,10"
+      ]
+    },
+    {
+      "year": 2018,
+      "race_date": "2018-11-04",
+      "entries": 12,
+      "horse_ids": 12,
+      "win_odds": 12,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2018/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201805021120181104%2F97",
+      "result_sha256": "0f40b814818d39ab6e7483525ec09fe6ccd33862fd8c3fecae585f65792edade",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005201805021120181104Z%2FD9",
+        "raw_path": "raw/c103c9daa8e60392b176b147c9c2f28da9ed8deb4f2f0b3bcc177fb150e37931.html",
+        "sha256": "98337de38eedbba56e1954c75a8000558645d5db65d3d3f61614f63ed5e71547",
+        "fetched_at": "2026-11-05T13:38:41.213767+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.6883,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:6,7,5,10,1,4,12,8,2,9,11,3"
+      ]
+    },
+    {
+      "year": 2019,
+      "race_date": "2019-11-03",
+      "entries": 13,
+      "horse_ids": 13,
+      "win_odds": 13,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2019/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201905021120191103%2FE1",
+      "result_sha256": "5051661de278364ad4e5e30b1e59347cdb4ae80aa2c17ab01671b475e5cbc837",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005201905021120191103Z%2F23",
+        "raw_path": "raw/994ae740d5d5538482a1a8dc2963bc0643e1ee7ee381337c6bcbd973d6464738.html",
+        "sha256": "3d3027c72b49783532e1b2019d93f1381ea746be888bf3cb6ac6eabb38e83cfb",
+        "fetched_at": "2026-11-05T13:38:55.176811+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.7073,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:7,2,1,5,10,6,11,9,3,13,4,12,8"
+      ]
+    },
+    {
+      "year": 2020,
+      "race_date": "2020-11-08",
+      "entries": 18,
+      "horse_ids": 18,
+      "win_odds": 18,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2020/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202005021120201108%2FD6",
+      "result_sha256": "06dc30d9937cc70460290dc963eddce161ca7c3f292d54ab8bf917c716ae4243",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202005021120201108Z%2F18",
+        "raw_path": "raw/fdaebcbd5ad96e6618a758e442db388e0e837e658c071440639f4dc8bf0c349e.html",
+        "sha256": "cef06c6ed52114c2d79e192cd4150b7953cd179e4db1d54027b18f6d30079dc7",
+        "fetched_at": "2026-11-05T13:39:07.190397+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.6472,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:18,2,10,5,13,8,3,16,17,9,14,7,15,6,1,11,12,4"
+      ]
+    },
+    {
+      "year": 2021,
+      "race_date": "2021-11-07",
+      "entries": 15,
+      "horse_ids": 15,
+      "win_odds": 15,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2021/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202105021120211107%2F20",
+      "result_sha256": "b530bf87852aaa98293cff4fdb53ea7ba7c6fc140052c3b0820ffff4c4247af9",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202105021120211107Z%2F62",
+        "raw_path": "raw/7c78341a38ec34b325d55d310cd98f3c3a1d32f049b72b44b1355c91197c10d0.html",
+        "sha256": "f971b8ab9e8d3b509ce1b5c1f6dc311f9bf41e127a6eae10128ee2fdadc80606",
+        "fetched_at": "2026-11-05T13:39:21.197818+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.6776,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:10,12,5,1,9,6,14,15,7,8,2,3,4,11,13"
+      ]
+    },
+    {
+      "year": 2022,
+      "race_date": "2022-11-06",
+      "entries": 18,
+      "horse_ids": 18,
+      "win_odds": 18,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2022/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202205021120221106%2F6A",
+      "result_sha256": "62c4cbcad3a51ed9ae0a37f6df0346266389e687cb50de3fa87bd9067aa5b674",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202205021120221106Z%2FAC",
+        "raw_path": "raw/ddc87750c2b1c9cc827f8af7c776a9462bbdacdc8b6470bea3792b4fb0363d73.html",
+        "sha256": "01d3cafa5a399e5c186e925481fe48cbcd63959b0bcef2dc11e0c61342b76aa2",
+        "fetched_at": "2026-11-05T13:39:33.120758+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.5152,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:7,17,16,8,11,5,3,6,9,14,13,4,2,18,12,10,15,1"
+      ]
+    },
+    {
+      "year": 2023,
+      "race_date": "2023-11-05",
+      "entries": 18,
+      "horse_ids": 18,
+      "win_odds": 18,
+      "historical_affiliation": 0,
+      "payout_records": 5,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2023/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202305021120231105%2FB4",
+      "result_sha256": "f39497aa8eeeef9a96b0230fb3eabfb82c0b47a176984e1f4b45764b83968cdc",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202305021120231105Z%2FF6",
+        "raw_path": "raw/aa77d600debccd442963f8434fda9211c493b04127e40f7ccca39bb809115d52.html",
+        "sha256": "e5b214156beb508c00ef90fce25f445740fa478dcebdd13fe213cf288dee846e",
+        "fetched_at": "2026-11-05T13:39:48.053848+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.0833,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:9,17,4,14,7,12,2,6,1,16,5,15,13,3,11,8,10,18"
+      ]
+    },
+    {
+      "year": 2024,
+      "race_date": "2024-11-03",
+      "entries": 16,
+      "horse_ids": 16,
+      "win_odds": 16,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2024/099.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202405021120241103%2F41",
+      "result_sha256": "35c7ca4f889723a4a4d1eb774dc1135eec220c07b28470f4abbdfa6cac57655b",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202405021120241103Z%2F83",
+        "raw_path": "raw/8057994cd11bc23deaf8d6ee4abd28091da4cc9b88f0ac5d95aa4f464750f4b5.html",
+        "sha256": "cb7f635e7ef2bcfae5f215a27aa15d334b2e7e6cdc1ea0771b8497e9d1adcdae",
+        "fetched_at": "2026-11-05T13:39:59.874572+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.2272,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:3,4,9,11,6,14,2,13,10,5,8,7,12,16,15,1"
+      ]
+    },
+    {
+      "year": 2025,
+      "race_date": "2025-11-09",
+      "entries": 18,
+      "horse_ids": 18,
+      "win_odds": 18,
+      "historical_affiliation": 0,
+      "payout_records": 4,
+      "archive_result_and_payout_match": true,
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2025/101.html",
+      "result_url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202505021120251109%2FB6",
+      "result_sha256": "b4f538fc67d72b7b0374182a9b1402ae22415052d11364e4dbfbd7d8f5a68791",
+      "final_odds_source": {
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ou1005202505021120251109Z%2FF8",
+        "raw_path": "raw/166c2e21fe3a817e88c1c8d3ecd86c23b13629b39758f3324d16093e80a3d5c4.html",
+        "sha256": "97ce1c37e7de18585ff8506de7a569de3369af1456ea7a95684a131cfb1d9ab8",
+        "fetched_at": "2026-11-05T13:40:13.828364+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.8646,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": true,
+        "request_method": "POST"
+      },
+      "issues": [
+        "missing_affiliation:13,18,6,5,7,11,10,8,16,12,14,3,17,4,1,15,9,2"
+      ]
+    }
+  ],
+  "profile_coverage": {
+    "race_horse_contexts": 159,
+    "unique_horses": 129,
+    "sire_available": 159,
+    "previous_run_available": 159,
+    "previous_distance_available": 159,
+    "previous_numeric_finish_available": 158,
+    "previous_result_link_available": 159,
+    "issues": {}
+  },
+  "raw_hashes_verified": true,
+  "future_runs_excluded": true,
+  "all_grades_ten_year_coverage_verified": false,
+  "production_ready": false,
+  "checked_at": "2026-11-05T13:59:01.392469+00:00",
+  "base_commit": "db4dda164d233383ded4892fab0e4d6b4373e6eb",
+  "python_version": "3.12.14",
+  "connection": {
+    "checked_at_jst": "2026-11-05T22:22:40+09:00",
+    "url": "https://www.jra.go.jp/",
+    "http_connect": 200,
+    "http_code": 200,
+    "ssl_verify_result": 0,
+    "time_appconnect_seconds": 0.517142,
+    "curl_exit_code": 0,
+    "proxy_and_ca_preserved": true,
+    "network_policy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "observations_current": true
+  },
+  "staged_first_acquisition": {
+    "two_profiles_per_year": {
+      "started_at": "2026-11-05T13:38:02.433218+00:00",
+      "finished_at": "2026-11-05T13:40:17.954267+00:00",
+      "tool_version": "0.1.0",
+      "metrics": {
+        "elapsed_seconds": 135.5211,
+        "http_attempts": 68,
+        "cache_hits": 12,
+        "received_bytes": 7360254,
+        "parsed_results": 10,
+        "parsed_profiles": 20,
+        "parsed_entries": 159,
+        "parsed_historical_odds": 10,
+        "parsed_current_entries": 0
+      }
+    },
+    "extend_to_all_profiles": {
+      "started_at": "2026-11-05T13:44:49.338815+00:00",
+      "finished_at": "2026-11-05T13:50:08.826825+00:00",
+      "tool_version": "0.2.0",
+      "metrics": {
+        "elapsed_seconds": 319.488,
+        "http_attempts": 113,
+        "cache_hits": 107,
+        "received_bytes": 14142205,
+        "parsed_results": 10,
+        "parsed_profiles": 159,
+        "parsed_entries": 159,
+        "parsed_historical_odds": 10,
+        "parsed_current_entries": 0
+      }
+    },
+    "total_http_attempts": 181,
+    "total_elapsed_seconds": 455.0091,
+    "total_received_bytes": 21502459,
+    "note": "段階的取得の累計。全頭を空の保存先へ直接実行した初回時間とは異なる。最初の計測は開発途中の0.1.0表記、最終再解析は0.2.0。"
+  },
+  "current_card_and_odds": {
+    "started_at": "2026-11-05T13:52:26.742672+00:00",
+    "finished_at": "2026-11-05T13:52:32.343755+00:00",
+    "metrics": {
+      "elapsed_seconds": 5.6011,
+      "http_attempts": 3,
+      "cache_hits": 4,
+      "received_bytes": 314911,
+      "parsed_results": 1,
+      "parsed_profiles": 2,
+      "parsed_entries": 18,
+      "parsed_historical_odds": 1,
+      "parsed_current_entries": 18
+    },
+    "race_date": "2026-11-08",
+    "entries": 18,
+    "horse_ids": 18,
+    "sires": 18,
+    "jockeys": 18,
+    "affiliations": 18,
+    "frames": 0,
+    "horse_numbers": 0,
+    "issues": [
+      "unassigned_horse_number",
+      "unassigned_frame"
+    ],
+    "resources": [
+      {
+        "kind": "upcoming_landing",
+        "url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+        "context": "",
+        "raw_path": "raw/98ef3b4b29fbe9b9dc733ce184b0307a720111287b21993394e32ae3e29f9e70.html",
+        "sha256": "d59d4818a86e9c5884adf36270d75748e177ad4173c4c5110dc2508efb65f366",
+        "fetched_at": "2026-11-05T13:52:28.410129+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 0.9827,
+        "response_url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+        "cached": false,
+        "request_method": "GET",
+        "status": "downloaded",
+        "publication_state": "not_yet_published"
+      },
+      {
+        "kind": "entries",
+        "url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+        "context": "",
+        "raw_path": "raw/babff2f61886f6d438ac029df162e0e01882d368bca7044a61c56e2773c3b6f6.html",
+        "sha256": "5658942fe863b5a20b10c22a903d52feef678c9f1c895e4c4354c7f38878c7a7",
+        "fetched_at": "2026-11-05T13:52:30.393068+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.8663,
+        "response_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+        "cached": false,
+        "request_method": "GET",
+        "status": "partial",
+        "parsed_path": "parsed/f022b582f3fdd80ef2266ee32f89d85ddab9618548a70cf0923a41de973877a2.json",
+        "issues": [
+          "unassigned_horse_number",
+          "unassigned_frame"
+        ]
+      },
+      {
+        "kind": "odds",
+        "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw15oli00%2F6D",
+        "context": "",
+        "raw_path": "raw/1b4c2469ad47628ad4924d41744e93c56f0d70fe4c528f0046a8421cd2ed65be.html",
+        "sha256": "1b9e81da48970f974daf03cca50fa2fdf5fd89cd9001ab4992cfd529140a6c5e",
+        "fetched_at": "2026-11-05T13:52:32.231589+00:00",
+        "content_type": "text/html",
+        "elapsed_seconds": 1.137,
+        "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+        "cached": false,
+        "request_method": "POST",
+        "status": "partial",
+        "parsed_path": "parsed/92aedab302444363d5f32f08606154482c9670f48a83574a1ecd7f9e92f6a492.json",
+        "issues": [
+          "not_yet_published"
+        ]
+      }
+    ],
+    "live_quotes_verified": false,
+    "raw_hashes_verified": true
+  },
+  "validation": {
+    "baseline_tests": 44,
+    "final_tests": 64,
+    "pytest": "passed",
+    "ruff": "passed",
+    "pip_check": "passed"
+  },
+  "administrative_previous_run_fix": {
+    "observed_label": "JRAへ転入",
+    "excluded_from_previous_run": true,
+    "did_not_finish_kept_as_actual_start": true
+  }
+}

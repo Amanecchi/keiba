@@ -30,8 +30,17 @@ class Session:
         self.responses = list(responses)
         self.headers = {}
         self.calls = []
+        self.methods = []
 
     def get(self, url, **kwargs):
+        self.methods.append("GET")
+        return self._response(url, kwargs)
+
+    def post(self, url, **kwargs):
+        self.methods.append("POST")
+        return self._response(url, kwargs)
+
+    def _response(self, url, kwargs):
         self.calls.append((url, kwargs))
         assert kwargs["allow_redirects"] is False
         assert "verify" not in kwargs  # requests retains TLS verification.
@@ -154,3 +163,35 @@ def test_same_site_redirect_records_the_actual_response_url(tmp_path):
     assert page.response_url == target
     cached = Client(tmp_path, session=Session([])).fetch(URL)
     assert cached.response_url == target
+
+
+def test_public_cname_form_preserves_method_and_has_separate_cache(tmp_path):
+    target = "https://www.jra.go.jp/JRADB/accessS.html?CNAME=public/token"
+    session = Session([Response(b"GET"), Response(b"POST")])
+    client = Client(tmp_path, session=session, sleep=lambda _: None)
+    get = client.fetch(target)
+    post = client.fetch(target, post_cname=True)
+    assert session.methods == ["GET", "POST"]
+    assert session.calls[1][0] == "https://www.jra.go.jp/JRADB/accessS.html"
+    assert session.calls[1][1]["data"] == {"cname": "public/token"}
+    assert post.request_method == "POST" and get.raw_path != post.raw_path
+    assert client.fetch(target, post_cname=True).body == b"POST"
+    assert len(session.calls) == 2
+
+
+@pytest.mark.parametrize("url", [URL, "https://www.jra.go.jp/JRADB/accessS.html?password=secret"])
+def test_only_public_cname_form_is_supported(tmp_path, url):
+    session = Session([])
+    with pytest.raises(AcquisitionError) as caught:
+        Client(tmp_path, session=session).fetch(url, post_cname=True)
+    assert caught.value.kind == "unsupported_form"
+    assert not session.calls
+
+
+def test_form_denial_stops_without_get_fallback(tmp_path):
+    session = Session([Response(status=403)])
+    with pytest.raises(AcquisitionError) as caught:
+        Client(tmp_path, session=session).fetch(
+            "https://www.jra.go.jp/JRADB/accessS.html?CNAME=public/token", post_cname=True
+        )
+    assert caught.value.stop and session.methods == ["POST"]

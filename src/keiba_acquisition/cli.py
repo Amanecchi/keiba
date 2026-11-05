@@ -7,8 +7,19 @@ import sys
 import time
 from datetime import UTC, date, datetime
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 from . import __version__
+from .database import (
+    check_identity,
+    checked_result,
+    merge_final_odds,
+    month_link,
+    odds_link,
+    race_reference,
+    result_link,
+    search_link,
+)
 from .html import (
     ParseError,
     discover_results,
@@ -44,12 +55,14 @@ class Probe:
         self.records = []
         self.parsed = []
 
-    def acquire(self, url: str, kind: str, parser=None, *, fresh=False, context=""):
+    def acquire(
+        self, url: str, kind: str, parser=None, *, fresh=False, context="", post_cname=False
+    ):
         self.progress(f"取得: {kind} {url}")
         record = {"kind": kind, "url": url, "context": context}
         self.records.append(record)
         try:
-            page = self.client.fetch(url, fresh=fresh)
+            page = self.client.fetch(url, fresh=fresh, post_cname=post_cname)
             record.update(page.metadata())
             record["status"] = "downloaded"
             if parser is None:
@@ -77,10 +90,36 @@ class Probe:
             record.update({"status": "error", "error_kind": "parse_error", "message": str(error)})
         return None, None
 
-    def result(self, url: str, profile_limit: int):
-        _, result = self.acquire(url, "result", parse_result)
+    def result(self, url: str, profile_limit: int, *, reference=None, final_odds=False):
+        parse = (
+            parse_result
+            if reference is None
+            else (lambda body, base: checked_result(body, base, reference))
+        )
+        page, result = self.acquire(url, "result", parse)
         if result is None:
             return
+        record = self.records[-1]
+        if final_odds:
+            try:
+                target = odds_link(page.body, page.response_url or page.url)
+                _, odds = self.acquire(target, "historical_odds", parse_odds, post_cname=True)
+                if odds is not None:
+                    merge_final_odds(result, odds)
+                    write_json(self.client.output / record["parsed_path"], result)
+                    record.update(
+                        status="partial" if result["issues"] else "parsed", issues=result["issues"]
+                    )
+            except ParseError as error:
+                self.records.append(
+                    {
+                        "kind": "historical_odds_validation",
+                        "url": url,
+                        "status": "error",
+                        "error_kind": "parse_error",
+                        "message": str(error),
+                    }
+                )
         target_date = date.fromisoformat(result["race_date"]) if result["race_date"] else None
         if target_date is None:
             return
@@ -94,14 +133,56 @@ class Probe:
                     context=target_date.isoformat(),
                 )
 
+    def database_result(self, archive_url: str, profile_limit: int):
+        page, reference = self.acquire(archive_url, "race_reference", race_reference)
+        if reference is None:
+            return
+        try:
+            search_url = search_link(page.body, page.response_url or page.url)
+            search, _ = self.acquire(search_url, "database_search", post_cname=True)
+            if search is None:
+                return
+            month_url = month_link(
+                search.body, search.response_url or search.url, reference["race_date"]
+            )
+            month, _ = self.acquire(month_url, "database_month", post_cname=True)
+            if month is None:
+                return
+            target = result_link(month.body, month.response_url or month.url, reference)
+            self.result(target, profile_limit, reference=reference, final_odds=True)
+        except ParseError as error:
+            self.records.append(
+                {
+                    "kind": "database_discovery",
+                    "url": archive_url,
+                    "status": "error",
+                    "error_kind": "parse_error",
+                    "message": str(error),
+                }
+            )
+
     def upcoming(self, url: str, odds_url: str | None):
         # Landing pages can link to a JRADB card instead of containing the table.
         page, _ = self.acquire(url, "upcoming_landing", fresh=True)
         if page is None:
             return
         try:
-            parse_entries(page.body, page.response_url or page.url)
+            initial = parse_entries(page.body, page.response_url or page.url)
             entry_url = url
+            if initial["status"] != "parsed":
+                self.records[-1]["publication_state"] = initial["status"]
+                links = related_links(page.body, page.response_url or page.url, "accessD")
+                detailed = [
+                    link
+                    for link in links
+                    if parse_qs(urlsplit(link).query)["CNAME"][0].startswith("pw01dde")
+                ]
+                # A dated detail link can already be available while the article
+                # still displays its publication notice. Never choose a menu.
+                if len(detailed) == 1:
+                    entry_url = detailed[0]
+                elif len(detailed) > 1:
+                    raise ParseError("対象の詳細出馬表が複数あります。")
         except ParseError:
             links = related_links(page.body, page.response_url or page.url, "accessD")
             if len(links) != 1:
@@ -141,8 +222,32 @@ class Probe:
             links = related_links(entry_page.body, base, "accessO", labels=("単勝", "複勝"))
             if not links:
                 links = related_links(entry_page.body, base, "accessO")
+            # The global odds menu is not an odds page for this race.
+            links = [
+                link
+                for link in links
+                if not parse_qs(urlsplit(link).query)["CNAME"][0].startswith("pw15oli")
+            ]
             if odds_url or len(links) == 1:
-                self.acquire(odds_url or links[0], "odds", parse_odds, fresh=True)
+
+                def current_odds(body, base):
+                    value = parse_odds(body, base)
+                    if value["status"] == "parsed":
+                        check_identity(value, parsed)
+                        if value["odds_state"] != "live":
+                            raise ParseError(
+                                "過去の最終オッズを今回の発売中オッズとして採用しません。"
+                            )
+                    return value
+
+                target = odds_url or links[0]
+                self.acquire(
+                    target,
+                    "odds",
+                    current_odds,
+                    fresh=True,
+                    post_cname=urlsplit(target).path == "/JRADB/accessO.html",
+                )
             else:
                 self.records.append(
                     {
@@ -161,7 +266,7 @@ class Probe:
         try:
             if args.result_url:
                 for url in dict.fromkeys(args.result_url):
-                    self.result(url, args.profiles_per_race)
+                    self.result(url, args.profiles_per_race, final_odds=args.database)
             else:
                 for year in args.years or [2016, 2021, 2025]:
                     url = f"https://www.jra.go.jp/datafile/seiseki/replay/{year}/jyusyo.html"
@@ -185,11 +290,20 @@ class Probe:
                         }
                     )
                     for link in links[: args.limit_per_year]:
-                        self.result(link["url"], args.profiles_per_race)
+                        if args.database:
+                            self.database_result(link["url"], args.profiles_per_race)
+                        else:
+                            self.result(link["url"], args.profiles_per_race)
             if args.upcoming_url:
                 self.upcoming(args.upcoming_url, args.odds_url)
             elif args.odds_url:
-                self.acquire(args.odds_url, "odds", parse_odds, fresh=True)
+                self.acquire(
+                    args.odds_url,
+                    "odds",
+                    parse_odds,
+                    fresh=True,
+                    post_cname=urlsplit(args.odds_url).path == "/JRADB/accessO.html",
+                )
         except AcquisitionError as error:
             stopped = error.kind
         except KeyboardInterrupt:
@@ -224,6 +338,8 @@ class Probe:
                 "race_name": args.race_name,
                 "limit_per_year": args.limit_per_year,
                 "profiles_per_race": args.profiles_per_race,
+                "database_requested": args.database,
+                "historical_odds_requested": args.database,
                 "upcoming_requested": bool(args.upcoming_url),
                 "odds_requested": bool(args.odds_url or args.upcoming_url),
             },
@@ -235,6 +351,12 @@ class Probe:
                 "parsed_results": len(results),
                 "parsed_profiles": len(profiles),
                 "parsed_entries": sum(len(result["entries"]) for result in results),
+                "parsed_historical_odds": sum(
+                    r["kind"] == "odds" and r.get("odds_state") == "final" for r in self.parsed
+                ),
+                "parsed_current_entries": sum(
+                    len(r["entries"]) for r in self.parsed if r["kind"] == "entries"
+                ),
             },
             "discovery": discovery,
             "resources": self.records,
@@ -264,6 +386,11 @@ def parser() -> argparse.ArgumentParser:
         help="年度一覧内のレース名部分一致。空文字で全対象",
     )
     cli.add_argument("--limit-per-year", type=int, default=1)
+    cli.add_argument(
+        "--database",
+        action="store_true",
+        help="年度一覧の保存版を開催キーでJRADB詳細結果・最終単複オッズへ対応付けて検証",
+    )
     cli.add_argument("--profiles-per-race", type=int, default=2)
     cli.add_argument("--upcoming-url", help="対象レースの公式出馬表または案内URL")
     cli.add_argument("--odds-url", help="必要に応じて公式単複オッズ画面を直接指定")

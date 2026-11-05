@@ -8,9 +8,11 @@ import time
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
+
+from . import __version__
 
 ALLOWED_HOSTS = {"www.jra.go.jp", "jra.go.jp"}
 RETRY_STATUSES = {500, 502, 503, 504}
@@ -70,6 +72,7 @@ class Page:
     elapsed_seconds: float
     response_url: str | None = None
     cached: bool = False
+    request_method: str = "GET"
 
     def metadata(self) -> dict:
         return {k: v for k, v in asdict(self).items() if k != "body"}
@@ -94,20 +97,24 @@ class Client:
         self.retries = retries
         self.refresh_history = refresh_history
         self.session = session or requests.Session()
-        self.session.headers.update({"User-Agent": "KeibaLocalAcquisition/0.1 (personal research)"})
+        self.session.headers.update(
+            {"User-Agent": f"KeibaLocalAcquisition/{__version__} (personal research)"}
+        )
         self.clock, self.sleep = clock, sleep
         self.last_request = None
         self.attempts = 0
         self.cache_hits = 0
         self.received_bytes = 0
 
-    def _request(self, url: str):
+    def _request(self, url: str, *, data: dict | None = None):
         if self.last_request is not None:
             self.sleep(max(0.0, self.interval - (self.clock() - self.last_request)))
         self.last_request = self.clock()
         self.attempts += 1
         try:
-            return self.session.get(url, timeout=self.timeout, allow_redirects=False, stream=True)
+            request = self.session.get if data is None else self.session.post
+            kwargs = {} if data is None else {"data": data}
+            return request(url, timeout=self.timeout, allow_redirects=False, stream=True, **kwargs)
         except requests.exceptions.ProxyError as error:
             raise AcquisitionError(
                 "proxy_error",
@@ -123,18 +130,36 @@ class Client:
         except requests.exceptions.RequestException as error:
             raise AcquisitionError("network_error", "HTTP接続に失敗しました。") from error
 
-    def fetch(self, url: str, *, fresh: bool = False) -> Page:
+    def fetch(self, url: str, *, fresh: bool = False, post_cname: bool = False) -> Page:
         from urllib.parse import urljoin
 
         url = official_url(url)
-        key = hashlib.sha256(url.encode()).hexdigest()
+        data = None
+        current_url = url
+        if post_cname:
+            parts = urlsplit(url)
+            query = parse_qs(parts.query)
+            if (
+                parts.path not in {f"/JRADB/access{name}.html" for name in ("S", "D", "O", "U")}
+                or set(query) != {"CNAME"}
+                or len(query["CNAME"]) != 1
+            ):
+                raise AcquisitionError("unsupported_form", "公開画面のCNAME送信だけに対応します。")
+            data = {"cname": query["CNAME"][0]}
+            current_url = urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+        method = "POST" if post_cname else "GET"
+        key = hashlib.sha256((f"POST|{url}" if post_cname else url).encode()).hexdigest()
         raw = self.output / "raw" / f"{key}.html"
         metadata = raw.with_suffix(".json")
         if not (fresh or self.refresh_history) and raw.exists() and metadata.exists():
             try:
                 meta = json.loads(metadata.read_text(encoding="utf-8"))
                 body = raw.read_bytes()
-                if meta["url"] != url or hashlib.sha256(body).hexdigest() != meta["sha256"]:
+                if (
+                    meta["url"] != url
+                    or meta.get("request_method", "GET") != method
+                    or hashlib.sha256(body).hexdigest() != meta["sha256"]
+                ):
                     raise ValueError("cache identity mismatch")
                 page = Page(body=body, **meta)
             except (ValueError, KeyError, TypeError) as error:
@@ -146,12 +171,11 @@ class Client:
             return page
 
         started = self.clock()
-        current_url = url
         redirects = 0
         attempts = 0
         while True:
             try:
-                response = self._request(current_url)
+                response = self._request(current_url, data=data)
             except AcquisitionError as error:
                 if error.kind in {"timeout", "network_error"} and attempts < self.retries:
                     attempts += 1
@@ -166,6 +190,8 @@ class Client:
                         raise AcquisitionError("redirect_error", "転送先を確定できません。")
                     # Validate BEFORE sending a request to the redirect target.
                     current_url = official_url(urljoin(current_url, response.headers["Location"]))
+                    if status in {301, 302, 303}:
+                        data = None
                     continue
                 if status in {403, 429}:
                     raise AcquisitionError(
@@ -208,6 +234,7 @@ class Client:
                     content_type=content_type,
                     elapsed_seconds=round(self.clock() - started, 4),
                     response_url=current_url,
+                    request_method=method,
                 )
                 atomic_write(raw, body)
                 write_json(metadata, {k: v for k, v in page.metadata().items() if k != "cached"})
