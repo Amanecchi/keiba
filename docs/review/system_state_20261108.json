@@ -1,0 +1,77 @@
+{
+  "checked_at_utc": "2026-11-07T15:43:49.299167+00:00",
+  "checked_at_jst": "2026-11-08T00:43:49.299167+09:00",
+  "code_version": "0.5.2",
+  "source_commit": "599e77abefa91787851a1efae89ee13f6afcb485",
+  "external_db": {
+    "database": "persistent D1",
+    "counts": {
+      "keiba_settings": 2,
+      "source_blobs": 4543,
+      "source_fetches": 4790,
+      "race_catalog": 1399,
+      "catalog_runs": 11,
+      "analysis_snapshots": 276,
+      "analysis_races": 256,
+      "saved_searches": 0,
+      "acquisition_jobs": 1,
+      "vault_checkpoints": 231
+    },
+    "entries": 3831,
+    "checkpoint": {
+      "checked_at": "2026-11-07T15:33:31.296288+00:00",
+      "counts": {
+        "acquisition_jobs": 1,
+        "analysis_races": 256,
+        "analysis_snapshots": 276,
+        "catalog_runs": 11,
+        "race_catalog": 1399,
+        "saved_searches": 0,
+        "source_blobs": 4543,
+        "source_fetches": 4790
+      }
+    }
+  },
+  "acquisition_job": {
+    "state": "failed",
+    "cursor": 255,
+    "total": 1399,
+    "message": "一部のデータを確認できません。前の成功データを保持して停止しました。",
+    "updated_at": "2026-11-07T15:33:31.020293+00:00"
+  },
+  "local_working_database_measurements": {
+    "postgres_version": "17.11",
+    "gzip_original_bytes": 62751753,
+    "postgres_database_bytes": 94762675
+  },
+  "software_versions": {
+    "python": "3.12.14",
+    "node_for_worker_build": "v24.22.1",
+    "requests": "2.32.5",
+    "beautifulsoup4": "4.14.2",
+    "Flask": "3.1.3",
+    "SQLAlchemy": "2.1.8",
+    "psycopg": "3.3.8",
+    "gunicorn": "26.2.0",
+    "Jinja2": "3.1.6",
+    "pytest": "8.4.2",
+    "ruff": "0.14.4"
+  },
+  "access": {
+    "current_user_role": "owner",
+    "allowed_accounts": 1,
+    "external_visitors": 0
+  },
+  "data_vault_url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site",
+  "analysis_app_public_url": null,
+  "collection_followup": {
+    "target_at_cursor": {
+      "race_date": "2017-12-28",
+      "name": "ホープフルS",
+      "archive_url": "https://www.jra.go.jp/datafile/seiseki/g1/hopeful/result/hopeful2017.html"
+    },
+    "target_evidence": "working PostgreSQL acquisition_jobs.plan[cursor]",
+    "root_cause": "not yet investigated; resource_failed message only",
+    "next_action": "inspect persisted original and parser diagnostics before resuming; retain successful data"
+  }
+}
