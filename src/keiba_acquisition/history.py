@@ -9,7 +9,7 @@ from urllib.parse import parse_qs, urlsplit
 from bs4 import BeautifulSoup
 
 from .database import VENUES, checked_result
-from .html import ParseError, clean, text
+from .html import ParseError, clean, finish_rank, text
 
 STYLE_METHOD = "prior-three-first-corner-v1"
 CLASS_METHOD = "official-condition-v1"
@@ -132,7 +132,14 @@ def parse_prior_result(body: bytes, base: str, run: dict, horse: str, target: st
     if not horse or len(entries) != 1:
         raise ParseError("走歴と補助結果の馬IDを一意に照合できません。")
     entry = entries[0]
-    if clean(entry["finish_text"] or "") != clean(run.get("finish_text") or ""):
+    actual_text, profile_text = (
+        clean(entry["finish_text"] or ""),
+        clean(run.get("finish_text") or ""),
+    )
+    numeric_match = finish_rank(profile_text) is not None and finish_rank(
+        profile_text
+    ) == finish_rank(actual_text)
+    if actual_text != profile_text and not numeric_match:
         raise ParseError("走歴と補助結果の着順が一致しません。訂正等を確認してください。")
     condition = race_condition(BeautifulSoup(body, "html.parser"))
     issues = list(condition["issues"])
@@ -162,6 +169,7 @@ def parse_prior_result(body: bytes, base: str, run: dict, horse: str, target: st
         **{field: result[field] for field in prior_reference(run)},
         "horse_number": entry["horse_number"],
         "finish_text": entry["finish_text"],
+        "profile_finish_text": run.get("finish_text"),
         "condition": condition,
         "starters": starters,
         "passing_positions": positions,

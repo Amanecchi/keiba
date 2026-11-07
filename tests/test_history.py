@@ -14,7 +14,7 @@ from keiba_acquisition.history import (
     prior_runs,
     race_condition,
 )
-from keiba_acquisition.html import ParseError
+from keiba_acquisition.html import ParseError, parse_profile
 from keiba_acquisition.transport import Client
 from test_transport import Response, Session
 
@@ -191,6 +191,26 @@ def test_wrong_auxiliary_result_cannot_contribute_to_features(failure):
         target = "2025-10-10"
     with pytest.raises(ParseError):
         parse_prior_result(body, BASE, run(10), HORSE, target)
+
+
+def test_demotion_annotation_preserves_raw_text_and_matches_same_official_rank(fixture_bytes):
+    from datetime import date
+
+    value = parse_prior_result(
+        result_html(), BASE, run(10, finish="１（降着）"), HORSE, "2025-11-02"
+    )
+    assert value["finish_text"] == "1"
+    assert value["profile_finish_text"] == "１（降着）"
+    body = fixture_bytes("profile.html").replace(b"<td>3</td>", "<td>3（降着）</td>".encode())
+    p = parse_profile(body, BASE, date(2025, 11, 2))
+    assert p["previous_run"]["finish"] == 3
+    assert p["previous_run"]["finish_text"] == "3（降着）"
+
+
+@pytest.mark.parametrize("rank", ["2（降着）", "1（暫定）"])
+def test_demotion_support_does_not_accept_a_different_or_unrecognized_rank(rank):
+    with pytest.raises(ParseError, match="着順"):
+        parse_prior_result(result_html(), BASE, run(10, finish=rank), HORSE, "2025-11-02")
 
 
 def test_unknown_positions_are_not_zero_or_a_fake_front_runner():

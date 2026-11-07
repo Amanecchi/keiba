@@ -1,0 +1,37 @@
+{
+  "target_race": {
+    "archive_url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/045.html",
+    "catalog_url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html",
+    "distance_m": 2400,
+    "grade_at_time": "GII",
+    "name_at_time": "青葉賞",
+    "race_date": "2016-04-30",
+    "registry_version": "jra-flat-series-v1",
+    "series_id": "jra-flat-8176e1f6d502a62d",
+    "series_name": "青葉賞",
+    "surface": "芝",
+    "venue": "東京",
+    "year": 2016
+  },
+  "horse_id": "2013105718",
+  "horse_name": "ヴァンキッシュラン",
+  "prior_date": "2016-02-06",
+  "profile_finish_text": "2 (降着)",
+  "normalized_profile_rank": 2,
+  "result_finish_text": "2",
+  "profile_source": {
+    "url": "https://www.jra.go.jp/JRADB/accessU.html?CNAME=pw01dud102013105718%2F88",
+    "sha256": "38a458612aa46f95c7ddb414016c7af556ad94870af4298a052be1068e0e7dd9",
+    "fetched_at": "2026-11-07T12:57:35.874054+00:00",
+    "request_method": "GET"
+  },
+  "result_source": {
+    "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201601030720160206%2F01",
+    "sha256": "f34d65c839b32bad3620857651748a53585c891cc6769c41c74e47db7341f932",
+    "fetched_at": "2026-11-07T12:55:00.468847+00:00",
+    "request_method": "POST"
+  },
+  "cached_replay_http_requests": 0,
+  "errors_after_fix": [],
+  "python_tests_passed": 160
+}

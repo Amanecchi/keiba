@@ -31,6 +31,12 @@ def integer(value: str) -> int | None:
     return int(normalized) if re.fullmatch(r"\d+", normalized) else None
 
 
+def finish_rank(value: str) -> int | None:
+    """Read the official rank, preserving recognized demotion notes separately."""
+    match = re.fullmatch(r"(\d+)(?:\(降着\))?", clean(value))
+    return int(match[1]) if match else None
+
+
 def dates(value: str) -> list[date]:
     found = []
     for year, month, day in re.findall(r"(\d{4})[年./-](\d{1,2})[月./-](\d{1,2})日?", value):
@@ -281,7 +287,7 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
                     "horse_source_key": cname,
                     "horse_id": horse_id(horse_url),
                     "frame": int(frame_match[1]) if frame_match else integer(frame),
-                    "finish": integer(finish or ""),
+                    "finish": finish_rank(finish or ""),
                     "finish_text": finish,
                     "sex_age": text(age_node).split("/")[0]
                     if age_node
@@ -439,7 +445,7 @@ def parse_profile(body: bytes, base: str, target_date: date) -> dict:
                     "record_type": "administrative" if administrative else "race",
                     "distance": cell_value(row, mapping, "distance"),
                     "finish_text": finish_text,
-                    "finish": integer(finish_text),
+                    "finish": finish_rank(finish_text),
                     "source_url": run_url,
                 }
             )
