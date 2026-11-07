@@ -1,0 +1,10 @@
+{
+  "project_id": "appgprj_6aef16fdc44881919e0ee61f75e5369e",
+  "url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site",
+  "binding": "DB",
+  "deployment_id": "appgdep_6aef1a2e207c8191ba8ba3467fc92f48",
+  "version_id": "appgprj_6aef16fdc44881919e0ee61f75e5369e~appgver_7c6acd47683081918b91fc93795ef927",
+  "source_commit": "eb26b37ac73e86b68416bb6850cd998fe6e65128",
+  "audience": "owner_only",
+  "external_visitors": 0
+}

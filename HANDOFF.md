@@ -2,6 +2,17 @@
 
 更新：2026-11-07（日本時間）。このファイルとリンク先は、新しいタスクが会話履歴・旧環境の一時ファイルなしで再開するための記録。
 
+## 最新：v0.5.1 環境外DB・取得からの自動保存を稼働
+
+- ユーザーは開発環境消失への備えとして環境外DB保存と、そのDBまで含めた取得の自動化を指示。取得方法の具体説明（requestsのGET/POST、BeautifulSoup、公式フォーム `cname` の自動抽出/送信）が不足していたため、[取得・保存の実装手順](docs/acquisition_pipeline.md) を追加。
+- **稼働中の本人限定DB**：[競馬データ保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)。既存ChatGPT認証でSites/D1を作成でき、現在のDB保存にRender/Neonの新規登録は不要。未作成アカウントの登録待ちをDB保存の停止条件に戻さない。
+- Site projectは **`appgprj_6aef16fdc44881919e0ee61f75e5369e`**。ローカルSite checkout `/workspace/sites/keiba-data-vault` に `.openai/hosting.json`。新しくcreate_siteしない。既存IDと所有者限定のアクセス設定を維持。Native get_siteで所有者1名・外部訪問者0名を確認済み。サービス用認証はget_siteの既存値をメモリで使用し、Git・引数・ファイル・出力へ書かない。新しいバイパストークンを勝手に生成しない。
+- Nativeの配備成功を確認済み。D1の10テーブルをNative読込でも確認し、30開催458出走・原本1,303件・解析50版を外部DB→空DBへ復元。全原本SHA、解析本文、集計が一致。復元用PostgreSQLダンプは非公開のSiteソースリポジトリにも退避済み。**原本全体やDBダンプを公開GitHubへ追加しない**。[検証報告](docs/research/storage/2026-11-07/report.md)。
+- 自動保存は `src/keiba_web/vault.py` の `MirroredStore`。原本・出典・解析版・最新ポインタ・進捗を環境外D1へ送り、応答と開催ごとの件数を確認。失敗時はJRA取得を停止し、再開前に未転送分を同期。`RemoteVault.restore_to()` は空DBへ復元し、SHA/件数/更新有無を検査。取得間隔2秒・直列・403/429停止と既存取得器は維持。
+- **現在の取得プロセスは旧 `prepare.py` から切替済み**。新実行は `work/initial-preparation-20261107/resume-mirrored.py`。保護した標準入力から認証を渡して起動した。最新 `progress.json` と `mirrored-progress.log`、DBジョブの状態を最初に確認する。重ねて起動しない。旧 `progress.log` は一時停止以前の記録。内部PostgreSQLは作業用、環境外保存の成功を確かめながら進む。
+- 作業用DBは `keiba_preparation_20261107`、初回ジョブ識別子は同workディレクトリの `job.json`。環境が失われれば実行プロセスは止まるが、外部DBのデータ・計画・再開位置は残る。新環境へ復元して再開する。利用者PCでの実行は前提にしない。
+- 157テスト・ruff・format・pip checkに合格。容量カウンターの復元境界、転送失敗停止、再開前同期も検証。無料運用・全対象容量・将来の提供条件は引き続き検証。有料契約/カード登録は行っていない。**全1,399開催の完了、過去分析Web本体の公開、ユーザーの機能1完成確認はまだ**。機能2はその確認後。
+
 ## 最新の継続：初回データ1,399開催の整備を開始
 
 - 初回準備は `work/initial-preparation-20261107/prepare.py` から既存Runnerで開始。内部DB `keiba_preparation_20261107`、対象は2016〜2025年1,291開催＋2026年の直近まで108開催。既存原本を再利用し、不足した履歴特徴を完成させる。QAのログイン設定・保存条件・ジョブはコピーしていない。

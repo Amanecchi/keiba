@@ -42,7 +42,12 @@ def create_app(config=None, *, store=None, runner=None):
         if not database_url.startswith(("postgresql://", "postgres://", "postgresql+psycopg://")):
             raise RuntimeError("本番用の永続PostgreSQLの設定が必要です。")
         database_url = re.sub(r"^postgres(?:ql)?://", "postgresql+psycopg://", database_url)
-        store = Store(database_url)
+        if os.environ.get("KEIBA_VAULT_URL"):
+            from .vault import MirroredStore, RemoteVault
+
+            store = MirroredStore(database_url, vault=RemoteVault.from_environment())
+        else:
+            store = Store(database_url)
     store.initialize()
     if (
         not (app.config.get("OWNER_PASSWORD_HASH") or store.owner_password_hash())

@@ -1,0 +1,29 @@
+{
+  "database": "persistent D1",
+  "counts": {
+    "keiba_settings": 2,
+    "source_blobs": 1454,
+    "source_fetches": 1481,
+    "race_catalog": 1399,
+    "catalog_runs": 11,
+    "analysis_snapshots": 58,
+    "analysis_races": 38,
+    "saved_searches": 0,
+    "acquisition_jobs": 1,
+    "vault_checkpoints": 10
+  },
+  "entries": 567,
+  "checkpoint": {
+    "checked_at": "2026-11-07T12:49:52.469285+00:00",
+    "counts": {
+      "acquisition_jobs": 1,
+      "analysis_races": 38,
+      "analysis_snapshots": 58,
+      "catalog_runs": 11,
+      "race_catalog": 1399,
+      "saved_searches": 0,
+      "source_blobs": 1442,
+      "source_fetches": 1468
+    }
+  }
+}

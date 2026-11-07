@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "source_blobs": 1303,
+    "source_fetches": 1323,
+    "race_catalog": 1399,
+    "catalog_runs": 11,
+    "analysis_snapshots": 50,
+    "analysis_races": 30,
+    "saved_searches": 0,
+    "acquisition_jobs": 1
+  },
+  "all_original_hashes_verified": 1303,
+  "snapshot_payloads_equal": true,
+  "analysis_equal": true,
+  "entries": 458,
+  "validation_order": "entries sorted by stable ID before comparing analysis output"
+}

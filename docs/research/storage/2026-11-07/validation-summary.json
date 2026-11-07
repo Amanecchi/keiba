@@ -1,0 +1,20 @@
+{
+  "version": "0.5.1",
+  "python_tests": 157,
+  "ruff": "passed",
+  "format": "passed",
+  "pip_check": "passed",
+  "worker_syntax": "passed",
+  "worker_table_whitelist": "passed",
+  "hosted_d1_deployed": true,
+  "audience": "owner_only",
+  "originals_restored_and_hashed": 1303,
+  "snapshots_restored": 50,
+  "entries_restored": 458,
+  "snapshot_content_equal": true,
+  "analysis_equal": true,
+  "live_acquisition_replication_confirmed": true,
+  "new_site_browser_ui_qa": false,
+  "function1_user_acceptance": false,
+  "full_1399_data_complete": false
+}
