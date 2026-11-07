@@ -95,7 +95,11 @@ def grid(table: Tag) -> list[list[Tag]]:
 
 ALIASES = {
     "number": {"馬番"},
-    "horse": {"馬名", "馬名調教師名血統"},
+    "horse": {
+        "馬名",
+        "馬名調教師名血統",
+        "馬名/単勝オッズ(人気)戦績/総賞金/馬体重馬主名/生産者名/調教師名/血統",
+    },
     "runner_details": {"性齢/毛色負担重量騎手名"},
     "finish": {"着順"},
     "frame": {"枠", "枠番"},
@@ -195,6 +199,12 @@ def horse_id(url: str | None) -> str | None:
     return match[1] if match else None
 
 
+def trainer_id(url: str | None) -> str | None:
+    cname = parse_qs(urlsplit(url or "").query).get("CNAME", [""])[0]
+    match = re.fullmatch(r"pw05cmk(\d{6})/[0-9A-Fa-f]{2}", cname)
+    return match[1] if match else None
+
+
 def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
     required = {"number", "horse"} | ({"finish"} if result else set())
     for rows, mapping in tables_with_headers(soup, required):
@@ -230,12 +240,29 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
             age_node = details.select_one(".age") if details else None
             jockey_node = details.select_one(".jockey") if details else None
             trainer_node = horse_cell.select_one(".trainer a")
+            trainer_cell = row[mapping["trainer"]] if "trainer" in mapping else horse_cell
+            trainer_url = next(
+                (
+                    u
+                    for a in trainer_cell.find_all("a")
+                    if (u := link_url(a, base)) and urlsplit(u).path == "/JRADB/accessC.html"
+                ),
+                None,
+            )
             division = horse_cell.select_one(".trainer .division")
             sire_node = horse_cell.select_one(".sire")
             finish = cell_value(row, mapping, "finish")
             frame = cell_value(row, mapping, "frame") or ""
             frame_match = re.search(r"枠([1-8])", clean(frame))
             odds_text = cell_value(row, mapping, "win_odds")
+            card_odds = horse_cell.select_one(".name_line .odds_line .num")
+            card_popularity = horse_cell.select_one(".name_line .odds_line .pop_rank")
+            if odds_text is None and card_odds:
+                odds_text = text(card_odds, images=False)
+            popularity = integer(cell_value(row, mapping, "popularity") or "")
+            if popularity is None and card_popularity:
+                rank = re.fullmatch(r"\((\d+)番人気\)", clean(text(card_popularity)))
+                popularity = int(rank[1]) if rank else None
             odds_value = clean(odds_text or "")
             entries.append(
                 {
@@ -256,11 +283,13 @@ def participants(soup: BeautifulSoup, base: str, *, result: bool) -> list[dict]:
                     "trainer": text(trainer_node)
                     if trainer_node
                     else cell_value(row, mapping, "trainer"),
+                    "trainer_url": trainer_url,
+                    "trainer_id": trainer_id(trainer_url),
                     "affiliation": clean(text(division)).strip("()")
                     if division
                     else cell_value(row, mapping, "affiliation"),
                     "sire": re.sub(r"^父[：:]\s*", "", text(sire_node)) if sire_node else None,
-                    "popularity": integer(cell_value(row, mapping, "popularity") or ""),
+                    "popularity": popularity,
                     "win_odds": odds_value if re.fullmatch(r"\d+(?:\.\d+)?", odds_value) else None,
                     "win_odds_text": odds_text,
                     "passing_positions": cell_value(row, mapping, "corners"),
@@ -498,10 +527,23 @@ def parse_odds(body: bytes, base: str) -> dict:
         if values:
             if len({value["horse_number"] for value in values}) != len(values):
                 raise ParseError("オッズ表の馬番が重複しています。")
+            status_node = soup.select_one(".refresh_line .time")
+            status_text = text(status_node) if status_node else text(soup)
             timestamp = re.search(
-                r"(?:\d{1,2}月\d{1,2}日\s*)?\d{1,2}(?::|時)\d{2}分?\s*現在", text(soup)
+                r"(?:\d{1,2}月\d{1,2}日\s*)?\d{1,2}(?::|時)\d{2}分?\s*現在", status_text
             )
-            final = "最終オッズ" in clean(text(soup))
+            # Live pages contain a general note about final odds as well.
+            final = (
+                clean(status_text) == "最終オッズ"
+                if status_node
+                else (
+                    timestamp is None
+                    and any(
+                        clean(text(node)) == "最終オッズ"
+                        for node in soup.find_all(["p", "strong", "span"])
+                    )
+                )
+            )
             issues = [] if timestamp or final else ["missing_provider_timestamp"]
             if any(
                 value["availability"] == "quoted"

@@ -96,7 +96,7 @@ def test_database_probe_discovers_supplements_and_resumes_without_network(tmp_pa
     )
     odds = (
         HEADER
-        + "最終オッズ<table><tr><th>馬番</th><th>馬名</th><th>単勝</th><th>複勝（3着払い）</th></tr>"
+        + '<div class="refresh_line"><div class="time">最終オッズ</div></div><table><tr><th>馬番</th><th>馬名</th><th>単勝</th><th>複勝（3着払い）</th></tr>'
     )
     for number in (1, 2):
         anchor = (

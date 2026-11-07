@@ -12,16 +12,25 @@
 
 ```console
 python -m pip install -r requirements-dev.lock -e .
-jra-collect --database --years 2016,2021,2025
+jra-collect --database --trainer-history --years 2016,2021,2025
 ```
 
-原本・抽出結果・所要時間と失敗理由は `work/acquisition/` に保存します。`--database` は公式の公開フォームを使い、保存版と詳細結果を開催キーで照合し、最終オッズを馬IDで結合します。省略時は既存の保存版取得を維持します。
+原本・抽出結果・所要時間と失敗理由は `work/acquisition/` に保存します。`--database` は公式の公開フォームを使い、保存版と詳細結果を開催キーで照合し、最終オッズを馬IDで結合します。`--trainer-history` は公式の年付き調教師所属歴から当時所属を補います。省略時は既存の取得範囲を維持します。
 
-11月5日22:22（日本時間）、JRAへのHTTPS・TLS検証・HTTP 200を確認しました。同一レースの2016〜2025年10開催・159頭で、結果・単複払戻・全馬の単勝最終オッズを自動取得できました。当時所属と発売中オッズ等は未検証・不足が残るため、作業1は部分完了です。[今回の実原本検証](docs/research/acquisition/2026-11-05/report.md) を参照してください。自動テスト64件とruffは合格しています。
+11月7日、同一レースの2016〜2025年10開催・159出走で、結果・払戻・最終オッズ・種牡馬・前走・当時所属の検証が通過しました。発売中の出馬表と単複18頭も取得し、提供時刻と値の更新を確認しました。[11/7の実原本検証](docs/research/acquisition/2026-11-07/report.md) を参照してください。自動テスト83件・ruff・pip checkが合格しています。全重賞の網羅性と本体の完成を意味しません。
+
+今回だけを検証する例（入口URLは実行日の公式案内で確認）：
+
+```console
+jra-collect --current-only --upcoming-url "https://www.jra.go.jp/keiba/race/101/syutsuba.html"
+```
+
+原本と抽出JSONは版別に保持し、再取得や失敗で以前の成功版を失いません。
 
 ## 設計・実装計画
 
 - [基本設計書](docs/basic_design.md)
+- [分析条件・時点・データ品質の仕様草案](docs/analysis_rules.md)
 - [実装計画・番号付き作業フロー](docs/implementation_plan.md)
 - [JRA公式：HTML以外の取得形式の再調査](docs/jra_official_formats.md)
 - [無料データ取得方式：選択前の5案比較](docs/data_source_options.md)

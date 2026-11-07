@@ -97,6 +97,21 @@ def check_identity(result: dict, reference: dict) -> None:
         raise ParseError("開催日・競馬場・開催回日・レース番号が元のレースと一致しません。")
 
 
+def check_live_odds(odds: dict, card: dict | None = None) -> None:
+    if odds["status"] != "parsed":
+        return
+    check_identity(odds, card or odds)
+    if odds.get("odds_state") != "live":
+        raise ParseError("過去の最終オッズを今回の発売中オッズとして採用しません。")
+    if any(not quote.get("horse_id") for quote in odds["odds"]):
+        raise ParseError("発売中オッズの馬IDを確認できません。")
+    if card is not None:
+        entries = {e["horse_number"]: e.get("horse_id") for e in card["entries"]}
+        quotes = {q["horse_number"]: q.get("horse_id") for q in odds["odds"]}
+        if None in entries or not all(entries.values()) or entries != quotes:
+            raise ParseError("出馬表とオッズの馬番・馬IDが一致しません。")
+
+
 def checked_result(body: bytes, base: str, reference: dict) -> dict:
     result = parse_result(body, base)
     check_identity(result, reference)

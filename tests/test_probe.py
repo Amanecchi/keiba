@@ -107,12 +107,19 @@ def test_current_card_and_odds_are_refetched_while_history_resumes(tmp_path, fix
             Response(fixture_bytes("odds.html")),
         ]
     )
+    previous_snapshots = {}
     for expected_attempts in (6, 2):
         client = Client(tmp_path, session=session, sleep=lambda _: None)
         report, code = Probe(client, progress=lambda _: None).run(args)
         assert code == 0
         assert report["metrics"]["http_attempts"] == expected_attempts
         assert [r["kind"] for r in report["resources"]][-2:] == ["entries", "odds"]
+        for path, original in previous_snapshots.items():
+            assert (tmp_path / path).read_bytes() == original
+        for record in report["resources"]:
+            if record["kind"] in {"entries", "odds"}:
+                for path in (record["raw_path"], record["parsed_path"]):
+                    previous_snapshots[path] = (tmp_path / path).read_bytes()
     assert len(session.calls) == 8
 
 
@@ -224,3 +231,56 @@ def test_explicit_static_odds_url_keeps_get_transport(tmp_path, fixture_bytes):
     )
     assert session.methods == ["GET", "GET"]
     assert probe.records[-1]["status"] == "parsed"
+
+
+def test_current_only_runs_without_fetching_history(tmp_path, fixture_bytes):
+    args = parser().parse_args(
+        ["--current-only", "--upcoming-url", "https://www.jra.go.jp/keiba/race/101/syutsuba.html"]
+    )
+    session = Session(
+        [Response(fixture_bytes("entries.html")), Response(fixture_bytes("odds.html"))]
+    )
+    probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
+    report, code = probe.run(args)
+    assert code == 0 and report["status"] == "current_sample_passed"
+    assert report["requested_scope"]["years"] is None
+    assert report["metrics"]["parsed_results"] == 0
+    assert report["metrics"]["http_attempts"] == 2
+    assert report["metrics"]["parsed_live_odds"] == 2
+    assert not report["production_ready"]
+
+
+def test_current_odds_for_another_horse_id_are_rejected(tmp_path, fixture_bytes):
+    odds = fixture_bytes("odds.html").replace(b"2020000002", b"2020000999")
+    session = Session([Response(fixture_bytes("entries.html")), Response(odds)])
+    args = parser().parse_args(
+        ["--current-only", "--upcoming-url", "https://www.jra.go.jp/keiba/race/101/syutsuba.html"]
+    )
+    report, code = Probe(
+        Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None
+    ).run(args)
+    assert code == 2 and report["resources"][-1]["error_kind"] == "parse_error"
+
+
+def test_current_only_unpublished_quotes_are_not_success(tmp_path, fixture_bytes):
+    args = parser().parse_args(
+        ["--current-only", "--upcoming-url", "https://www.jra.go.jp/keiba/race/101/syutsuba.html"]
+    )
+    session = Session(
+        [
+            Response(fixture_bytes("entries.html")),
+            Response("<p>今週のオッズは未発表です。</p>".encode()),
+        ]
+    )
+    report, code = Probe(
+        Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None
+    ).run(args)
+    assert code == 2 and report["status"] == "partial"
+
+
+def test_current_only_cannot_silently_fetch_default_years():
+    from keiba_acquisition.cli import main
+
+    with pytest.raises(SystemExit) as caught:
+        main(["--current-only"])
+    assert caught.value.code == 2

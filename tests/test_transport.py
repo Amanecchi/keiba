@@ -99,6 +99,63 @@ def test_current_pages_bypass_cache(tmp_path):
     assert len(session.calls) == 2
 
 
+def test_refetch_preserves_raw_metadata_and_old_report_references(tmp_path):
+    session = Session([Response(b"first quote"), Response(b"second quote")])
+    client = Client(tmp_path, session=session, sleep=lambda _: None)
+    first = client.fetch(URL, fresh=True)
+    original_meta = (tmp_path / first.raw_path).with_suffix(".json").read_bytes()
+    second = client.fetch(URL, fresh=True)
+    assert first.raw_path != second.raw_path
+    assert (tmp_path / first.raw_path).read_bytes() == b"first quote"
+    assert (tmp_path / first.raw_path).with_suffix(".json").read_bytes() == original_meta
+    assert client.fetch(URL).body == b"second quote"
+    assert len(session.calls) == 2
+
+
+def test_legacy_cache_remains_readable_and_unchanged_after_refresh(tmp_path):
+    client = Client(tmp_path, session=Session([Response(b"old")]))
+    page = client.fetch(URL)
+    key = hashlib.sha256(URL.encode()).hexdigest()
+    legacy = tmp_path / "raw" / f"{key}.html"
+    legacy.write_bytes(page.body)
+    meta = {k: v for k, v in page.metadata().items() if k != "cached"}
+    meta["raw_path"] = str(legacy.relative_to(tmp_path))
+    legacy.with_suffix(".json").write_text(json.dumps(meta))
+    (tmp_path / "cache" / f"{key}.json").unlink()
+    updated = Client(tmp_path, session=Session([Response(b"new")]))
+    assert updated.fetch(URL).body == b"old"
+    updated.fetch(URL, fresh=True)
+    assert legacy.read_bytes() == b"old"
+    assert json.loads(legacy.with_suffix(".json").read_text()) == meta
+    assert updated.fetch(URL).body == b"new"
+
+
+def test_cache_cannot_point_outside_raw_storage(tmp_path):
+    client = Client(tmp_path, session=Session([Response()]))
+    client.fetch(URL)
+    index = next((tmp_path / "cache").glob("*.json"))
+    meta = json.loads(index.read_text())
+    meta["raw_path"] = "../outside.html"
+    index.write_text(json.dumps(meta))
+    with pytest.raises(AcquisitionError) as caught:
+        client.fetch(URL)
+    assert caught.value.kind == "cache_corrupt"
+
+
+def test_failed_refresh_keeps_previous_snapshot_available(tmp_path):
+    client = Client(
+        tmp_path,
+        session=Session([Response(b"good quote"), Response(status=403)]),
+        sleep=lambda _: None,
+    )
+    previous = client.fetch(URL, fresh=True)
+    with pytest.raises(AcquisitionError):
+        client.fetch(URL, fresh=True)
+    cached = client.fetch(URL)
+    assert cached.raw_path == previous.raw_path and cached.body == previous.body
+    assert (tmp_path / previous.raw_path).with_suffix(".json").exists()
+
+
 @pytest.mark.parametrize("status", [403, 429])
 def test_blocked_request_is_not_retried_or_cached(tmp_path, status):
     session = Session([Response(status=status)])

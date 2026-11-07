@@ -240,3 +240,39 @@ def test_did_not_finish_is_a_real_previous_start(fixture_bytes):
     assert parsed["previous_run"]["race_date"] == "2025-10-05"
     assert parsed["previous_run"]["finish"] is None
     assert parsed["previous_run"]["finish_text"] == "中止" and parsed["issues"] == []
+
+
+def test_numbered_detailed_card_with_embedded_odds_and_popularity():
+    body = """<meta charset="utf-8"><table><tr><th>枠</th><th>馬番</th>
+      <th>馬名 / 単勝オッズ(人気)<br>戦績 / 総賞金 / 馬体重<br>馬主名 / 生産者名 / 調教師名 / 血統</th>
+      <th>性齢/毛色<br>負担重量<br>騎手名</th></tr>
+      <tr><td><img alt="枠1白"></td><td>1</td><td>
+      <div class="name_line"><div class="name"><a href="/JRADB/accessU.html?CNAME=pw01dud002020000001/AA">架空馬A</a></div>
+      <div class="odds_line"><span class="num"><strong>12.5</strong></span><span class="pop_rank">(5<span>番人気</span>)</span></div></div>
+      <p class="trainer"><a>架空調教師</a><span class="division">(美浦)</span></p>
+      <ul><li class="sire"><span>父：</span>架空種牡馬</li></ul></td>
+      <td><p class="age">牡5/鹿</p><p class="jockey">架空騎手</p></td></tr></table>""".encode()
+    parsed = parse_entries(body, BASE)
+    entry = parsed["entries"][0]
+    assert entry["frame"] == 1 and entry["horse_number"] == 1
+    assert entry["horse_name"] == "架空馬A" and entry["horse_id"] == "2020000001"
+    assert entry["win_odds"] == "12.5" and entry["popularity"] == 5
+    assert parsed["issues"] == []
+
+
+def test_live_note_about_final_odds_does_not_change_quote_state(fixture_bytes):
+    body = fixture_bytes("odds.html").replace(
+        b"</html>",
+        "<li>発売締切直後に表示される最終オッズは、その後に競走除外が発生した場合、変動します。</li></html>".encode(),
+    )
+    parsed = parse_odds(body, BASE)
+    assert parsed["odds_state"] == "live" and parsed["issues"] == []
+
+
+def test_official_odds_status_label_takes_precedence(fixture_bytes):
+    body = fixture_bytes("odds.html").replace(
+        b"</html>",
+        '<div class="refresh_line"><div class="cell time"><strong>最終オッズ</strong></div></div></html>'.encode(),
+    )
+    parsed = parse_odds(body, BASE)
+    assert parsed["odds_state"] == "final" and parsed["provider_timestamp_text"] is None

@@ -1,0 +1,261 @@
+{
+  "base_commit": "cd2d466",
+  "tool_version": "0.3.0",
+  "historical_status": "sample_passed",
+  "historical_metrics": {
+    "elapsed_seconds": 74.8177,
+    "http_attempts": 0,
+    "cache_hits": 365,
+    "received_bytes": 0,
+    "parsed_results": 10,
+    "parsed_profiles": 159,
+    "parsed_trainer_histories": 146,
+    "parsed_entries": 159,
+    "parsed_historical_odds": 10,
+    "parsed_current_entries": 0,
+    "parsed_live_odds": 0
+  },
+  "historical_raw_pages_verified": 261,
+  "unique_trainers": 81,
+  "affiliation_counts": {
+    "栗東": 93,
+    "美浦": 66
+  },
+  "years": [
+    {
+      "race_date": "2016-11-06",
+      "entries": 15,
+      "affiliation_count": 15
+    },
+    {
+      "race_date": "2017-11-05",
+      "entries": 16,
+      "affiliation_count": 16
+    },
+    {
+      "race_date": "2018-11-04",
+      "entries": 12,
+      "affiliation_count": 12
+    },
+    {
+      "race_date": "2019-11-03",
+      "entries": 13,
+      "affiliation_count": 13
+    },
+    {
+      "race_date": "2020-11-08",
+      "entries": 18,
+      "affiliation_count": 18
+    },
+    {
+      "race_date": "2021-11-07",
+      "entries": 15,
+      "affiliation_count": 15
+    },
+    {
+      "race_date": "2022-11-06",
+      "entries": 18,
+      "affiliation_count": 18
+    },
+    {
+      "race_date": "2023-11-05",
+      "entries": 18,
+      "affiliation_count": 18
+    },
+    {
+      "race_date": "2024-11-03",
+      "entries": 16,
+      "affiliation_count": 16
+    },
+    {
+      "race_date": "2025-11-09",
+      "entries": 18,
+      "affiliation_count": 18
+    }
+  ],
+  "live_snapshots": [
+    {
+      "run_id": "20261107T050944269589Z",
+      "metrics": {
+        "elapsed_seconds": 4.6175,
+        "http_attempts": 3,
+        "cache_hits": 0,
+        "received_bytes": 402704,
+        "parsed_results": 0,
+        "parsed_profiles": 0,
+        "parsed_trainer_histories": 0,
+        "parsed_entries": 0,
+        "parsed_historical_odds": 0,
+        "parsed_current_entries": 18,
+        "parsed_live_odds": 18
+      },
+      "finished_at": "2026-11-07T05:09:48.887130+00:00",
+      "provider_timestamp_text": "14時09分現在",
+      "race_date": "2026-11-08",
+      "entries": 18,
+      "odds": 18,
+      "identities_verified": true,
+      "resources": [
+        {
+          "kind": "upcoming_landing",
+          "url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+          "context": "",
+          "raw_path": "raw/98ef3b4b29fbe9b9dc733ce184b0307a720111287b21993394e32ae3e29f9e70/20261107T050945010709Z-d59d4818a86e.html",
+          "sha256": "d59d4818a86e9c5884adf36270d75748e177ad4173c4c5110dc2508efb65f366",
+          "fetched_at": "2026-11-07T05:09:45.010709+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 0.7411,
+          "response_url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+          "cached": false,
+          "request_method": "GET",
+          "status": "downloaded",
+          "publication_state": "not_yet_published"
+        },
+        {
+          "kind": "entries",
+          "url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+          "context": "",
+          "raw_path": "raw/babff2f61886f6d438ac029df162e0e01882d368bca7044a61c56e2773c3b6f6/20261107T050946806031Z-f7576567aac6.html",
+          "sha256": "f7576567aac6ee7bb3527ac894d71027e8540ffee0ec72f80d9f1e4fdd79fbc1",
+          "fetched_at": "2026-11-07T05:09:46.806031+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 1.6977,
+          "response_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+          "cached": false,
+          "request_method": "GET",
+          "status": "parsed",
+          "parsed_path": "parsed/ade26a340de2efd4b110bb80d7a07293d30192a493db1117cc6e14633d6a8443.json",
+          "issues": []
+        },
+        {
+          "kind": "odds",
+          "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ouS305202605021120261108Z%2F08",
+          "context": "",
+          "raw_path": "raw/0ad0db37e413560c9ea98a080c43110dd86ce708b67f1b415dcfd207dfe01fc6/20261107T050948808886Z-3a83615d6390.html",
+          "sha256": "3a83615d6390d1f286e8ba18fdeed3bd1824481ddb4ce4d8b92043eca16207bf",
+          "fetched_at": "2026-11-07T05:09:48.808886+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 0.7224,
+          "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+          "cached": false,
+          "request_method": "POST",
+          "status": "parsed",
+          "parsed_path": "parsed/a71a4d692351d1a9972cfdc16769b74c18767979edc9e14994192451ef16abed.json",
+          "issues": []
+        }
+      ]
+    },
+    {
+      "run_id": "20261107T051213557024Z",
+      "metrics": {
+        "elapsed_seconds": 4.4529,
+        "http_attempts": 3,
+        "cache_hits": 0,
+        "received_bytes": 402704,
+        "parsed_results": 0,
+        "parsed_profiles": 0,
+        "parsed_trainer_histories": 0,
+        "parsed_entries": 0,
+        "parsed_historical_odds": 0,
+        "parsed_current_entries": 18,
+        "parsed_live_odds": 18
+      },
+      "finished_at": "2026-11-07T05:12:18.009983+00:00",
+      "provider_timestamp_text": "14時11分現在",
+      "race_date": "2026-11-08",
+      "entries": 18,
+      "odds": 18,
+      "identities_verified": true,
+      "resources": [
+        {
+          "kind": "upcoming_landing",
+          "url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+          "context": "",
+          "raw_path": "raw/98ef3b4b29fbe9b9dc733ce184b0307a720111287b21993394e32ae3e29f9e70/20261107T051214547920Z-d59d4818a86e.html",
+          "sha256": "d59d4818a86e9c5884adf36270d75748e177ad4173c4c5110dc2508efb65f366",
+          "fetched_at": "2026-11-07T05:12:14.547920+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 0.9908,
+          "response_url": "https://www.jra.go.jp/keiba/race/101/syutsuba.html",
+          "cached": false,
+          "request_method": "GET",
+          "status": "downloaded",
+          "publication_state": "not_yet_published"
+        },
+        {
+          "kind": "entries",
+          "url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+          "context": "",
+          "raw_path": "raw/babff2f61886f6d438ac029df162e0e01882d368bca7044a61c56e2773c3b6f6/20261107T051216673592Z-1b9fadd04d39.html",
+          "sha256": "1b9fadd04d39514e9ae07ab1a50126e5c8044fbe1dbdb869dd4892ff2807cc8b",
+          "fetched_at": "2026-11-07T05:12:16.673592+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 1.9069,
+          "response_url": "https://www.jra.go.jp/JRADB/accessD.html?CNAME=pw01dde0105202605021120261108%2F65",
+          "cached": false,
+          "request_method": "GET",
+          "status": "parsed",
+          "parsed_path": "parsed/a98ce7823a93b7f1f7d98b332995ac272711b2f0951bcdc2192e86c8d1a9ad39.json",
+          "issues": []
+        },
+        {
+          "kind": "odds",
+          "url": "https://www.jra.go.jp/JRADB/accessO.html?CNAME=pw151ouS305202605021120261108Z%2F08",
+          "context": "",
+          "raw_path": "raw/0ad0db37e413560c9ea98a080c43110dd86ce708b67f1b415dcfd207dfe01fc6/20261107T051217943564Z-4dd9b57644cc.html",
+          "sha256": "4dd9b57644ccb9317eed4afc03855211122cd75b68105769001c48f883159429",
+          "fetched_at": "2026-11-07T05:12:17.943564+00:00",
+          "content_type": "text/html",
+          "elapsed_seconds": 0.1763,
+          "response_url": "https://www.jra.go.jp/JRADB/accessO.html",
+          "cached": false,
+          "request_method": "POST",
+          "status": "parsed",
+          "parsed_path": "parsed/dbb915fac840a3f32b5ba35613060d2161c675cde05c1862d248fae41b362ca8.json",
+          "issues": []
+        }
+      ]
+    }
+  ],
+  "changed_quotes": 15,
+  "raw_and_parsed_snapshots_preserved": true,
+  "all_grades_ten_year_coverage_verified": false,
+  "production_ready": false,
+  "affiliation_initial_metrics": {
+    "elapsed_seconds": 190.3964,
+    "http_attempts": 81,
+    "cache_hits": 284,
+    "received_bytes": 5426856,
+    "parsed_results": 10,
+    "parsed_profiles": 159,
+    "parsed_entries": 159,
+    "parsed_historical_odds": 10,
+    "parsed_current_entries": 0
+  },
+  "connection": {
+    "http_connect": 200,
+    "http_code": 200,
+    "ssl_verify_result": 0,
+    "time_appconnect_seconds": 0.465954,
+    "checked_at_jst": "2026-11-07T13:54:59.063281+09:00",
+    "network_policy": {
+      "mode": "unrestricted",
+      "state": "enforced"
+    },
+    "timestamp_basis": "downloaded body file modification time"
+  },
+  "tests": {
+    "pytest_passed": 83,
+    "ruff": "passed",
+    "pip_check": "passed"
+  },
+  "limitations": [
+    "same race series only; full ten-year grade coverage not verified",
+    "analysis app not implemented",
+    "transfer boundary year remains unknown unless unambiguous",
+    "provider timestamp text can omit a date",
+    "other formats and class/style specifications remain pending"
+  ],
+  "historical_source_dates_cover_races": true,
+  "installed_package_version": "0.3.0"
+}

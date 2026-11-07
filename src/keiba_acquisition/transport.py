@@ -140,7 +140,8 @@ class Client:
             parts = urlsplit(url)
             query = parse_qs(parts.query)
             if (
-                parts.path not in {f"/JRADB/access{name}.html" for name in ("S", "D", "O", "U")}
+                parts.path
+                not in {f"/JRADB/access{name}.html" for name in ("S", "D", "O", "U", "C")}
                 or set(query) != {"CNAME"}
                 or len(query["CNAME"]) != 1
             ):
@@ -149,11 +150,18 @@ class Client:
             current_url = urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
         method = "POST" if post_cname else "GET"
         key = hashlib.sha256((f"POST|{url}" if post_cname else url).encode()).hexdigest()
-        raw = self.output / "raw" / f"{key}.html"
-        metadata = raw.with_suffix(".json")
-        if not (fresh or self.refresh_history) and raw.exists() and metadata.exists():
+        legacy_raw = self.output / "raw" / f"{key}.html"
+        index = self.output / "cache" / f"{key}.json"
+        metadata = index if index.exists() else legacy_raw.with_suffix(".json")
+        if not (fresh or self.refresh_history) and metadata.exists():
             try:
                 meta = json.loads(metadata.read_text(encoding="utf-8"))
+                raw = self.output / meta["raw_path"]
+                if (
+                    not raw.resolve().is_relative_to((self.output / "raw").resolve())
+                    or raw.suffix != ".html"
+                ):
+                    raise ValueError("invalid raw path")
                 body = raw.read_bytes()
                 if (
                     meta["url"] != url
@@ -162,7 +170,7 @@ class Client:
                 ):
                     raise ValueError("cache identity mismatch")
                 page = Page(body=body, **meta)
-            except (ValueError, KeyError, TypeError) as error:
+            except (ValueError, KeyError, TypeError, OSError) as error:
                 raise AcquisitionError(
                     "cache_corrupt", "保存原本とハッシュが一致しません。"
                 ) from error
@@ -225,17 +233,24 @@ class Client:
                     ) from error
                 body = b"".join(chunks)
                 self.received_bytes += length
+                fetched = datetime.now(UTC)
+                digest = hashlib.sha256(body).hexdigest()
+                # Every network response gets its own raw/metadata pair. The
+                # cache index moves; previous reports keep pointing to old bytes.
+                raw = self.output / "raw" / key / f"{fetched:%Y%m%dT%H%M%S%fZ}-{digest[:12]}.html"
                 page = Page(
                     url=url,
                     body=body,
                     raw_path=str(raw.relative_to(self.output)),
-                    sha256=hashlib.sha256(body).hexdigest(),
-                    fetched_at=datetime.now(UTC).isoformat(),
+                    sha256=digest,
+                    fetched_at=fetched.isoformat(),
                     content_type=content_type,
                     elapsed_seconds=round(self.clock() - started, 4),
                     response_url=current_url,
                     request_method=method,
                 )
                 atomic_write(raw, body)
-                write_json(metadata, {k: v for k, v in page.metadata().items() if k != "cached"})
+                meta = {k: v for k, v in page.metadata().items() if k != "cached"}
+                write_json(raw.with_suffix(".json"), meta)
+                write_json(index, meta)
                 return page
