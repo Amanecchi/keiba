@@ -1,0 +1,169 @@
+{
+  "registry_series": 133,
+  "annual_catalogs": [
+    {
+      "year": 2016,
+      "flat_races": 128,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html",
+        "sha256": "0073dfc023c860965e5f9d7aabf5bbb76d1ee88a2d1561177fa9acb199624b09",
+        "fetched_at": "2026-11-05T13:38:03.150756+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2017,
+      "flat_races": 128,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2017/jyusyo.html",
+        "sha256": "7eee59dfccba96217957f2a8a78a6294a1ba440b61cc6763fdd552d3b54acb62",
+        "fetched_at": "2026-11-05T13:38:19.256023+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2018,
+      "flat_races": 131,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html",
+        "sha256": "26664f237b181847dbab19e89fd637040b0bcdb0fc8d30e0d0951975a8891db1",
+        "fetched_at": "2026-11-05T13:38:33.003144+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2019,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2019/jyusyo.html",
+        "sha256": "4053c9f42cbaeb2d86fbb3c18b359ebaa43dd35c0535cafc408567d133f734f1",
+        "fetched_at": "2026-11-05T13:38:47.108935+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2020,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2020/jyusyo.html",
+        "sha256": "dec6bb6f1aeae6b34aea83b62c1996e36ecf5780414de65b1cac61d4a426fa0f",
+        "fetched_at": "2026-11-05T13:38:59.277988+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2021,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2021/jyusyo.html",
+        "sha256": "39e949e53bad740f4ba22f6d31755f6deb7ea874618237906e59951b6f106868",
+        "fetched_at": "2026-11-05T13:39:13.511983+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2022,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2022/jyusyo.html",
+        "sha256": "b97232eb7bc429b5c0f92bd0306c9e84ec7723748bfbef6d83fbb471a729c146",
+        "fetched_at": "2026-11-05T13:39:25.090723+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2023,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2023/jyusyo.html",
+        "sha256": "7e0bcce452e893ca8d81dedf66b4b8734a03a1bd871d7b3f000c1b02ab97a74e",
+        "fetched_at": "2026-11-05T13:39:39.410299+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2024,
+      "flat_races": 129,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2024/jyusyo.html",
+        "sha256": "70c3902fd15bc50890cf38141b3713925779e142bcebfd1543fcaeda17afc090",
+        "fetched_at": "2026-11-05T13:39:51.642997+00:00",
+        "request_method": "GET"
+      }
+    },
+    {
+      "year": 2025,
+      "flat_races": 130,
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/replay/2025/jyusyo.html",
+        "sha256": "db5c7dc965b1b2123d48315368dbc91dec0963a62e06fcdebb3bb8d8abdad7ac",
+        "fetched_at": "2026-11-05T13:40:05.678149+00:00",
+        "request_method": "GET"
+      }
+    }
+  ],
+  "total_flat_races": 1291,
+  "results_complete": false,
+  "lineage_sources": {
+    "osaka": {
+      "url": "https://www.jra.go.jp/keiba/g1/osaka.html",
+      "sha256": "5c14ad1705eec28d51d3db9650fdd1f34081e1c4c9174730cb100d3d59ee9cbb",
+      "fetched_at": "2026-11-07T09:00:14.166996+00:00",
+      "request_method": "GET"
+    },
+    "irish": {
+      "url": "https://www.jra.go.jp/keiba/race/093.html",
+      "sha256": "8bf5f4f92c5e04d962d0bc6c8141a9726df691f3bfe569dd619b87e042cd141b",
+      "fetched_at": "2026-11-07T09:00:15.796012+00:00",
+      "request_method": "GET"
+    },
+    "fuchu": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0621_1/race.html",
+      "sha256": "3b89987a9dc2ecd0e8103f1bf438369c65dd9d8ca611e8cdcd9ca2973d2b3efc",
+      "fetched_at": "2026-11-07T09:00:17.397828+00:00",
+      "request_method": "GET"
+    },
+    "kokura": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0124_1/race.html",
+      "sha256": "5baffb5df834a6d3e059bc299356e844faacdce9cedb6e300c1cac0f041fd689",
+      "fetched_at": "2026-11-07T09:00:19.885509+00:00",
+      "request_method": "GET"
+    },
+    "aichi": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0322_2/race.html",
+      "sha256": "b552968db623f15b6474dfb669da1fe20da58c54bfe28ad82aec3062a13a2a66",
+      "fetched_at": "2026-11-07T09:00:21.952481+00:00",
+      "request_method": "GET"
+    },
+    "churchill": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0404_2/race.html",
+      "sha256": "c1c4fc9f4341aeb6589e17c47c5cd22c137a455a21395039f9775f8209288ac7",
+      "fetched_at": "2026-11-07T09:00:23.680234+00:00",
+      "request_method": "GET"
+    },
+    "chukyo": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0830_2/race.html",
+      "sha256": "5ef62b46d8bb2b860f4ffe086880f29adf41c0ba5435d383eeb5bd02d829f397",
+      "fetched_at": "2026-11-07T09:00:25.840256+00:00",
+      "request_method": "GET"
+    },
+    "shirasagi": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0621_2/race.html",
+      "sha256": "5e9651dddc5bfed97eb12f8cbceacb8fe6dc557204c6064b06ded51420773208",
+      "fetched_at": "2026-11-07T09:00:27.707232+00:00",
+      "request_method": "GET"
+    },
+    "tokai": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0726_2/race.html",
+      "sha256": "24daa9be1b4982cee13e423194aec574088f5c371b2f7298537776e507c00476",
+      "fetched_at": "2026-11-07T09:10:59.510943+00:00",
+      "request_method": "GET"
+    },
+    "procyon": {
+      "url": "https://www.jra.go.jp/keiba/thisweek/2026/0125_2/race.html",
+      "sha256": "f2b8b0d0620be2701986a75f4fd340dc40caffdf1082568760951dcc8e2814b2",
+      "fetched_at": "2026-11-07T09:11:01.029464+00:00",
+      "request_method": "GET"
+    }
+  }
+}

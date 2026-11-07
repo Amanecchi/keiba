@@ -104,20 +104,23 @@ class Probe:
         final_odds=False,
         trainer_history=False,
         history_features=False,
+        fresh=False,
     ):
         parse = (
             parse_result
             if reference is None
             else (lambda body, base: checked_result(body, base, reference))
         )
-        page, result = self.acquire(url, "result", parse)
+        page, result = self.acquire(url, "result", parse, fresh=fresh)
         if result is None:
             return
         record = self.records[-1]
         if final_odds:
             try:
                 target = odds_link(page.body, page.response_url or page.url)
-                _, odds = self.acquire(target, "historical_odds", parse_odds, post_cname=True)
+                _, odds = self.acquire(
+                    target, "historical_odds", parse_odds, post_cname=True, fresh=fresh
+                )
                 if odds is not None:
                     merge_final_odds(result, odds)
                     write_json(self.client.output / record["parsed_path"], result)
@@ -175,6 +178,16 @@ class Probe:
                     lambda body, base: parse_profile(body, base, target_date),
                     context=target_date.isoformat(),
                 )
+                if profile is not None and not history_covers_date(
+                    profile, target_date.isoformat()
+                ):
+                    _, profile = self.acquire(
+                        entry["horse_url"],
+                        "profile",
+                        lambda body, base: parse_profile(body, base, target_date),
+                        context=target_date.isoformat(),
+                        fresh=True,
+                    )
                 if history_features and profile is not None:
                     self.history_features(profile)
 
@@ -228,9 +241,17 @@ class Probe:
             )
 
     def database_result(
-        self, archive_url: str, profile_limit: int, *, trainer_history=False, history_features=False
+        self,
+        archive_url: str,
+        profile_limit: int,
+        *,
+        trainer_history=False,
+        history_features=False,
+        fresh_result=False,
     ):
-        page, reference = self.acquire(archive_url, "race_reference", race_reference)
+        page, reference = self.acquire(
+            archive_url, "race_reference", race_reference, fresh=fresh_result
+        )
         if reference is None:
             return
         try:
@@ -252,6 +273,7 @@ class Probe:
                 final_odds=True,
                 trainer_history=trainer_history,
                 history_features=history_features,
+                fresh=fresh_result,
             )
         except ParseError as error:
             self.records.append(
@@ -379,7 +401,9 @@ class Probe:
                         continue
                     try:
                         links = discover_results(
-                            page.body, page.response_url or page.url, args.race_name,
+                            page.body,
+                            page.response_url or page.url,
+                            args.race_name,
                             flat_only=args.flat_only,
                         )
                     except ParseError as error:
@@ -534,9 +558,7 @@ def parser() -> argparse.ArgumentParser:
         help="年度一覧内のレース名部分一致。空文字で全対象",
     )
     cli.add_argument("--limit-per-year", type=int, default=1)
-    cli.add_argument(
-        "--flat-only", action="store_true", help="年度別重賞一覧から障害重賞を除く"
-    )
+    cli.add_argument("--flat-only", action="store_true", help="年度別重賞一覧から障害重賞を除く")
     cli.add_argument(
         "--database",
         action="store_true",

@@ -1,0 +1,22 @@
+{
+  "version": "0.5.0",
+  "python_tests": {
+    "passed": 151,
+    "failed": 0
+  },
+  "ruff_check": "passed",
+  "ruff_format": "passed",
+  "javascript_syntax": "passed",
+  "pip_check": "passed",
+  "clean_runtime_install": "passed",
+  "packaged_production_startup": "passed",
+  "packaged_templates_static_registry": "passed",
+  "csv_all_fields": {
+    "rows": 18,
+    "features": 14,
+    "all_sample_features_nonempty": true
+  },
+  "hosted_deployment": false,
+  "user_function1_acceptance": false,
+  "function2_web_implemented": false
+}

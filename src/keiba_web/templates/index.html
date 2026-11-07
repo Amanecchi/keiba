@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="csrf-token" content="{{ session.csrf }}" />
+    <title>過去の傾向 · 競馬の記録</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='app.css') }}" />
+    <script src="{{ url_for('static',filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <a href="/" class="brand"
+        ><span class="brand-mark" aria-hidden="true">≋</span>競馬の記録</a
+      >
+      <nav aria-label="ページ内">
+        <a href="#analysis">過去の傾向</a><a href="#collection">データ収集</a>
+        <form action="/logout" method="post">
+          <input type="hidden" name="csrf" value="{{ session.csrf }}" /><button
+            class="plain"
+          >
+            ログアウト
+          </button>
+        </form>
+      </nav>
+    </header>
+    <main class="shell">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">HISTORICAL ANALYSIS</p>
+          <h1>過去の傾向</h1>
+          <p>条件を選び、同じレースの過去成績を比較する。</p>
+        </div>
+        <span class="badge">本人用 · JRA公式データ</span>
+      </section>
+      <p id="error" class="notice error" role="alert" hidden></p>
+      <div class="workspace" id="analysis">
+        <aside class="panel filters">
+          <h2>分析の対象</h2>
+          <label
+            >レース<select id="series">
+              <option value="">読み込み中…</option>
+            </select></label
+          >
+          <div class="date-fields">
+            <label
+              >開始日<input type="date" id="start" value="2016-01-01" /></label
+            ><label
+              >終了日<input type="date" id="end" value="2025-12-31"
+            /></label>
+          </div>
+          <p class="hint">開始日・終了日を含む期間で集計します。</p>
+          <div class="section-line">
+            <h2>絞り込み条件</h2>
+            <button id="add-filter" class="text-button">＋ 条件を追加</button>
+          </div>
+          <p class="hint">
+            項目どうしは「かつ」、同じ項目の複数選択は「いずれか」です。
+          </p>
+          <div id="filters"></div>
+          <label
+            >成績を比較する分類軸<select id="group">
+              <option value="">分類なし</option>
+              {% for key, value in fields.items() %}
+              <option value="{{ key }}" {% if key == 'frame' %}selected{% endif %}>
+                {{ value[0] }}
+              </option>
+              {% endfor %}
+            </select></label
+          ><button id="analyze" class="primary wide">保存データで分析</button>
+          <div class="saved">
+            <h2>保存した条件</h2>
+            <select id="saved" aria-label="保存した条件">
+              <option value="">選択してください</option>
+            </select>
+            <div class="button-row">
+              <button id="load">読み込む</button
+              ><button id="save">この条件を保存</button>
+            </div>
+          </div>
+        </aside>
+        <section class="results" aria-label="分析結果">
+          <div class="result-heading">
+            <div>
+              <h2 id="result-title">レースを選択してください</h2>
+              <p id="coverage" class="muted">
+                表示と条件検索には、保存済みのデータを使います。
+              </p>
+            </div>
+            <div class="result-actions">
+              <button id="quick-latest">このレースの最新データを収集</button
+              ><button id="export" disabled>CSVを保存 ↓</button>
+            </div>
+          </div>
+          <p id="data-mode" class="notice" hidden>
+            保存時のデータで表示しています。<button
+              id="current-data"
+              class="text-button"
+            >
+              現在の保存データで表示
+            </button>
+          </p>
+          <p id="quality" class="notice" hidden></p>
+          <div class="metrics" aria-live="polite">
+            <article class="metric">
+              <span>該当出走</span><strong id="metric-count">—</strong
+              ><small id="metric-starts">実出走 —</small>
+            </article>
+            <article class="metric">
+              <span>勝率</span><strong id="metric-win">—</strong
+              ><small id="metric-wins">1着 —</small>
+            </article>
+            <article class="metric">
+              <span>複勝的中率</span><strong id="metric-place">—</strong
+              ><small id="metric-place-count">的中 / 確認済み —</small>
+            </article>
+            <article class="metric returns">
+              <span>実績回収率</span>
+              <div>
+                <small>単勝</small><strong id="metric-win-return">—</strong>
+              </div>
+              <div>
+                <small>複勝</small><strong id="metric-place-return">—</strong>
+              </div>
+            </article>
+          </div>
+          <section class="panel table-panel">
+            <div class="section-line">
+              <h2>分類別の成績</h2>
+              <span id="group-caption" class="muted">枠順別</span>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>分類</th>
+                    <th>該当 / 実出走</th>
+                    <th>勝率</th>
+                    <th>連対率</th>
+                    <th>3着以内率</th>
+                    <th>複勝的中率</th>
+                    <th>単勝回収率</th>
+                    <th>複勝回収率</th>
+                  </tr>
+                </thead>
+                <tbody id="groups">
+                  <tr>
+                    <td colspan="8" class="empty">
+                      条件を選択して分析してください。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="footnote">
+              各出走に100円を購入した場合の実績です。取消・返還を除き、払戻を確認できた出走から回収率を計算します。複勝的中率は実際の払戻対象に基づき、3着以内率と区別します。
+            </p>
+          </section>
+          <section class="panel table-panel">
+            <div class="section-line">
+              <div><h2>根拠となる出走明細</h2><p class="hint">馬名を開くと各条件の値を確認できます。</p></div>
+              <div class="entry-controls">
+                <span id="detail-count" class="muted">—</span
+                ><button id="entries-prev" disabled>前へ</button
+                ><button id="entries-next" disabled>次へ</button>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>開催日</th>
+                    <th>馬名</th>
+                    <th>枠</th>
+                    <th>前走</th>
+                    <th>前走着順</th>
+                    <th>本番着順</th>
+                    <th>単勝払戻</th>
+                    <th>複勝払戻</th>
+                    <th>出典</th>
+                  </tr>
+                </thead>
+                <tbody id="entries">
+                  <tr>
+                    <td colspan="9" class="empty">
+                      分析結果に対応する出走を表示します。
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </div>
+      <section id="collection" class="panel collection">
+        <div class="section-line">
+          <div>
+            <p class="eyebrow">DATA COLLECTION</p>
+            <h2>データを収集する</h2>
+          </div>
+          <span class="badge quiet">収集ボタンから取得・DBへ保存</span>
+        </div>
+        <p class="muted">
+          通常の検索や画面の再読み込みではJRAへアクセスしません。ここから実行した収集だけが、公開データを取得して保存します。
+        </p>
+        <div class="collection-controls">
+          <label
+            >対象範囲<select id="collection-scope">
+              <option value="all">JRA平地重賞全体</option>
+              <option value="selected">選択中のレース</option>
+            </select></label
+          ><label
+            >開始年<input
+              id="first-year"
+              type="number"
+              min="2016"
+              value="2016" /></label
+          ><label
+            >終了年<input
+              id="last-year"
+              type="number"
+              min="2016"
+              value="2025" /></label
+          ><button id="collect-history">過去データを収集</button
+          ><button id="collect-latest" class="primary">最新データを収集</button>
+        </div>
+        <label class="checkbox-label"
+          ><input
+            id="refresh-history"
+            type="checkbox"
+          />過去データ収集で、保存済みの原本も取り直す</label
+        >
+        <p class="hint">
+          最新データ収集は直近2年の公開済み結果を確認します。取得済みの古い開催は再利用し、直近14日間の結果は再確認します。進捗は保存され、中断した処理はここから再開できます。
+        </p>
+        <div id="jobs" aria-live="polite">
+          <p class="muted">収集履歴を読み込み中…</p>
+        </div>
+      </section>
+      <footer>
+        <span>競馬の記録</span
+        ><span>表示日時は日本時間 · 過去分析機能を開発中</span>
+      </footer>
+    </main>
+    <dialog id="save-dialog">
+      <form id="save-form">
+        <h2>条件を保存</h2>
+        <label
+          >保存名<input
+            id="save-name"
+            required
+            maxlength="100"
+            placeholder="例：前走3着以内・枠順別"
+        /></label>
+        <p class="hint">条件と、確認した時点のデータ版を保存します。</p>
+        <div class="button-row">
+          <button type="button" id="cancel-save">キャンセル</button
+          ><button class="primary" type="submit">保存する</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

@@ -38,7 +38,9 @@ def official_url(url: str) -> str:
         or parts.username
         or parts.password
         or port not in {None, 80, 443}
-        or not parts.path.startswith(("/datafile/seiseki/", "/JRADB/", "/keiba/race/"))
+        or not parts.path.startswith(
+            ("/datafile/seiseki/", "/JRADB/", "/keiba/race/", "/keiba/thisweek/", "/keiba/g1/")
+        )
         or parts.path.lower().endswith((".pdf", ".zip"))
     ):
         raise AcquisitionError("unsupported_url", "JRA公式の対象HTMLページ以外は取得しません。")

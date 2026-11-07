@@ -152,7 +152,13 @@ def merge_final_odds(result: dict, odds: dict) -> None:
     result["issues"] = [
         issue for issue in result["issues"] if not issue.startswith("missing_win_odds:")
     ]
-    missing = [str(e["horse_number"]) for e in result["entries"] if e["win_odds"] is None]
+    from .settlement import outcome
+
+    missing = [
+        str(e["horse_number"])
+        for e in result["entries"]
+        if e["win_odds"] is None and outcome(e) != "nonstarter"
+    ]
     if missing:
         result["issues"].append("missing_win_odds:" + ",".join(missing))
     result["final_odds_source"] = odds["source"]

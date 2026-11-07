@@ -1,0 +1,1669 @@
+{
+  "version": "jra-flat-series-v1",
+  "verified_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "scope": "JRA flat graded races; non-graded predecessor races are not collected as main races",
+  "series": [
+    {
+      "id": "jra-flat-osaka",
+      "display_name": "大阪杯",
+      "aliases": [
+        {
+          "name": "産経大阪杯",
+          "from_year": 2016,
+          "to_year": 2016
+        },
+        {
+          "name": "大阪杯",
+          "from_year": 2017,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/g1/osaka.html",
+      "history_sha256": "5c14ad1705eec28d51d3db9650fdd1f34081e1c4c9174730cb100d3d59ee9cbb"
+    },
+    {
+      "id": "jra-flat-irish",
+      "display_name": "アイルランドトロフィー",
+      "aliases": [
+        {
+          "name": "府中牝馬S",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "アイルランドT",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/race/093.html",
+      "history_sha256": "8bf5f4f92c5e04d962d0bc6c8141a9726df691f3bfe569dd619b87e042cd141b"
+    },
+    {
+      "id": "jra-flat-fuchu-himba",
+      "display_name": "府中牝馬ステークス",
+      "aliases": [
+        {
+          "name": "マーメイドS",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "府中牝馬S",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0621_1/race.html",
+      "history_sha256": "3b89987a9dc2ecd0e8103f1bf438369c65dd9d8ca611e8cdcd9ca2973d2b3efc"
+    },
+    {
+      "id": "jra-flat-kokura-himba",
+      "display_name": "小倉牝馬ステークス",
+      "aliases": [
+        {
+          "name": "愛知杯",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "小倉牝馬S",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0124_1/race.html",
+      "history_sha256": "5baffb5df834a6d3e059bc299356e844faacdce9cedb6e300c1cac0f041fd689"
+    },
+    {
+      "id": "jra-flat-aichi",
+      "display_name": "愛知杯",
+      "aliases": [
+        {
+          "name": "京都牝馬S",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "愛知杯",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0322_2/race.html",
+      "history_sha256": "b552968db623f15b6474dfb669da1fe20da58c54bfe28ad82aec3062a13a2a66"
+    },
+    {
+      "id": "jra-flat-churchill-downs",
+      "display_name": "チャーチルダウンズカップ",
+      "aliases": [
+        {
+          "name": "アーリントンC",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "チャーチルダウンズC",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0404_2/race.html",
+      "history_sha256": "c1c4fc9f4341aeb6589e17c47c5cd22c137a455a21395039f9775f8209288ac7"
+    },
+    {
+      "id": "jra-flat-chukyo-juvenile",
+      "display_name": "中京2歳ステークス",
+      "aliases": [
+        {
+          "name": "小倉2歳S",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "中京2歳S",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0830_2/race.html",
+      "history_sha256": "5ef62b46d8bb2b860f4ffe086880f29adf41c0ba5435d383eeb5bd02d829f397"
+    },
+    {
+      "id": "jra-flat-shirasagi",
+      "display_name": "しらさぎステークス",
+      "aliases": [
+        {
+          "name": "しらさぎS",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0621_2/race.html",
+      "history_sha256": "5e9651dddc5bfed97eb12f8cbceacb8fe6dc557204c6064b06ded51420773208"
+    },
+    {
+      "id": "jra-flat-tokai",
+      "display_name": "東海ステークス",
+      "aliases": [
+        {
+          "name": "プロキオンS",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "東海S",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0726_2/race.html",
+      "history_sha256": "24daa9be1b4982cee13e423194aec574088f5c371b2f7298537776e507c00476"
+    },
+    {
+      "id": "jra-flat-procyon",
+      "display_name": "プロキオンステークス",
+      "aliases": [
+        {
+          "name": "東海S",
+          "from_year": 2016,
+          "to_year": 2024
+        },
+        {
+          "name": "プロキオンS",
+          "from_year": 2025,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/keiba/thisweek/2026/0125_2/race.html",
+      "history_sha256": "f2b8b0d0620be2701986a75f4fd340dc40caffdf1082568760951dcc8e2814b2"
+    },
+    {
+      "id": "jra-flat-f74649d8ca6e0b58",
+      "display_name": "CBC賞",
+      "aliases": [
+        {
+          "name": "CBC賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-23ddc2284dd7b382",
+      "display_name": "JBCクラシック",
+      "aliases": [
+        {
+          "name": "JBCクラシック",
+          "from_year": 2018,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-10515314ad77f127",
+      "display_name": "JBCスプリント",
+      "aliases": [
+        {
+          "name": "JBCスプリント",
+          "from_year": 2018,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-40b3d42d30f2186b",
+      "display_name": "JBCレディスクラシック",
+      "aliases": [
+        {
+          "name": "JBCレディスクラシック",
+          "from_year": 2018,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-426f903e92513027",
+      "display_name": "NHKマイルC",
+      "aliases": [
+        {
+          "name": "NHKマイルC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-0a4b2ed7e4029554",
+      "display_name": "きさらぎ賞",
+      "aliases": [
+        {
+          "name": "きさらぎ賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-be22367841b18cb4",
+      "display_name": "みやこS",
+      "aliases": [
+        {
+          "name": "みやこS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-54a55427952e4292",
+      "display_name": "アイビスサマーダッシュ",
+      "aliases": [
+        {
+          "name": "アイビスサマーダッシュ",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2351620614d74b18",
+      "display_name": "アメリカJCC",
+      "aliases": [
+        {
+          "name": "アメリカJCC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-609c362fd20d9a2d",
+      "display_name": "アルゼンチン共和国杯",
+      "aliases": [
+        {
+          "name": "アルゼンチン共和国杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7b4cbea414f6b27d",
+      "display_name": "アルテミスS",
+      "aliases": [
+        {
+          "name": "アルテミスS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6853f4ec4052d20c",
+      "display_name": "アンタレスS",
+      "aliases": [
+        {
+          "name": "アンタレスS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-a4b8445d723e1c70",
+      "display_name": "エプソムC",
+      "aliases": [
+        {
+          "name": "エプソムC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6421561e8b83ddb9",
+      "display_name": "エリザベス女王杯",
+      "aliases": [
+        {
+          "name": "エリザベス女王杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-03073cbfea631773",
+      "display_name": "エルムS",
+      "aliases": [
+        {
+          "name": "エルムS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-ebe7eabd875d6f5f",
+      "display_name": "オークス",
+      "aliases": [
+        {
+          "name": "オークス",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6b429312c38841ed",
+      "display_name": "オーシャンS",
+      "aliases": [
+        {
+          "name": "オーシャンS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-72f7b3d01a3c4e33",
+      "display_name": "オールカマー",
+      "aliases": [
+        {
+          "name": "オールカマー",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2ccb5d70143595d9",
+      "display_name": "カペラS",
+      "aliases": [
+        {
+          "name": "カペラS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-603ace2215957308",
+      "display_name": "キーンランドC",
+      "aliases": [
+        {
+          "name": "キーンランドC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-cd1e51bc71be9d0d",
+      "display_name": "クイーンC",
+      "aliases": [
+        {
+          "name": "クイーンC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6c3a17c749349b55",
+      "display_name": "クイーンS",
+      "aliases": [
+        {
+          "name": "クイーンS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-4e51d3caf3ba7854",
+      "display_name": "サウジアラビアロイヤルC",
+      "aliases": [
+        {
+          "name": "サウジアラビアロイヤルC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-3b850232f3d63acf",
+      "display_name": "シリウスS",
+      "aliases": [
+        {
+          "name": "シリウスS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6b31a7933ee92948",
+      "display_name": "シルクロードS",
+      "aliases": [
+        {
+          "name": "シルクロードS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-0fdb7cdb4369dfec",
+      "display_name": "シンザン記念",
+      "aliases": [
+        {
+          "name": "シンザン記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-31227269a63b9fea",
+      "display_name": "ジャパンC",
+      "aliases": [
+        {
+          "name": "ジャパンC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2818692b36e8b565",
+      "display_name": "ステイヤーズS",
+      "aliases": [
+        {
+          "name": "ステイヤーズS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2fe5831505719aba",
+      "display_name": "スプリングS",
+      "aliases": [
+        {
+          "name": "スプリングS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-86b84e7f89c8736f",
+      "display_name": "スプリンターズS",
+      "aliases": [
+        {
+          "name": "スプリンターズS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7d455e503a58d8dd",
+      "display_name": "スワンS",
+      "aliases": [
+        {
+          "name": "スワンS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6385bfe9ed47d5e2",
+      "display_name": "セントウルS",
+      "aliases": [
+        {
+          "name": "セントウルS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6292a5f0c318b105",
+      "display_name": "セントライト記念",
+      "aliases": [
+        {
+          "name": "セントライト記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-51ca90c901bbd46c",
+      "display_name": "ターコイズS",
+      "aliases": [
+        {
+          "name": "ターコイズS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-62c30c992f1df1b5",
+      "display_name": "ダイヤモンドS",
+      "aliases": [
+        {
+          "name": "ダイヤモンドS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-d6b3fb4a98c24b26",
+      "display_name": "ダービー卿チャレンジT",
+      "aliases": [
+        {
+          "name": "ダービー卿チャレンジT",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-f7855502a04067ea",
+      "display_name": "チャレンジC",
+      "aliases": [
+        {
+          "name": "チャレンジC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-4a47f93afc088dc4",
+      "display_name": "チャンピオンズC",
+      "aliases": [
+        {
+          "name": "チャンピオンズC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-323293c61d00c310",
+      "display_name": "チューリップ賞",
+      "aliases": [
+        {
+          "name": "チューリップ賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-f09950cb52f1d54c",
+      "display_name": "デイリー杯2歳S",
+      "aliases": [
+        {
+          "name": "デイリー杯2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-14862568e1946501",
+      "display_name": "ニュージーランドT",
+      "aliases": [
+        {
+          "name": "ニュージーランドT",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-eb764b2e697de365",
+      "display_name": "ファルコンS",
+      "aliases": [
+        {
+          "name": "ファルコンS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-c0b295f5120f824a",
+      "display_name": "ファンタジーS",
+      "aliases": [
+        {
+          "name": "ファンタジーS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-5c65e610eff0d999",
+      "display_name": "フィリーズレビュー",
+      "aliases": [
+        {
+          "name": "フィリーズレビュー",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-da3f4851dd540399",
+      "display_name": "フェアリーS",
+      "aliases": [
+        {
+          "name": "フェアリーS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-c478fd2758823b8f",
+      "display_name": "フェブラリーS",
+      "aliases": [
+        {
+          "name": "フェブラリーS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-d54baa50e6a15648",
+      "display_name": "フラワーC",
+      "aliases": [
+        {
+          "name": "フラワーC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-418cf5f17ce596af",
+      "display_name": "フローラS",
+      "aliases": [
+        {
+          "name": "フローラS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-d50b1dc17f2e5a71",
+      "display_name": "ホープフルS",
+      "aliases": [
+        {
+          "name": "ホープフルS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-3819c24012ef331e",
+      "display_name": "マイラーズC",
+      "aliases": [
+        {
+          "name": "マイラーズC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-345cf8dcd6fcb3c7",
+      "display_name": "マイルチャンピオンシップ",
+      "aliases": [
+        {
+          "name": "マイルチャンピオンシップ",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-f332e24b0c5be5ad",
+      "display_name": "マーチS",
+      "aliases": [
+        {
+          "name": "マーチS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-dfa28c05df5c6d15",
+      "display_name": "ユニコーンS",
+      "aliases": [
+        {
+          "name": "ユニコーンS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-9d090ac61247286a",
+      "display_name": "ラジオNIKKEI賞",
+      "aliases": [
+        {
+          "name": "ラジオNIKKEI賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-881f92e593861ef7",
+      "display_name": "レパードS",
+      "aliases": [
+        {
+          "name": "レパードS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-fc7f6fe6d2bcea8d",
+      "display_name": "ローズS",
+      "aliases": [
+        {
+          "name": "ローズS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-f87870128d4fb2c8",
+      "display_name": "ヴィクトリアマイル",
+      "aliases": [
+        {
+          "name": "ヴィクトリアマイル",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-95d6f20f3abde227",
+      "display_name": "七夕賞",
+      "aliases": [
+        {
+          "name": "七夕賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-ee75f88c574d8f7e",
+      "display_name": "中京記念",
+      "aliases": [
+        {
+          "name": "中京記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-1cfcba4133b7335c",
+      "display_name": "中山牝馬S",
+      "aliases": [
+        {
+          "name": "中山牝馬S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-1a582bc3c46bd31c",
+      "display_name": "中山記念",
+      "aliases": [
+        {
+          "name": "中山記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-acbf8c57b27d8962",
+      "display_name": "中山金杯",
+      "aliases": [
+        {
+          "name": "中山金杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-a0498d0ba8676a6b",
+      "display_name": "中日新聞杯",
+      "aliases": [
+        {
+          "name": "中日新聞杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-9c4e85e8cf530711",
+      "display_name": "京成杯",
+      "aliases": [
+        {
+          "name": "京成杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7efb1dfa47bcacb9",
+      "display_name": "京成杯オータムH",
+      "aliases": [
+        {
+          "name": "京成杯オータムH",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-dde431609cb70299",
+      "display_name": "京王杯2歳S",
+      "aliases": [
+        {
+          "name": "京王杯2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-ff3d008b79845cdb",
+      "display_name": "京王杯スプリングC",
+      "aliases": [
+        {
+          "name": "京王杯スプリングC",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-44e68726ece9a6f4",
+      "display_name": "京都2歳S",
+      "aliases": [
+        {
+          "name": "京都2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-db908d75af3f054d",
+      "display_name": "京都大賞典",
+      "aliases": [
+        {
+          "name": "京都大賞典",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-5c98c38f1b691a3b",
+      "display_name": "京都新聞杯",
+      "aliases": [
+        {
+          "name": "京都新聞杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-d534dc1cce3a81ee",
+      "display_name": "京都記念",
+      "aliases": [
+        {
+          "name": "京都記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-8d925179f015b942",
+      "display_name": "京都金杯",
+      "aliases": [
+        {
+          "name": "京都金杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-bd05414dec87fa89",
+      "display_name": "京阪杯",
+      "aliases": [
+        {
+          "name": "京阪杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-274b6804b7f6a8fc",
+      "display_name": "共同通信杯",
+      "aliases": [
+        {
+          "name": "共同通信杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-73014769b696755d",
+      "display_name": "函館2歳S",
+      "aliases": [
+        {
+          "name": "函館2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-31e8b6a77b2be93d",
+      "display_name": "函館スプリントS",
+      "aliases": [
+        {
+          "name": "函館スプリントS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-5480b73508324a9a",
+      "display_name": "函館記念",
+      "aliases": [
+        {
+          "name": "函館記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-73c07bdc582aab6e",
+      "display_name": "北九州記念",
+      "aliases": [
+        {
+          "name": "北九州記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-9dd232fa9c434bfe",
+      "display_name": "天皇賞（春）",
+      "aliases": [
+        {
+          "name": "天皇賞（春）",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-bd33cacae1a2baa8",
+      "display_name": "天皇賞（秋）",
+      "aliases": [
+        {
+          "name": "天皇賞（秋）",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2e400c7d46774b67",
+      "display_name": "安田記念",
+      "aliases": [
+        {
+          "name": "安田記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-054b3df535f943a9",
+      "display_name": "宝塚記念",
+      "aliases": [
+        {
+          "name": "宝塚記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-20da9c5e44909d84",
+      "display_name": "富士S",
+      "aliases": [
+        {
+          "name": "富士S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-511a2d6fd064e573",
+      "display_name": "小倉大賞典",
+      "aliases": [
+        {
+          "name": "小倉大賞典",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-ffee923b88133df7",
+      "display_name": "小倉記念",
+      "aliases": [
+        {
+          "name": "小倉記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-421914db55966e2e",
+      "display_name": "平安S",
+      "aliases": [
+        {
+          "name": "平安S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2b78da4d780881aa",
+      "display_name": "弥生賞",
+      "aliases": [
+        {
+          "name": "弥生賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-f9b19e194d4bc7c0",
+      "display_name": "新潟2歳S",
+      "aliases": [
+        {
+          "name": "新潟2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-b62232ba44b08355",
+      "display_name": "新潟大賞典",
+      "aliases": [
+        {
+          "name": "新潟大賞典",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7f14f83cc72f4a3d",
+      "display_name": "新潟記念",
+      "aliases": [
+        {
+          "name": "新潟記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2b5d7ffa32e3fa19",
+      "display_name": "日本ダービー",
+      "aliases": [
+        {
+          "name": "日本ダービー",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-9b833397a007d9ac",
+      "display_name": "日経新春杯",
+      "aliases": [
+        {
+          "name": "日経新春杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-2ac4beacd965d37d",
+      "display_name": "日経賞",
+      "aliases": [
+        {
+          "name": "日経賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7e959ec75006cc25",
+      "display_name": "有馬記念",
+      "aliases": [
+        {
+          "name": "有馬記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-39dffc8bbc949ca2",
+      "display_name": "朝日杯フューチュリティS",
+      "aliases": [
+        {
+          "name": "朝日杯フューチュリティS",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-5eb5532d283bc407",
+      "display_name": "札幌2歳S",
+      "aliases": [
+        {
+          "name": "札幌2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-232c22b6b8b78745",
+      "display_name": "札幌記念",
+      "aliases": [
+        {
+          "name": "札幌記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-891a7ba5373b2336",
+      "display_name": "東スポ杯2歳S",
+      "aliases": [
+        {
+          "name": "東スポ杯2歳S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-53b027b671a22159",
+      "display_name": "東京新聞杯",
+      "aliases": [
+        {
+          "name": "東京新聞杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6c2312fe17e1cd09",
+      "display_name": "根岸S",
+      "aliases": [
+        {
+          "name": "根岸S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-58494897a835f947",
+      "display_name": "桜花賞",
+      "aliases": [
+        {
+          "name": "桜花賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-45b9cf2b3631355c",
+      "display_name": "武蔵野S",
+      "aliases": [
+        {
+          "name": "武蔵野S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-0fc946364431f13c",
+      "display_name": "毎日杯",
+      "aliases": [
+        {
+          "name": "毎日杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-877c6d81c6f1f187",
+      "display_name": "毎日王冠",
+      "aliases": [
+        {
+          "name": "毎日王冠",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-6c890472465cf2d2",
+      "display_name": "皐月賞",
+      "aliases": [
+        {
+          "name": "皐月賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-3403b6bfb80c7fbf",
+      "display_name": "目黒記念",
+      "aliases": [
+        {
+          "name": "目黒記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-b3ca26cc6f52e43b",
+      "display_name": "神戸新聞杯",
+      "aliases": [
+        {
+          "name": "神戸新聞杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7e2d514d5c6378ce",
+      "display_name": "福島牝馬S",
+      "aliases": [
+        {
+          "name": "福島牝馬S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-03a38058e4f36a78",
+      "display_name": "福島記念",
+      "aliases": [
+        {
+          "name": "福島記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-8708814e95a11a44",
+      "display_name": "秋華賞",
+      "aliases": [
+        {
+          "name": "秋華賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-93732563d4833bd2",
+      "display_name": "紫苑S",
+      "aliases": [
+        {
+          "name": "紫苑S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-111d5ea8a92f2aca",
+      "display_name": "菊花賞",
+      "aliases": [
+        {
+          "name": "菊花賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-7251a217cd426f1b",
+      "display_name": "葵S",
+      "aliases": [
+        {
+          "name": "葵S",
+          "from_year": 2018,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-0cd9e032eb24ad8d",
+      "display_name": "金鯱賞",
+      "aliases": [
+        {
+          "name": "金鯱賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-8ae316e30ed8527a",
+      "display_name": "関屋記念",
+      "aliases": [
+        {
+          "name": "関屋記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-511ea850bb5993e8",
+      "display_name": "阪急杯",
+      "aliases": [
+        {
+          "name": "阪急杯",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-3adc8ad64fb2658d",
+      "display_name": "阪神C",
+      "aliases": [
+        {
+          "name": "阪神C",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-3308810d9d838fc3",
+      "display_name": "阪神ジュベナイルF",
+      "aliases": [
+        {
+          "name": "阪神ジュベナイルF",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-9f4fead78be7a123",
+      "display_name": "阪神大賞典",
+      "aliases": [
+        {
+          "name": "阪神大賞典",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-62cb0d79ef1306c5",
+      "display_name": "阪神牝馬S",
+      "aliases": [
+        {
+          "name": "阪神牝馬S",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-8176e1f6d502a62d",
+      "display_name": "青葉賞",
+      "aliases": [
+        {
+          "name": "青葉賞",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-4e6f3afe6ba54a51",
+      "display_name": "高松宮記念",
+      "aliases": [
+        {
+          "name": "高松宮記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    },
+    {
+      "id": "jra-flat-133a5af1cc933aab",
+      "display_name": "鳴尾記念",
+      "aliases": [
+        {
+          "name": "鳴尾記念",
+          "from_year": 2016,
+          "to_year": 2026
+        }
+      ],
+      "history_source": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html"
+    }
+  ]
+}

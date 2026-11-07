@@ -1,0 +1,9 @@
+{
+  "mobile_dimensions": {
+    "width": 390,
+    "scroll": 390
+  },
+  "page_errors": [],
+  "collection_posts": 1,
+  "runner": "DisabledRunner: job registration only; no external crawl in this browser test"
+}

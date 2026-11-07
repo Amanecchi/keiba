@@ -135,3 +135,20 @@ def test_database_probe_discovers_supplements_and_resumes_without_network(tmp_pa
         assert parsed_result["issues"] == ["missing_affiliation:1,2"]
         assert all(e["win_odds"] == "5.0" for e in parsed_result["entries"])
     assert session.methods == ["GET", "GET", "POST", "POST", "GET", "POST", "GET", "GET"]
+    # Latest collection refreshes result and final odds even when both are cached.
+    session.responses.extend(
+        [
+            Response((HEADER + SEARCH_LINK).encode()),
+            Response(result.encode()),
+            Response(odds.replace("5.0", "9.0").encode()),
+        ]
+    )
+    refreshed = Probe(
+        Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None
+    )
+    refreshed.database_result(
+        "https://www.jra.go.jp/datafile/seiseki/replay/2025/001.html", 2, fresh_result=True
+    )
+    assert len(session.calls) == 11
+    changed = next(p for p in refreshed.parsed if p["kind"] == "result")
+    assert all(e["win_odds"] == "9.0" for e in changed["entries"])

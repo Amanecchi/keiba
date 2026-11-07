@@ -1,0 +1,21 @@
+# Free Web service only. Provision an external, permanent free PostgreSQL first.
+services:
+  - type: web
+    name: keiba-history
+    runtime: python
+    plan: free
+    autoDeployTrigger: "off"
+    buildCommand: pip install --no-deps -r requirements-web.lock .
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 60 'keiba_web.app:create_app()'
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: DATABASE_URL
+        sync: false
+      - key: KEIBA_SESSION_SECRET
+        generateValue: true
+      - key: KEIBA_OWNER_SETUP_TOKEN
+        generateValue: true
+      - key: KEIBA_OWNER_NAME
+        value: owner

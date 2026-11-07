@@ -9,6 +9,42 @@ from keiba_acquisition.transport import Client
 from test_transport import Response, Session
 
 
+def test_cached_profile_older_than_target_race_is_refreshed(tmp_path, fixture_bytes):
+    from datetime import UTC, datetime
+    from keiba_acquisition.transport import Page, official_url, write_json
+    import hashlib
+
+    profile_url = official_url(
+        "https://www.jra.go.jp/JRADB/accessU.html?CNAME=sample-horse-a/token"
+    )
+    body = fixture_bytes("profile.html")
+    Client(tmp_path, session=Session([]), sleep=lambda _: None)
+    raw_path = "raw/older-profile.html"
+    (tmp_path / "raw").mkdir(exist_ok=True)
+    (tmp_path / raw_path).write_bytes(body)
+    page = Page(
+        url=profile_url,
+        body=body,
+        raw_path=raw_path,
+        sha256=hashlib.sha256(body).hexdigest(),
+        fetched_at=datetime(2025, 10, 1, tzinfo=UTC).isoformat(),
+        content_type="text/html",
+        elapsed_seconds=0,
+    )
+    write_json(
+        tmp_path / "cache" / f"{hashlib.sha256(profile_url.encode()).hexdigest()}.json",
+        page.metadata(),
+    )
+    result = result_without_cancelled_runner(fixture_bytes("result.html"))
+    session = Session([Response(result), Response(body)])
+    probe = Probe(Client(tmp_path, session=session, sleep=lambda _: None), progress=lambda _: None)
+    probe.result("https://www.jra.go.jp/datafile/seiseki/replay/2025/001.html", 1)
+    profiles = [r for r in probe.records if r["kind"] == "profile"]
+    assert len(profiles) == 2
+    assert profiles[0]["cached"] and not profiles[1]["cached"]
+    assert len(session.calls) == 2
+
+
 def result_without_cancelled_runner(body):
     soup = BeautifulSoup(body, "html.parser")
     for row in list(soup.find_all("tr")):

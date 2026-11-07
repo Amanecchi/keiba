@@ -1,0 +1,130 @@
+{
+  "environment": "internal Gunicorn + PostgreSQL 17 + Chromium; not deployed HTTPS",
+  "setup_once": true,
+  "relogin": true,
+  "initial_metrics": "該当出走\n159頭\n実出走 159頭\n勝率\n6.3%\n1着 10 / 実出走 159\n複勝的中率\n19.5%\n的中 31 / 確認済み 159\n実績回収率\n単勝\n67.2%\n複勝\n53.6%",
+  "filtered_count": 49,
+  "detail_count": 49,
+  "changed_count": 24,
+  "saved_replay_same_version": true,
+  "mobile_dimensions": {
+    "width": 390,
+    "scroll": 390
+  },
+  "page_errors": [],
+  "collection_posts": 0,
+  "browser_requests": [
+    {
+      "method": "GET",
+      "path": "/login"
+    },
+    {
+      "method": "GET",
+      "path": "/setup"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.css"
+    },
+    {
+      "method": "POST",
+      "path": "/setup"
+    },
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.css"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/meta"
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/searches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs"
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/searches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/searches"
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze"
+    },
+    {
+      "method": "POST",
+      "path": "/api/export"
+    },
+    {
+      "method": "POST",
+      "path": "/logout"
+    },
+    {
+      "method": "GET",
+      "path": "/login"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.css"
+    },
+    {
+      "method": "POST",
+      "path": "/login"
+    },
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.css"
+    },
+    {
+      "method": "GET",
+      "path": "/static/app.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/meta"
+    },
+    {
+      "method": "POST",
+      "path": "/api/analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/searches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs"
+    }
+  ]
+}

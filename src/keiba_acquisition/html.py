@@ -363,6 +363,8 @@ def payouts(soup: BeautifulSoup) -> list[dict]:
 
 
 def parse_result(body: bytes, base: str) -> dict:
+    from .settlement import audit_settlement, outcome
+
     soup = BeautifulSoup(body, "html.parser")
     entries = participants(soup, base, result=True)
     payments = payouts(soup)
@@ -392,11 +394,19 @@ def parse_result(body: bytes, base: str) -> dict:
         "affiliation",
     ):
         missing = [
-            entry["horse_number"] for entry in entries if entry[key] is None or entry[key] == ""
+            entry["horse_number"]
+            for entry in entries
+            if (entry[key] is None or entry[key] == "")
+            and not (
+                key in {"win_odds", "popularity", "passing_positions"}
+                and outcome(entry) == "nonstarter"
+            )
         ]
         if missing:
             issues.append(f"missing_{key}:{','.join(map(str, missing))}")
-    return {"kind": "result", **info, "entries": entries, "payouts": payments, "issues": issues}
+    result = {"kind": "result", **info, "entries": entries, "payouts": payments, "issues": issues}
+    result["settlement"] = audit_settlement(body, result)
+    return result
 
 
 def parse_profile(body: bytes, base: str, target_date: date) -> dict:

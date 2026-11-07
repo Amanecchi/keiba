@@ -28,19 +28,17 @@ def test_no_result_is_not_a_successful_empty_import(fixture_bytes):
 
 
 def test_discovery_includes_g1_result_archives_and_flat_ungraded_races():
-    body = '''<table><tr><th>レース名</th><th>結果</th></tr>
+    body = """<table><tr><th>レース名</th><th>結果</th></tr>
     <tr><td>GⅠ 架空大賞</td><td><a href="/datafile/seiseki/g1/example/result/example2025.html">結果</a>
     <a href="/datafile/seiseki/g1/example/index.html">成績一覧</a></td></tr>
     <tr><td>J ・ GⅠ 架空障害</td><td><a href="/datafile/seiseki/g1/jump/result/jump2025.html">結果</a></td></tr>
     <tr><td>新設重賞 架空杯</td><td><a href="/datafile/seiseki/replay/2025/002.html">結果</a></td></tr>
     <tr><td>JpnⅠ 架空中央競走</td><td><a href="/datafile/seiseki/replay/2025/003.html">結果</a></td></tr>
-    </table>'''.encode()
+    </table>""".encode()
     all_results = discover_results(body, BASE)
     assert len(all_results) == 4
     flat = discover_results(body, BASE, flat_only=True)
-    assert [r["race_name"] for r in flat] == [
-        "GⅠ 架空大賞", "新設重賞 架空杯", "JpnⅠ 架空中央競走"
-    ]
+    assert [r["race_name"] for r in flat] == ["GⅠ 架空大賞", "新設重賞 架空杯", "JpnⅠ 架空中央競走"]
     assert all(not r["url"].endswith("index.html") for r in flat)
 
 
@@ -69,7 +67,7 @@ def test_missing_odds_are_not_derived_from_winner_payout(fixture_bytes):
     )
     parsed = parse_result(body, BASE)
     assert parsed["entries"][0]["win_odds"] is None
-    assert "missing_win_odds:1,2,3" in parsed["issues"]
+    assert "missing_win_odds:1,2" in parsed["issues"]
 
 
 def test_definition_list_payouts_and_dead_heat():

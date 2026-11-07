@@ -1,0 +1,365 @@
+{
+  "environment": "internal PostgreSQL 17; not hosted production",
+  "coverage": {
+    "expected_races": 10,
+    "known_expected_races": 10,
+    "missing_catalog_years": [],
+    "imported_races": 10,
+    "state": "complete"
+  },
+  "summary": {
+    "matched_count": 159,
+    "started_count": 159,
+    "wins": 10,
+    "top2_count": 20,
+    "top3_count": 31,
+    "win_rate": "6.3",
+    "top2_rate": "12.6",
+    "top3_rate": "19.5",
+    "nonstarter_count": 0,
+    "unknown_outcome_count": 0,
+    "bets": {
+      "単勝": {
+        "confirmed_count": 159,
+        "purchase_yen": 15900,
+        "payout_yen": 10690,
+        "hits": 10,
+        "hit_rate": "6.3",
+        "return_rate": "67.2",
+        "refunded_count": 0,
+        "unknown_count": 0
+      },
+      "複勝": {
+        "confirmed_count": 159,
+        "purchase_yen": 15900,
+        "payout_yen": 8530,
+        "hits": 31,
+        "hit_rate": "19.5",
+        "return_rate": "53.6",
+        "refunded_count": 0,
+        "unknown_count": 0
+      }
+    }
+  },
+  "storage": {
+    "rows": {
+      "source_blobs": 325,
+      "source_fetches": 327,
+      "analysis_races": 10,
+      "analysis_snapshots": 21
+    },
+    "compressed_original_bytes": 4318344,
+    "postgres_database_bytes": 15234739
+  },
+  "source_hashes_verified": 325,
+  "collector_sample_2025_features": [
+    {
+      "horse_id": "2018104638",
+      "horse_name": "ミステリーウェイ",
+      "running_style": "逃げ",
+      "previous_class": "open",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2021105829",
+      "horse_name": "スティンガーグラス",
+      "running_style": "差し",
+      "previous_class": "listed",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2021104324",
+      "horse_name": "ディマイザキッド",
+      "running_style": "追込",
+      "previous_class": "G2",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2019105168",
+      "horse_name": "セレシオン",
+      "running_style": "差し",
+      "previous_class": "listed",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019104447",
+      "horse_name": "シュトルーヴェ",
+      "running_style": "差し",
+      "previous_class": "G2",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2021104855",
+      "horse_name": "ホーエリート",
+      "running_style": "先行",
+      "previous_class": "G2",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2020105798",
+      "horse_name": "マイネルカンパーナ",
+      "running_style": "先行",
+      "previous_class": "open",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2019104658",
+      "horse_name": "ボーンディスウェイ",
+      "running_style": "差し",
+      "previous_class": "listed",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2020100254",
+      "horse_name": "ニシノレヴナント",
+      "running_style": "追込",
+      "previous_class": "listed",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2019100109",
+      "horse_name": "プラダリア",
+      "running_style": "先行",
+      "previous_class": "G2",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019104909",
+      "horse_name": "ボルドグフーシュ",
+      "running_style": "追込",
+      "previous_class": "G2",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019105552",
+      "horse_name": "ローシャムパーク",
+      "running_style": "差し",
+      "previous_class": "G1",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2020100976",
+      "horse_name": "ハギノアルデバラン",
+      "running_style": "追込",
+      "previous_class": "allowance_3",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2020103439",
+      "horse_name": "サスツルギ",
+      "running_style": "追込",
+      "previous_class": "G3",
+      "affiliation": "美浦"
+    },
+    {
+      "horse_id": "2018101660",
+      "horse_name": "ワイドエンペラー",
+      "running_style": "差し",
+      "previous_class": "listed",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019104091",
+      "horse_name": "メイショウブレゲ",
+      "running_style": "追込",
+      "previous_class": "G2",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019105239",
+      "horse_name": "ショウナンアデイブ",
+      "running_style": "先行",
+      "previous_class": "G2",
+      "affiliation": "栗東"
+    },
+    {
+      "horse_id": "2019103586",
+      "horse_name": "ギャラクシーナイト",
+      "running_style": "先行",
+      "previous_class": "listed",
+      "affiliation": "美浦"
+    }
+  ],
+  "additional_collector_sources": [
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202502121220250601%2F4F",
+      "sha256": "60d4bd4b9af773cee6c80e7dd8f1f12637deaa2643014d6c66f263397e79a322",
+      "fetched_at": "2026-11-07T10:50:50.748914+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202504021120251005%2F16",
+      "sha256": "a4841f9caf116c0fc669e618bbb1099bf9c6d376a1e341925c27b4294134af42",
+      "fetched_at": "2026-11-07T10:50:54.870485+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1004202501051120250517%2FB5",
+      "sha256": "8065d0846c2a904d183b41b206fe2ea26059de23800ccc4ed730bb505f65e699",
+      "fetched_at": "2026-11-07T10:50:58.490058+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202405021120241103%2F41",
+      "sha256": "35c7ca4f889723a4a4d1eb774dc1135eec220c07b28470f4abbdfa6cac57655b",
+      "fetched_at": "2026-11-07T10:51:02.392953+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1001202501081120250817%2FA1",
+      "sha256": "d0b56df200c06c8901100fb525a38c8f6c7c53ac2463498d52830d90e00dac28",
+      "fetched_at": "2026-11-07T10:51:06.495681+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006202502040920250309%2F87",
+      "sha256": "0baa0ac7850efcf71d98587cc3c38deb8d584891453643a6cc7699b217d84d22",
+      "fetched_at": "2026-11-07T10:50:52.671951+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1002202501061120250629%2FE3",
+      "sha256": "8f4d092d645008338dc5e0b847f3a1e977262fc845e8392a78ca20ada1116bac",
+      "fetched_at": "2026-11-07T10:50:56.738589+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202504051120251013%2F4F",
+      "sha256": "eb8fdd2ea8929b8c884ef11aea09f42a4d8bb45b728d148db1fe99f436b8b62c",
+      "fetched_at": "2026-11-07T10:51:00.507130+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1004202403081120240901%2F8D",
+      "sha256": "147742c7a85b650ccf614e77bc5ce70a66f2eba6707840cde985ec4dff29516c",
+      "fetched_at": "2026-11-07T10:51:04.060846+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202501071120250222%2F1D",
+      "sha256": "b28cf7b5e5b6c63d40086307e2c97c8232e08812cea524d7b104beb5b057c0dd",
+      "fetched_at": "2026-11-07T10:51:08.562280+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006202504071120250921%2F9A",
+      "sha256": "13075de16ab8a232a6f1a9d8d458cc9ad87b8a4f2894df5a6563843bc18830ca",
+      "fetched_at": "2026-11-07T10:51:12.392963+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1003202502061120250713%2F11",
+      "sha256": "e89aaed9658b33fbedaf6aa5640fb5dd972f829c197e3968c7a498f921f643ee",
+      "fetched_at": "2026-11-07T10:51:18.391306+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202503041120250615%2F17",
+      "sha256": "20ee34b8082529a4db9f25abe710744cfb1c956c5bc8c5643343f530a5e28877",
+      "fetched_at": "2026-11-07T10:51:22.919893+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202502041120250406%2F53",
+      "sha256": "4e73ed6c1575064dcf61ef81d74c60b1c987d26e912056e2243638891aec6a1d",
+      "fetched_at": "2026-11-07T10:51:26.597631+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1007202503070720250816%2F7B",
+      "sha256": "3d6159c8b13d4e089b30b77875f0912f741e761ee4c65afc4ba4e7735034dc66",
+      "fetched_at": "2026-11-07T10:51:30.464372+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006202405081120241222%2FAF",
+      "sha256": "59cac63b5d1ac8e24e448048c39295b832a71f0f92be9344f35b89512d35d525",
+      "fetched_at": "2026-11-07T10:51:10.308962+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1003202501041120250420%2FAC",
+      "sha256": "46b85fb06726f9838432266c31a4ed26a28b0b5032ba74c4250b179a5dacf5ea",
+      "fetched_at": "2026-11-07T10:51:14.358177+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1008202503021120251005%2FC3",
+      "sha256": "c198e32ce0fc130a54a1aa03d75757d838b1bc04e4ec9a634d0b7c48f9861d01",
+      "fetched_at": "2026-11-07T10:51:20.389656+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1008202502041120250504%2F0A",
+      "sha256": "7bf54aa11aae1ca554ae2bcab73aab0896668eb79b012d1f4f06bb8406d9eb4f",
+      "fetched_at": "2026-11-07T10:51:24.114944+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1004202503031120250830%2F2B",
+      "sha256": "52ac5f96a78fdde7ecb86e5b9d45f1e1cff4d29ccc7b189f1de8293f370bffb6",
+      "fetched_at": "2026-11-07T10:51:28.526683+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1008202502071020250517%2F3F",
+      "sha256": "90bf76c3f5b5dcb3f9209c2a4531bd3c569a653a90b89d822e061bd0f19591e1",
+      "fetched_at": "2026-11-07T10:51:32.608468+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202502061020250413%2FA7",
+      "sha256": "43e5bd467e271342426ae0387429b2e417e094108a0cd24c5569318d85f61862",
+      "fetched_at": "2026-11-07T10:51:36.760166+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1010202502081120250720%2F65",
+      "sha256": "eb5809a8e9d609b188da15d4f3a1f86e944b5abd8ea90d9a14c04eb4174f44f5",
+      "fetched_at": "2026-11-07T10:51:41.084064+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1004202503041120250831%2F5B",
+      "sha256": "6eb1f3afb91db3a3bf0d16d52d17c267e10d9e5ccf2e42301c376be492a60967",
+      "fetched_at": "2026-11-07T10:51:34.627617+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202502061020250511%2F80",
+      "sha256": "2d7f01e7e16c2bb98236704d56ddfecb0b76b7d2adf04ea589e495c27aee49b6",
+      "fetched_at": "2026-11-07T10:51:38.574561+00:00",
+      "request_method": "POST"
+    },
+    {
+      "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202503031120250614%2FBF",
+      "sha256": "85367c950cdab7ab1ea11568aae4119c3b3c6ce90a88408b3c1b2e57b4e5b219",
+      "fetched_at": "2026-11-07T10:51:43.017308+00:00",
+      "request_method": "POST"
+    }
+  ],
+  "backup_restore": {
+    "backup_restore": {
+      "data_version": "0bf92e57836bd1e00dead40a31dc3564a399643e181637c25e5d05924f480aab",
+      "matched_entries": 159,
+      "original_blobs_verified": 301,
+      "dump_bytes": 4800604
+    },
+    "collector": {
+      "state": "completed",
+      "message": "収集が完了しました。",
+      "cursor": 1,
+      "total": 1,
+      "elapsed_seconds": 57.78,
+      "new_source_fetches": 26,
+      "entry_count": 18,
+      "feature_unknown_counts": {
+        "running_style": 0,
+        "previous_class": 0,
+        "affiliation": 0
+      },
+      "settlement_issues": []
+    }
+  },
+  "full_target_results_complete": false
+}

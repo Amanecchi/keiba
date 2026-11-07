@@ -1,0 +1,1803 @@
+{
+  "cases": [
+    {
+      "race_date": "2024-12-22",
+      "race": "有馬記念",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006202405081120241222%2FAF",
+        "sha256": "59cac63b5d1ac8e24e448048c39295b832a71f0f92be9344f35b89512d35d525",
+        "fetched_at": "2026-11-07T08:54:00.349192+00:00",
+        "request_method": "GET"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 8,
+                "yen_per_100": 1090
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 8,
+                "yen_per_100": 320
+              },
+              {
+                "horse_number": 16,
+                "yen_per_100": 540
+              },
+              {
+                "horse_number": 1,
+                "yen_per_100": 210
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 8,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 1090
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 320
+              }
+            }
+          },
+          {
+            "horse_number": 16,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 540
+              }
+            }
+          },
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 210
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 11,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 13,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 14,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 12,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 10,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 9,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 15,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "nonstarter",
+            "bets": {
+              "単勝": {
+                "eligible": false,
+                "reason": "nonstarter",
+                "hit": null,
+                "payout_yen": null
+              },
+              "複勝": {
+                "eligible": false,
+                "reason": "nonstarter",
+                "hit": null,
+                "payout_yen": null
+              }
+            }
+          }
+        ],
+        "official_notes": [],
+        "issues": []
+      }
+    },
+    {
+      "race_date": "2021-03-06",
+      "race": "チューリップ賞",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202101071120210306%2FE4",
+        "sha256": "d50ec3973a394dbaaf0b9602116c2a17edbdb2870ae33a774fe1d3db1665d51c",
+        "fetched_at": "2026-11-07T08:54:09.579197+00:00",
+        "request_method": "GET"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 1,
+                "yen_per_100": 110
+              },
+              {
+                "horse_number": 5,
+                "yen_per_100": 240
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 1,
+                "yen_per_100": 110
+              },
+              {
+                "horse_number": 5,
+                "yen_per_100": 200
+              },
+              {
+                "horse_number": 2,
+                "yen_per_100": 180
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 110
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 110
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 240
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 200
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 180
+              }
+            }
+          },
+          {
+            "horse_number": 12,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 9,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 10,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 8,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 11,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          }
+        ],
+        "official_notes": [],
+        "issues": []
+      }
+    },
+    {
+      "race_date": "2021-10-09",
+      "race": "サウジアラビア",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202104011120211009%2F7B",
+        "sha256": "74c18f7bab77804a213b117a7a43ca498e7fc369cb07d21bcb7161e28d779da2",
+        "fetched_at": "2026-11-07T08:54:17.799766+00:00",
+        "request_method": "GET"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 6,
+                "yen_per_100": 220
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 6,
+                "yen_per_100": 120
+              },
+              {
+                "horse_number": 3,
+                "yen_per_100": 120
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 220
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 120
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 120
+              }
+            }
+          },
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          }
+        ],
+        "official_notes": [],
+        "issues": []
+      }
+    },
+    {
+      "race_date": "2020-03-29",
+      "race": "高松宮記念",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1007202001081120200329%2FA7",
+        "sha256": "85e82cf52e2c456378d60fdf0f5d2eebafbabd72969e9569913ac66b66c5bc98",
+        "fetched_at": "2026-11-07T08:54:25.571462+00:00",
+        "request_method": "GET"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 16,
+                "yen_per_100": 3230
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 16,
+                "yen_per_100": 810
+              },
+              {
+                "horse_number": 8,
+                "yen_per_100": 210
+              },
+              {
+                "horse_number": 3,
+                "yen_per_100": 290
+              }
+            ],
+            "refunded_numbers": [],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 16,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 3230
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 810
+              }
+            }
+          },
+          {
+            "horse_number": 8,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 210
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 290
+              }
+            }
+          },
+          {
+            "horse_number": 11,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 17,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 12,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 9,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 14,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 15,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 18,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 13,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 10,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          }
+        ],
+        "official_notes": [
+          "(1位降着)"
+        ],
+        "issues": []
+      }
+    },
+    {
+      "race_date": "2026-11-01",
+      "race": "東京4R",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde0105202604110420261101%2F2F",
+        "sha256": "ea97351b890ad9ca044be6eebc4a5f50fbb7872d48b2b6c6c14fd384d053fd75",
+        "fetched_at": "2026-11-07T08:57:48.478910+00:00",
+        "request_method": "POST"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 13,
+                "yen_per_100": 1930
+              }
+            ],
+            "refunded_numbers": [
+              5
+            ],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 13,
+                "yen_per_100": 330
+              },
+              {
+                "horse_number": 1,
+                "yen_per_100": 170
+              },
+              {
+                "horse_number": 7,
+                "yen_per_100": 200
+              }
+            ],
+            "refunded_numbers": [
+              5
+            ],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 13,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 1930
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 330
+              }
+            }
+          },
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 170
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 200
+              }
+            }
+          },
+          {
+            "horse_number": 10,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 8,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 12,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 11,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 9,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 14,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "nonstarter",
+            "bets": {
+              "単勝": {
+                "eligible": false,
+                "reason": "refunded",
+                "hit": null,
+                "payout_yen": null
+              },
+              "複勝": {
+                "eligible": false,
+                "reason": "refunded",
+                "hit": null,
+                "payout_yen": null
+              }
+            }
+          }
+        ],
+        "official_notes": [],
+        "issues": []
+      }
+    },
+    {
+      "race_date": "2024-12-15",
+      "race": "中山5R",
+      "source": {
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006202405060520241215%2F28",
+        "sha256": "e505ba940772fb400b567dc875a823d2cc57b2019d9bb61065e71b1abadd19bb",
+        "fetched_at": "2026-11-07T08:57:50.160610+00:00",
+        "request_method": "POST"
+      },
+      "settlement": {
+        "schema": "jra-modern-refund-v1",
+        "bets": {
+          "単勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 9,
+                "yen_per_100": 290
+              }
+            ],
+            "refunded_numbers": [
+              4
+            ],
+            "issues": []
+          },
+          "複勝": {
+            "status": "verified",
+            "payouts": [
+              {
+                "horse_number": 9,
+                "yen_per_100": 120
+              },
+              {
+                "horse_number": 3,
+                "yen_per_100": 290
+              },
+              {
+                "horse_number": 13,
+                "yen_per_100": 130
+              }
+            ],
+            "refunded_numbers": [
+              4
+            ],
+            "issues": []
+          }
+        },
+        "entries": [
+          {
+            "horse_number": 9,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 290
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 120
+              }
+            }
+          },
+          {
+            "horse_number": 3,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 290
+              }
+            }
+          },
+          {
+            "horse_number": 13,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": true,
+                "payout_yen": 130
+              }
+            }
+          },
+          {
+            "horse_number": 10,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 5,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 16,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 1,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 11,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 6,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 2,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 14,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 12,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 7,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 8,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 15,
+            "outcome": "finished",
+            "bets": {
+              "単勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              },
+              "複勝": {
+                "eligible": true,
+                "reason": "verified",
+                "hit": false,
+                "payout_yen": 0
+              }
+            }
+          },
+          {
+            "horse_number": 4,
+            "outcome": "nonstarter",
+            "bets": {
+              "単勝": {
+                "eligible": false,
+                "reason": "refunded",
+                "hit": null,
+                "payout_yen": null
+              },
+              "複勝": {
+                "eligible": false,
+                "reason": "refunded",
+                "hit": null,
+                "payout_yen": null
+              }
+            }
+          }
+        ],
+        "official_notes": [],
+        "issues": []
+      }
+    }
+  ],
+  "issues": []
+}
