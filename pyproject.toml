@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "keiba-acquisition"
-version = "0.3.0"
-description = "Local JRA official data acquisition feasibility probe"
+version = "0.4.0"
+description = "JRA official data acquisition and historical feature feasibility probe"
 requires-python = ">=3.12"
 dependencies = ["beautifulsoup4==4.14.2", "requests==2.32.5"]
 

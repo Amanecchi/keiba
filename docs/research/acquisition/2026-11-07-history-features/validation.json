@@ -1,0 +1,555 @@
+{
+  "base_commit": "294d700",
+  "tool_version": "0.4.0",
+  "network": {
+    "CONNECT": 200,
+    "http_status": 200,
+    "tls_verify_result": 0
+  },
+  "status": "sample_passed",
+  "checked_at": "2026-11-07T08:28:51.184073+00:00",
+  "feature_sample": {
+    "metrics": {
+      "http_attempts": 6,
+      "cache_hits": 3,
+      "received_bytes": 564426,
+      "elapsed_seconds": 11.3233
+    },
+    "features": [
+      {
+        "horse_id": "2014106081",
+        "target_date": "2018-11-04",
+        "previous_class": {
+          "code": "allowance_3",
+          "raw_class": "1600万円以下",
+          "raw_grade": null,
+          "surface": "芝",
+          "method": "official-condition-v1",
+          "issues": []
+        },
+        "running_style": {
+          "value": "先行",
+          "method": "prior-three-first-corner-v1",
+          "candidate_runs": 3,
+          "usable_runs": 3,
+          "minimum_runs": 2
+        },
+        "issues": [],
+        "evidence": [
+          {
+            "race_date": "2018-10-08",
+            "venue": "東京",
+            "meeting_number": 4,
+            "meeting_day": 3,
+            "race_number": 10,
+            "horse_id": "2014106081",
+            "starters": 13,
+            "passing_positions": [
+              2,
+              3,
+              4,
+              3
+            ],
+            "condition": {
+              "code": "allowance_3",
+              "raw_class": "1600万円以下",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201804031020181008%2F9D",
+              "sha256": "f686dfdd8cad7ed977ac2dae66d509d9b8e54eeabf748fc7c87897d4e0a206d2",
+              "fetched_at": "2026-11-07T08:20:45.421820+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2018-06-17",
+            "venue": "東京",
+            "meeting_number": 3,
+            "meeting_day": 6,
+            "race_number": 9,
+            "horse_id": "2014106081",
+            "starters": 8,
+            "passing_positions": [
+              3,
+              3,
+              3,
+              3
+            ],
+            "condition": {
+              "code": "allowance_2",
+              "raw_class": "1000万円以下",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201803060920180617%2F37",
+              "sha256": "38461addeab1f9a2da6431b9979cec96fd4f41a418dbdfd84e049d39b77a83b0",
+              "fetched_at": "2026-11-07T08:28:41.503741+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2018-05-27",
+            "venue": "東京",
+            "meeting_number": 2,
+            "meeting_day": 12,
+            "race_number": 8,
+            "horse_id": "2014106081",
+            "starters": 14,
+            "passing_positions": [
+              10,
+              10,
+              10,
+              10
+            ],
+            "condition": {
+              "code": "allowance_2",
+              "raw_class": "1000万円以下",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005201802120820180527%2F74",
+              "sha256": "6f72402b341ce1c520bf05d04eb6188d1acf69e89386522948d803b7794abde0",
+              "fetched_at": "2026-11-07T08:28:43.003322+00:00",
+              "request_method": "POST"
+            }
+          }
+        ]
+      },
+      {
+        "horse_id": "2017105109",
+        "target_date": "2021-11-07",
+        "previous_class": {
+          "code": "allowance_3",
+          "raw_class": "3勝クラス",
+          "raw_grade": null,
+          "surface": "芝",
+          "method": "official-condition-v1",
+          "issues": []
+        },
+        "running_style": {
+          "value": "差し",
+          "method": "prior-three-first-corner-v1",
+          "candidate_runs": 3,
+          "usable_runs": 3,
+          "minimum_runs": 2
+        },
+        "issues": [],
+        "evidence": [
+          {
+            "race_date": "2021-09-11",
+            "venue": "中京",
+            "meeting_number": 5,
+            "meeting_day": 1,
+            "race_number": 10,
+            "horse_id": "2017105109",
+            "starters": 13,
+            "passing_positions": [
+              8,
+              8,
+              8,
+              7
+            ],
+            "condition": {
+              "code": "allowance_3",
+              "raw_class": "3勝クラス",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1007202105011020210911%2F38",
+              "sha256": "a9ca79cb0d24b555e188424969344aed664a134dad9b03b1df66158935fbab4a",
+              "fetched_at": "2026-11-07T08:28:44.965082+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2021-06-06",
+            "venue": "中京",
+            "meeting_number": 4,
+            "meeting_day": 2,
+            "race_number": 11,
+            "horse_id": "2017105109",
+            "starters": 14,
+            "passing_positions": [
+              6,
+              6,
+              6,
+              5
+            ],
+            "condition": {
+              "code": "allowance_3",
+              "raw_class": "3勝クラス",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1007202104021120210606%2F15",
+              "sha256": "50d680bd30dc9afdfabad8e5a9561b6403d5fbb9bd410b2ece0fa1f10e194fc2",
+              "fetched_at": "2026-11-07T08:28:47.263575+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2021-02-27",
+            "venue": "阪神",
+            "meeting_number": 1,
+            "meeting_day": 5,
+            "race_number": 9,
+            "horse_id": "2017105109",
+            "starters": 14,
+            "passing_positions": [
+              4,
+              4,
+              4,
+              3
+            ],
+            "condition": {
+              "code": "allowance_3",
+              "raw_class": "3勝クラス",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202101050920210227%2F4A",
+              "sha256": "c5ff8e71f3521425cef434d9de3cbef8c7aaf0d1eb3bdb44d9a413b61a41f6fa",
+              "fetched_at": "2026-11-07T08:28:49.296931+00:00",
+              "request_method": "POST"
+            }
+          }
+        ]
+      },
+      {
+        "horse_id": "2018104638",
+        "target_date": "2025-11-09",
+        "previous_class": {
+          "code": "open",
+          "raw_class": "オープン",
+          "raw_grade": null,
+          "surface": "芝",
+          "method": "official-condition-v1",
+          "issues": []
+        },
+        "running_style": {
+          "value": "逃げ",
+          "method": "prior-three-first-corner-v1",
+          "candidate_runs": 3,
+          "usable_runs": 3,
+          "minimum_runs": 2
+        },
+        "issues": [],
+        "evidence": [
+          {
+            "race_date": "2025-09-07",
+            "venue": "札幌",
+            "meeting_number": 2,
+            "meeting_day": 6,
+            "race_number": 11,
+            "horse_id": "2018104638",
+            "starters": 12,
+            "passing_positions": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "condition": {
+              "code": "open",
+              "raw_class": "オープン",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1001202502061120250907%2F0D",
+              "sha256": "23bd198bbf7ae37beeaeeda20975e0cfaf19e7bb9cfdc0ae4baaaddf5f604561",
+              "fetched_at": "2026-11-07T08:20:46.827885+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2025-07-27",
+            "venue": "札幌",
+            "meeting_number": 1,
+            "meeting_day": 2,
+            "race_number": 11,
+            "horse_id": "2018104638",
+            "starters": 10,
+            "passing_positions": [
+              1,
+              1,
+              1,
+              2
+            ],
+            "condition": {
+              "code": "listed",
+              "raw_class": "オープン",
+              "raw_grade": "リステッド",
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1001202501021120250727%2FCE",
+              "sha256": "f038c33a289f7561c0280ad2511489a406a112bc2de1201e2f42418990071e36",
+              "fetched_at": "2026-11-07T08:20:48.879392+00:00",
+              "request_method": "POST"
+            }
+          },
+          {
+            "race_date": "2025-03-30",
+            "venue": "阪神",
+            "meeting_number": 2,
+            "meeting_day": 2,
+            "race_number": 10,
+            "horse_id": "2018104638",
+            "starters": 12,
+            "passing_positions": [
+              1,
+              1,
+              1,
+              2
+            ],
+            "condition": {
+              "code": "allowance_3",
+              "raw_class": "3勝クラス",
+              "raw_grade": null,
+              "surface": "芝",
+              "method": "official-condition-v1",
+              "issues": []
+            },
+            "source": {
+              "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1009202502021020250330%2FDD",
+              "sha256": "7ed712045a925bee9721e6ee3c38d891af01e7d33cb26d66c4d177546cf2853b",
+              "fetched_at": "2026-11-07T08:28:51.042883+00:00",
+              "request_method": "POST"
+            }
+          }
+        ]
+      }
+    ],
+    "verified_prior_results": 9
+  },
+  "year_index_discovery": {
+    "year_counts": [
+      {
+        "year": 2016,
+        "all_result_links": 138,
+        "flat_result_links": 128,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2016/jyusyo.html",
+          "sha256": "0073dfc023c860965e5f9d7aabf5bbb76d1ee88a2d1561177fa9acb199624b09",
+          "fetched_at": "2026-11-05T13:38:03.150756+00:00"
+        }
+      },
+      {
+        "year": 2017,
+        "all_result_links": 138,
+        "flat_result_links": 128,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2017/jyusyo.html",
+          "sha256": "7eee59dfccba96217957f2a8a78a6294a1ba440b61cc6763fdd552d3b54acb62",
+          "fetched_at": "2026-11-05T13:38:19.256023+00:00"
+        }
+      },
+      {
+        "year": 2018,
+        "all_result_links": 141,
+        "flat_result_links": 131,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2018/jyusyo.html",
+          "sha256": "26664f237b181847dbab19e89fd637040b0bcdb0fc8d30e0d0951975a8891db1",
+          "fetched_at": "2026-11-05T13:38:33.003144+00:00"
+        }
+      },
+      {
+        "year": 2019,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2019/jyusyo.html",
+          "sha256": "4053c9f42cbaeb2d86fbb3c18b359ebaa43dd35c0535cafc408567d133f734f1",
+          "fetched_at": "2026-11-05T13:38:47.108935+00:00"
+        }
+      },
+      {
+        "year": 2020,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2020/jyusyo.html",
+          "sha256": "dec6bb6f1aeae6b34aea83b62c1996e36ecf5780414de65b1cac61d4a426fa0f",
+          "fetched_at": "2026-11-05T13:38:59.277988+00:00"
+        }
+      },
+      {
+        "year": 2021,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2021/jyusyo.html",
+          "sha256": "39e949e53bad740f4ba22f6d31755f6deb7ea874618237906e59951b6f106868",
+          "fetched_at": "2026-11-05T13:39:13.511983+00:00"
+        }
+      },
+      {
+        "year": 2022,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2022/jyusyo.html",
+          "sha256": "b97232eb7bc429b5c0f92bd0306c9e84ec7723748bfbef6d83fbb471a729c146",
+          "fetched_at": "2026-11-05T13:39:25.090723+00:00"
+        }
+      },
+      {
+        "year": 2023,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2023/jyusyo.html",
+          "sha256": "7e0bcce452e893ca8d81dedf66b4b8734a03a1bd871d7b3f000c1b02ab97a74e",
+          "fetched_at": "2026-11-05T13:39:39.410299+00:00"
+        }
+      },
+      {
+        "year": 2024,
+        "all_result_links": 139,
+        "flat_result_links": 129,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2024/jyusyo.html",
+          "sha256": "70c3902fd15bc50890cf38141b3713925779e142bcebfd1543fcaeda17afc090",
+          "fetched_at": "2026-11-05T13:39:51.642997+00:00"
+        }
+      },
+      {
+        "year": 2025,
+        "all_result_links": 140,
+        "flat_result_links": 130,
+        "excluded_jump_links": 10,
+        "source": {
+          "url": "https://www.jra.go.jp/datafile/seiseki/replay/2025/jyusyo.html",
+          "sha256": "db5c7dc965b1b2123d48315368dbc91dec0963a62e06fcdebb3bb8d8abdad7ac",
+          "fetched_at": "2026-11-05T13:40:05.678149+00:00"
+        }
+      }
+    ],
+    "total_flat_links": 1291,
+    "full_coverage_verified": false,
+    "g1_reference_http_attempts": 2
+  },
+  "storage_sample": {
+    "distinct_sample_originals": 261,
+    "sample_original_bytes": 26929315,
+    "sample_gzip_bytes": 3456663
+  },
+  "cached_cli_check": {
+    "status": "sample_passed",
+    "requested_scope": {
+      "years": [
+        2025
+      ],
+      "current_only": false,
+      "race_name": "アルゼンチン共和国杯",
+      "flat_only": true,
+      "limit_per_year": 1,
+      "profiles_per_race": 1,
+      "database_requested": true,
+      "trainer_history_requested": true,
+      "history_features_requested": true,
+      "historical_odds_requested": true,
+      "upcoming_requested": false,
+      "odds_requested": false
+    },
+    "metrics": {
+      "elapsed_seconds": 2.4303,
+      "http_attempts": 0,
+      "cache_hits": 28,
+      "received_bytes": 0,
+      "parsed_results": 1,
+      "parsed_profiles": 1,
+      "parsed_prior_results": 3,
+      "parsed_historical_features": 1,
+      "parsed_trainer_histories": 18,
+      "parsed_entries": 18,
+      "parsed_historical_odds": 1,
+      "parsed_current_entries": 0,
+      "parsed_live_odds": 0
+    }
+  },
+  "automated_tests": {
+    "passed": 113,
+    "ruff": "passed",
+    "pip_check": "passed"
+  },
+  "full_coverage_verified": false,
+  "web_implemented": false,
+  "function_1_user_acceptance": false,
+  "g1_archive_samples": [
+    {
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2016.html",
+        "sha256": "01a5f0d61f9d50a1967639b421a93607e305a5b34808f1571612ed3cdf2ea14a",
+        "fetched_at": "2026-11-07T08:30:17.278767+00:00",
+        "request_method": "GET"
+      },
+      "reference": {
+        "kind": "race_reference",
+        "race_date": "2016-02-21",
+        "title": "11R 第33回 \nフェブラリーステークス（GI）",
+        "distance_m": 1600,
+        "venue": "東京",
+        "meeting_number": 1,
+        "meeting_day": 8,
+        "race_number": 11,
+        "issues": []
+      },
+      "search_link": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01skl00999999%2FB3"
+    },
+    {
+      "source": {
+        "url": "https://www.jra.go.jp/datafile/seiseki/g1/feb/result/feb2025.html",
+        "sha256": "67d04096bc46c3a9ce29088a55e58521157a1249488df33aca393473ee039f64",
+        "fetched_at": "2026-11-07T08:30:20.519044+00:00",
+        "request_method": "GET"
+      },
+      "reference": {
+        "kind": "race_reference",
+        "race_date": "2025-02-23",
+        "title": "第42回 フェブラリーステークス GⅠ",
+        "distance_m": 1600,
+        "venue": "東京",
+        "meeting_number": 1,
+        "meeting_day": 8,
+        "race_number": 11,
+        "issues": []
+      },
+      "search_link": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01skl00999999%2FB3"
+    }
+  ]
+}

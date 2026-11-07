@@ -30,6 +30,7 @@ from .html import (
     parse_result,
     related_links,
 )
+from .history import derive_features, parse_prior_result, prior_reference, prior_runs
 from .transport import AcquisitionError, Client, write_json
 
 
@@ -102,6 +103,7 @@ class Probe:
         reference=None,
         final_odds=False,
         trainer_history=False,
+        history_features=False,
     ):
         parse = (
             parse_result
@@ -167,14 +169,67 @@ class Probe:
         selected = result["entries"][:profile_limit]
         for entry in selected:
             if entry["horse_url"]:
-                self.acquire(
+                _, profile = self.acquire(
                     entry["horse_url"],
                     "profile",
                     lambda body, base: parse_profile(body, base, target_date),
                     context=target_date.isoformat(),
                 )
+                if history_features and profile is not None:
+                    self.history_features(profile)
 
-    def database_result(self, archive_url: str, profile_limit: int, *, trainer_history=False):
+    def history_features(self, profile: dict):
+        samples = []
+        try:
+            for run in prior_runs(profile):
+                try:
+                    prior_reference(run)
+                except ParseError:
+                    # Unlinked/overseas records remain in the evidence, without guessing a URL.
+                    continue
+                _, sample = self.acquire(
+                    run["source_url"],
+                    "prior_result",
+                    lambda body, base, run=run: parse_prior_result(
+                        body, base, run, profile["horse_id"], profile["target_date"]
+                    ),
+                    post_cname=True,
+                    context=f"{profile['horse_id']}:{profile['target_date']}",
+                )
+                if sample is not None:
+                    samples.append(sample)
+            features = derive_features(profile, samples)
+            features["parser_version"] = __version__
+            key = hashlib.sha256(
+                f"{self.run_id}|{len(self.records)}|historical_features".encode()
+            ).hexdigest()
+            path = Path("parsed") / f"{key}.json"
+            write_json(self.client.output / path, features)
+            self.records.append(
+                {
+                    "kind": "historical_features",
+                    "url": profile["source"]["url"],
+                    "context": profile["target_date"],
+                    "status": "partial" if features["issues"] else "parsed",
+                    "issues": features["issues"],
+                    "parsed_path": str(path),
+                }
+            )
+            self.parsed.append(features)
+        except ParseError as error:
+            self.records.append(
+                {
+                    "kind": "historical_features",
+                    "url": profile["source"]["url"],
+                    "status": "error",
+                    "error_kind": "parse_error",
+                    "message": str(error),
+                }
+            )
+
+    def database_result(
+        self, archive_url: str, profile_limit: int, *, trainer_history=False, history_features=False
+    ):
         page, reference = self.acquire(archive_url, "race_reference", race_reference)
         if reference is None:
             return
@@ -196,6 +251,7 @@ class Probe:
                 reference=reference,
                 final_odds=True,
                 trainer_history=trainer_history,
+                history_features=history_features,
             )
         except ParseError as error:
             self.records.append(
@@ -313,6 +369,7 @@ class Probe:
                         args.profiles_per_race,
                         final_odds=args.database,
                         trainer_history=args.trainer_history,
+                        history_features=args.history_features,
                     )
             elif not args.current_only:
                 for year in args.years or [2016, 2021, 2025]:
@@ -322,7 +379,8 @@ class Probe:
                         continue
                     try:
                         links = discover_results(
-                            page.body, page.response_url or page.url, args.race_name
+                            page.body, page.response_url or page.url, args.race_name,
+                            flat_only=args.flat_only,
                         )
                     except ParseError as error:
                         self.records[-1].update(
@@ -342,12 +400,14 @@ class Probe:
                                 link["url"],
                                 args.profiles_per_race,
                                 trainer_history=args.trainer_history,
+                                history_features=args.history_features,
                             )
                         else:
                             self.result(
                                 link["url"],
                                 args.profiles_per_race,
                                 trainer_history=args.trainer_history,
+                                history_features=args.history_features,
                             )
             if args.upcoming_url:
                 self.upcoming(args.upcoming_url, args.odds_url)
@@ -406,10 +466,12 @@ class Probe:
                 else args.years or [2016, 2021, 2025],
                 "current_only": args.current_only,
                 "race_name": args.race_name,
+                "flat_only": args.flat_only,
                 "limit_per_year": args.limit_per_year,
                 "profiles_per_race": args.profiles_per_race,
                 "database_requested": args.database,
                 "trainer_history_requested": args.trainer_history,
+                "history_features_requested": args.history_features,
                 "historical_odds_requested": args.database,
                 "upcoming_requested": bool(args.upcoming_url),
                 "odds_requested": bool(args.odds_url or args.upcoming_url),
@@ -421,6 +483,10 @@ class Probe:
                 "received_bytes": self.client.received_bytes,
                 "parsed_results": len(results),
                 "parsed_profiles": len(profiles),
+                "parsed_prior_results": sum(r["kind"] == "prior_result" for r in self.parsed),
+                "parsed_historical_features": sum(
+                    r["kind"] == "historical_features" for r in self.parsed
+                ),
                 "parsed_trainer_histories": sum(
                     r["kind"] == "trainer_history" for r in self.parsed
                 ),
@@ -469,6 +535,9 @@ def parser() -> argparse.ArgumentParser:
     )
     cli.add_argument("--limit-per-year", type=int, default=1)
     cli.add_argument(
+        "--flat-only", action="store_true", help="年度別重賞一覧から障害重賞を除く"
+    )
+    cli.add_argument(
         "--database",
         action="store_true",
         help="年度一覧の保存版を開催キーでJRADB詳細結果・最終単複オッズへ対応付けて検証",
@@ -478,6 +547,11 @@ def parser() -> argparse.ArgumentParser:
         "--trainer-history",
         action="store_true",
         help="結果の調教師IDと公式所属歴から当時所属を補完",
+    )
+    cli.add_argument(
+        "--history-features",
+        action="store_true",
+        help="直近3実出走の補助結果から前走クラスと発走前脚質を少量検証",
     )
     cli.add_argument("--upcoming-url", help="対象レースの公式出馬表または案内URL")
     cli.add_argument("--odds-url", help="必要に応じて公式単複オッズ画面を直接指定")
@@ -495,6 +569,8 @@ def main(argv=None) -> int:
     args = cli.parse_args(argv)
     if args.current_only and not (args.upcoming_url or args.odds_url):
         cli.error("current-onlyではupcoming-urlまたはodds-urlを指定してください。")
+    if args.current_only and args.history_features:
+        cli.error("history-featuresは過去結果の追加検証用です。current-onlyと併用できません。")
     if (
         args.interval < 1
         or args.timeout <= 0

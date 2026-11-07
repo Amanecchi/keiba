@@ -137,7 +137,9 @@ def cell_value(row: list[Tag], mapping: dict, key: str, *, images: bool = True) 
     return text(row[index], images=images) if index is not None and index < len(row) else None
 
 
-def discover_results(body: bytes, base: str, race_name: str = "") -> list[dict]:
+def discover_results(
+    body: bytes, base: str, race_name: str = "", *, flat_only: bool = False
+) -> list[dict]:
     soup = BeautifulSoup(body, "html.parser")
     found = {}
     for rows, mapping in tables_with_headers(soup, {"race"}):
@@ -145,11 +147,18 @@ def discover_results(body: bytes, base: str, race_name: str = "") -> list[dict]:
             name = cell_value(row, mapping, "race") or ""
             if race_name and clean(race_name) not in clean(name):
                 continue
+            if flat_only and re.search(r"J[・.]G(?:I{1,3}|[123])", clean(name)):
+                continue
             for node in {id(cell): cell for cell in row}.values():
                 for anchor in node.find_all("a"):
                     url = link_url(anchor, base)
                     if url and (
-                        "/JRADB/accessS.html" in url or re.search(r"/replay/\d{4}/\d+\.html", url)
+                        "/JRADB/accessS.html" in url
+                        or re.search(r"/replay/\d{4}/\d+\.html", url)
+                        or re.fullmatch(
+                            r"/datafile/seiseki/g1/[a-z0-9_-]+/result/[a-z0-9_-]+\.html",
+                            urlsplit(url).path,
+                        )
                     ):
                         found.setdefault(url, {"url": url, "race_name": name})
     if not found:
