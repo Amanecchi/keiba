@@ -1,0 +1,136 @@
+{
+  "environment": "internal cloud preparation; not deployed production",
+  "target_races": 1399,
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "job": {
+    "state": "running",
+    "cursor": 2,
+    "total": 1399,
+    "message": "2016-01-10 シンザン記念 を収集中",
+    "updated_at": "2026-11-07T11:54:45.235675+00:00"
+  },
+  "counts": {
+    "analysis_races": 3,
+    "source_blobs": 453,
+    "source_fetches": 455,
+    "race_catalog": 1399
+  },
+  "catalog_years": [
+    {
+      "year": 2016,
+      "through_date": "2016-12-31"
+    },
+    {
+      "year": 2017,
+      "through_date": "2017-12-31"
+    },
+    {
+      "year": 2018,
+      "through_date": "2018-12-31"
+    },
+    {
+      "year": 2019,
+      "through_date": "2019-12-31"
+    },
+    {
+      "year": 2020,
+      "through_date": "2020-12-31"
+    },
+    {
+      "year": 2021,
+      "through_date": "2021-12-31"
+    },
+    {
+      "year": 2022,
+      "through_date": "2022-12-31"
+    },
+    {
+      "year": 2023,
+      "through_date": "2023-12-31"
+    },
+    {
+      "year": 2024,
+      "through_date": "2024-12-31"
+    },
+    {
+      "year": 2025,
+      "through_date": "2025-12-31"
+    },
+    {
+      "year": 2026,
+      "through_date": "2026-11-07"
+    }
+  ],
+  "latest_samples": [
+    {
+      "date": "2016-01-05",
+      "name": "中山金杯",
+      "entries": 14,
+      "historical_features_attempted": 14,
+      "settlement_issues": [],
+      "source": {
+        "fetched_at": "2026-11-07T11:50:36.438635+00:00",
+        "request_method": "GET",
+        "sha256": "7b1ee27dec707620bab2d32de2376f27c84aeba0980030619ef9fd24ed2c761b",
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1006201601011120160105%2F41"
+      },
+      "unknown_fields": {
+        "running_style": 0,
+        "previous_class": 0,
+        "affiliation": 0
+      }
+    },
+    {
+      "date": "2016-01-05",
+      "name": "京都金杯",
+      "entries": 17,
+      "historical_features_attempted": 17,
+      "settlement_issues": [],
+      "source": {
+        "fetched_at": "2026-11-07T11:52:14.954054+00:00",
+        "request_method": "GET",
+        "sha256": "e954badda0ae8caddaa3381bce7c9c2c1269a0e3cf6817f95983f62ead4f8621",
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1008201601011120160105%2FD5"
+      },
+      "unknown_fields": {
+        "running_style": 0,
+        "previous_class": 0,
+        "affiliation": 0
+      }
+    },
+    {
+      "date": "2025-11-09",
+      "name": "アルゼンチン共和国杯",
+      "entries": 18,
+      "historical_features_attempted": 18,
+      "settlement_issues": [],
+      "source": {
+        "fetched_at": "2026-11-05T13:40:11.734661+00:00",
+        "request_method": "GET",
+        "sha256": "b4f538fc67d72b7b0374182a9b1402ae22415052d11364e4dbfbd7d8f5a68791",
+        "url": "https://www.jra.go.jp/JRADB/accessS.html?CNAME=pw01sde1005202505021120251109%2FB6"
+      },
+      "unknown_fields": {
+        "running_style": 0,
+        "previous_class": 0,
+        "affiliation": 0
+      }
+    }
+  ],
+  "owner_credentials_copied": false,
+  "qa_saved_searches_copied": false,
+  "production_url": null,
+  "all_target_data_complete": false
+}
