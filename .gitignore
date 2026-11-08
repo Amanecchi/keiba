@@ -1,5 +1,10 @@
 # Intermediate research downloads and scratch files
 /work/
+/handoff-data/
+/local-data/
+.env
+.env.*
+!.env.example
 .venv/
 __pycache__/
 *.py[cod]

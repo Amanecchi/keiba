@@ -1,0 +1,104 @@
+{
+  "checked_at_jst": "2026-11-08T12:11:51.385733+09:00",
+  "source_commit": "18ac4d194b6b99821ccb070b53903469122b398f",
+  "branch": "work",
+  "code_version": "0.5.2",
+  "development_environment": {
+    "source_database": "keiba_preparation_20261107",
+    "postgres_version": "17.11",
+    "database_bytes": 94762675,
+    "gzip_original_bytes": 62751753,
+    "table_counts": {
+      "keiba_settings": 3,
+      "source_blobs": 4543,
+      "source_fetches": 4790,
+      "race_catalog": 1399,
+      "catalog_runs": 11,
+      "analysis_snapshots": 276,
+      "analysis_races": 256,
+      "saved_searches": 0,
+      "acquisition_jobs": 1
+    },
+    "setting_names_only": [
+      "collector_lease",
+      "raw_bytes",
+      "schema_version"
+    ]
+  },
+  "coverage_of_latest_races": [
+    {
+      "race_year": "2016",
+      "saved_races": 128,
+      "entries": 1917,
+      "first_date": "2016-01-05",
+      "last_date": "2016-12-25"
+    },
+    {
+      "race_year": "2017",
+      "saved_races": 127,
+      "entries": 1896,
+      "first_date": "2017-01-05",
+      "last_date": "2017-12-24"
+    },
+    {
+      "race_year": "2025",
+      "saved_races": 1,
+      "entries": 18,
+      "first_date": "2025-11-09",
+      "last_date": "2025-11-09"
+    }
+  ],
+  "coverage_note": "Saved races, not a claim of all years collected or every field complete. Other years exist only in the catalog and auxiliary source pages.",
+  "job": {
+    "id": "c7acf00a76b64e9ba91fd1c5959f873d",
+    "state": "failed",
+    "cursor": 255,
+    "total": 1399,
+    "message": "一部のデータを確認できません。前の成功データを保持して停止しました。",
+    "updated_at": "2026-11-07T15:33:31.020293+00:00"
+  },
+  "next_target": {
+    "year": 2017,
+    "venue": "中山",
+    "surface": "芝",
+    "race_date": "2017-12-28",
+    "series_id": "jra-flat-d50b1dc17f2e5a71",
+    "distance_m": 2000,
+    "archive_url": "https://www.jra.go.jp/datafile/seiseki/g1/hopeful/result/hopeful2017.html",
+    "catalog_url": "https://www.jra.go.jp/datafile/seiseki/replay/2017/jyusyo.html",
+    "series_name": "ホープフルS",
+    "name_at_time": "ホープフルS",
+    "grade_at_time": "GI",
+    "registry_version": "jra-flat-series-v1"
+  },
+  "external_protection": {
+    "url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site",
+    "type": "Sites managed D1",
+    "counts": {
+      "keiba_settings": 2,
+      "source_blobs": 4543,
+      "source_fetches": 4790,
+      "race_catalog": 1399,
+      "catalog_runs": 11,
+      "analysis_snapshots": 276,
+      "analysis_races": 256,
+      "saved_searches": 0,
+      "acquisition_jobs": 1,
+      "vault_checkpoints": 231
+    },
+    "entries": 3831,
+    "source_counts_agree_except_operational_lease": true
+  },
+  "do_not_use_as_current_backup": [
+    "Site recovery/postgres-initial.dump: earlier 30-race checkpoint",
+    "work/initial-preparation-20261107/preparation-checkpoint.dump: older preparation checkpoint",
+    "work/initial-preparation-20261107/restored-from-vault.sqlite: earlier restore validation only"
+  ],
+  "export_status": {
+    "new_handoff_dump": "not created; agree handoff method first",
+    "restore_validation": "new handoff archive not yet tested",
+    "windows_restore": "not performed",
+    "data_transfer_to_pc": "not performed"
+  },
+  "transfer_policy": "Code/docs via Git branch work; data via separately provided private archive; no dump/originals/credentials in public Git."
+}
