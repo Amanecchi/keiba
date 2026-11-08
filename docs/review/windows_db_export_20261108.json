@@ -49,9 +49,14 @@
   "zip_integrity_and_all_payload_checksums": true,
   "restore_database": "keiba_handoff_restore_20261108_032719",
   "transfer_to_windows_pc": "not yet performed",
-  "delivery": "file link to archive in this task workspace; no public web upload",
+  "delivery": "Authenticated HTTPS download from owner-private Sites/R2; internal workspace path is not a distribution URL",
   "credentials_included": false,
   "original_database_and_external_vault": "retained; collector not restarted",
   "checksum_file": "keiba-handoff-20261108T122719-JST.zip.sha256",
-  "verification_tool_sha256": "43c16b5ccbc9b4890b95904b910dc0c0bd99c0d835314a5a57c8acb9f5098dfe"
+  "verification_tool_sha256": "43c16b5ccbc9b4890b95904b910dc0c0bd99c0d835314a5a57c8acb9f5098dfe",
+  "download_url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site/api/handoff/download?id=70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "site_url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site",
+  "download_verified_bytes": 76320379,
+  "download_verified_sha256": "70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "download_verification_record": "windows_db_download_20261108.json"
 }

@@ -2,7 +2,7 @@
 
 更新：2026-11-08（日本時間） / 段階：**DB書出し・Linuxの空DBへの復元検証は完了。Windowsへのデータ移送・復元は未実施**
 
-最新の移行用ファイルは `keiba-handoff-20261108T122719-JST.zip`（76,320,379 bytes、約76.3MB）。この会話のファイルリンクから受け取る。DB本体はGitに含めない。[書出しと復元検証の記録](review/windows_db_export_20261108.json) にZIP・ダンプのSHA-256を保存した。
+最新の移行用ファイルは `keiba-handoff-20261108T122719-JST.zip`（76,320,379 bytes、約76.3MB）。**[本人限定のデータ保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)へ入り、「移行用ZIPをダウンロード」を押して受け取る。** 前の開発環境内パスは配布URLではなく、受渡方法を修正した。DB本体はGitに含めない。[書出し記録](review/windows_db_export_20261108.json)と[HTTPSでの全件取得検証](review/windows_db_download_20261108.json)を参照。
 
 ## 1. 今回確定した方針
 
@@ -91,7 +91,7 @@ keiba-handoff-作成日時/
 
 現在の実DBから新しいダンプを作成し、9テーブル全内容・原本4,543件・解析276版・5通りの集計・計画/停止位置が一致することを確認しました。元DBの内容も変わっていません。ZIPのCRCと全同梱ファイルのSHAも確認済みです。Windows側では同梱のRESTORE.mdに従い、空DBへ復元後、scripts/verify_handoff.pyとverification/baseline.jsonで照合します。
 
-ファイルはこの会話のリンクからダウンロードしてください。ユーザーのPCでの受信自体は未確認です。受け取れない場合はその時点で伝え、JRAからの再取得で埋め合わせないでください。公開GitHubや公開URLへDBを載せる方法は使っていません。
+ファイルは本人限定保管庫のR2へ保存し、認証付きHTTPSでダウンロードできるようにしました。実際に76,320,379 bytes全件を取得し、元ZIPとSHA-256が一致、ZIPのCRCも正常であることを確認しています。HEADのファイル名・サイズ、途中/末尾のRange取得、未ログイン時401も確認済み。Sitesの所有者1名・外部訪問者0名の設定を維持しています。ユーザーPCでの受信自体は未確認です。開発環境内の`/workspace/...`をWindowsのダウンロードURLとして使わないでください。
 
 ## 5. ご本人の具体的なWindows操作
 
@@ -118,7 +118,7 @@ git -C "$env:USERPROFILE\keiba-work\keiba" branch --show-current
 
 ### 5.2 DBファイルを受け取る
 
-1. こちらが案内する移行用ファイルをダウンロードする。古いダンプではなく、案内した作成日時・ファイル名のものを使う。
+1. [本人限定保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)をブラウザで開く。サインインが出た場合は、この会話と同じChatGPTアカウントで入る。「WindowsへのDB移行」欄の**「移行用ZIPをダウンロード（76.3 MB）」**を押す。ファイル名が`keiba-handoff-20261108T122719-JST.zip`であることを確認する。
 2. エクスプローラーのアドレス欄に`%USERPROFILE%`と入力して開き、`keiba-data`フォルダーを作る。
 3. ZIPの場合は右クリック→「すべて展開」で、`keiba-data`の中へ展開する。
 4. 展開したフォルダーのパスをWindows側Codexへ伝える。**DBの中身やパスワードをチャットへ貼る必要はない。**

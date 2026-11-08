@@ -5,6 +5,8 @@
 ## 最優先の更新：WindowsのChatGPTデスクトップ版への引き継ぎ
 
 - 最初に [AGENTS.md](AGENTS.md)、[Windows引き継ぎ手順](docs/windows_handoff.md) を読む。ユーザーは手順確認後に「書き出してください」と指示。**最新の実データを書き出し、Linuxの空PostgreSQLへの復元と全内容一致を確認済み。Windowsへの転送・復元・起動は未実施。** [書出し記録](docs/review/windows_db_export_20261108.json) を参照。書出しを再度の承諾待ちへ戻さない。
+- **配布経路を修正済み**：ユーザーが前のZIPリンクを取得できないと報告。前リンクは開発環境内パスで、配布URLではなかった。既存[本人限定保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)の「移行用ZIPをダウンロード」ボタンから取得する。R2へ元ZIPを15パートで保存し、認証付きHTTPSで全76,320,379 bytesを再取得してSHA一致・CRCを確認。匿名401・Range206・HEADも実証。[配布検証](docs/review/windows_db_download_20261108.json)。ZIP本体とハッシュは変更していない。
+- Siteは同じproject_id、所有者1名・外部訪問者0名を維持。`.openai/hosting.json`はD1=`DB`に加えR2=`BUCKET`。Workerソースは非公開Site Gitの`26d68c87d6c1c05dfb184dfb784e14c2e36b527f`、配備成功version 2。D1へhandoff_exports/handoff_export_partsの受渡メタデータ2表を追加したが、従来10表の件数は不変。アプリ用のローカルPGは9表のまま。受渡メタデータをアプリDBへ混ぜない。
 - 移行先はWindows、DBはPC内へ保存。完成版はWeb上で動作する形を希望するが**必須ではない**。途中の「完成版もPCブラウザで利用」「デスクトップアプリ専用」という回答は後続の訂正で確定仕様ではなくなった。旧資料の外部Web公開必須・利用者PC実行不要を、そのまま今回の移行条件にしない。
 - まずPostgreSQL 17系の論理バックアップで同種DBへ移し、内容一致を検証する。DB製品変更・スキーマ改修・デスクトップ専用化・外部Web公開を移行と同時に行わない。原本の最終保管方法はローカルのディスク/バックアップ条件で再評価し、先のクラウド無料枠の不足をローカル復元の停止条件にしない。
 - [最新の所在確認](docs/review/windows_handoff_inventory_20261108.json)：PG17.11、実データDB `keiba_preparation_20261107`、256開催/3,831出走、原本4,543・取得4,790・解析276版。2016年128開催1,917出走、2017年127開催1,896出走、2025年1開催18出走。初回ジョブ255/1,399、次対象2017ホープフルS。D1の実データ件数も一致。収集は停止したまま。

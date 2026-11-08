@@ -2,6 +2,8 @@
 
 **現在の引き継ぎ：[Windowsへの移行・分担と具体的な操作](docs/windows_handoff.md)** — 最新DBを書き出し、空PostgreSQLへの復元・全内容一致を検証しました。[ZIPのSHAと検証記録](docs/review/windows_db_export_20261108.json)。PCへの転送・復元はこれからです。完成版のWeb利用は希望であり、必須要件ではありません。
 
+**ZIPの受取先：[本人限定のデータ保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)** の「移行用ZIPをダウンロード」ボタン。サインイン時は同じChatGPTアカウントを使います。HTTPSで元ZIPと同じ全件・SHAを取得でき、匿名取得を拒否することを[検証済み](docs/review/windows_db_download_20261108.json)です。
+
 **DB評価：[重賞から未勝利戦等への拡張・容量と検索性能](docs/database_feasibility.md)** — クラウド無料枠を前提にした評価。Windowsへの同種DB復元を先に行い、その後はPCの容量・検索性能・バックアップを評価します。追加収集は停止中です。
 
 **ご確認用：[設計・進捗確認書](docs/system_design_review.md)** — 現在の進捗、DBの所有・保存内容、使用プログラム、未完了事項、今後の手順をまとめています。

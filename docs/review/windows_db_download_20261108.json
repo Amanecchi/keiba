@@ -1,0 +1,63 @@
+{
+  "checked_at_jst": "2026-11-08T12:48:28.331102+09:00",
+  "site_url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site",
+  "download_url": "https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site/api/handoff/download?id=70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "archive_name": "keiba-handoff-20261108T122719-JST.zip",
+  "archive_bytes": 76320379,
+  "archive_sha256": "70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "uploaded_parts": 15,
+  "part_size": 5242880,
+  "head_status": 200,
+  "content_disposition": "attachment; filename=\"keiba-handoff-20261108T122719-JST.zip\"",
+  "full_authenticated_download_status": 200,
+  "downloaded_bytes": 76320379,
+  "downloaded_sha256": "70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "zip_crc_valid": true,
+  "ranges": [
+    {
+      "range": "bytes=0-4095",
+      "status": 206,
+      "bytes": 4096,
+      "exact_content": true
+    },
+    {
+      "range": "bytes=5242883-5244930",
+      "status": 206,
+      "bytes": 2048,
+      "exact_content": true
+    },
+    {
+      "range": "bytes=-64",
+      "status": 206,
+      "bytes": 64,
+      "exact_content": true
+    }
+  ],
+  "invalid_range_status": 416,
+  "anonymous_status": 401,
+  "owner_only_preserved": true,
+  "page_download_button_present": true,
+  "original_core_table_counts_unchanged": true,
+  "counts": {
+    "keiba_settings": 2,
+    "source_blobs": 4543,
+    "source_fetches": 4790,
+    "race_catalog": 1399,
+    "catalog_runs": 11,
+    "analysis_snapshots": 276,
+    "analysis_races": 256,
+    "saved_searches": 0,
+    "acquisition_jobs": 1,
+    "vault_checkpoints": 231
+  },
+  "entries": 3831,
+  "browser_qa": "not performed: managed Sites cua_repl.js unavailable; authenticated HTTPS GET/HEAD/range and full file verified",
+  "user_pc_download": "not yet confirmed",
+  "download_and_followup_checks_seconds": 9.393,
+  "worker_source_commit": "26d68c87d6c1c05dfb184dfb784e14c2e36b527f",
+  "project_id": "appgprj_6aef16fdc44881919e0ee61f75e5369e",
+  "deployment_id": "appgdep_6aefefe799a881918363fadafe1a7218",
+  "saved_version_id": "appgprj_6aef16fdc44881919e0ee61f75e5369e~appgver_b7402614e3e4819199933342f8f09079",
+  "storage": "R2 object; D1 has upload receipts only. Original acquisition/analysis tables unchanged.",
+  "node_tests_passed": 3
+}

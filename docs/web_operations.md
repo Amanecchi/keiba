@@ -14,6 +14,10 @@
 
 **既存の過去分析Web本体はPostgreSQL前提であり、D1をそのままSQLAlchemyの接続先にできる実装ではない。** 現在実証済みなのは、取得から環境外DBへの保存・認証付き読込・別の空DBへの復元。本番の分析画面/APIがどのDBを検索するかという統合と、全対象容量・無料条件・運用構成の確定は残る。保管庫稼働を、分析システムの本番DB統合完了として説明しない。
 
+## 移行用ファイルの受渡
+
+ZIPは[本人限定保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site)のダウンロードボタンで受け取る。保管用WorkerのR2へファイルを保存し、D1のhandoff_exports/handoff_export_partsは転送確認に使う。既存の取得・解析テーブルと、ローカル復元する9表とは分ける。認証付き全件GETでSHA一致を実証し、匿名は401。[検証](review/windows_db_download_20261108.json)。
+
 ## 現在稼働している保存先
 
 [競馬データ保管庫](https://keiba-data-vault-20261107-b93d.relaxedbough1.chatgpt.site) のD1へ原本・解析結果・進捗を自動保存する。追加のRender/Neonアカウント登録は現在のDB保存には不要。作業用PostgreSQLからの転送は `MirroredStore`、環境外DBからの復元は `RemoteVault.restore_to()`。通常検索とJRA取得の分離は維持する。[実装手順](acquisition_pipeline.md) と [実測/復元検証](research/storage/2026-11-07/report.md) を参照。
