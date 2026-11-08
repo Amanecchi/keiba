@@ -1,6 +1,6 @@
 # keiba
 
-**現在の引き継ぎ：[Windowsへの移行・分担と具体的な操作](docs/windows_handoff.md)** — DBをPC内へ保存し、ChatGPTデスクトップ版のCodexで開発を継続します。完成版のWeb利用は希望であり、必須要件ではありません。現在は方法の確認段階です。
+**現在の引き継ぎ：[Windowsへの移行・分担と具体的な操作](docs/windows_handoff.md)** — 最新DBを書き出し、空PostgreSQLへの復元・全内容一致を検証しました。[ZIPのSHAと検証記録](docs/review/windows_db_export_20261108.json)。PCへの転送・復元はこれからです。完成版のWeb利用は希望であり、必須要件ではありません。
 
 **DB評価：[重賞から未勝利戦等への拡張・容量と検索性能](docs/database_feasibility.md)** — クラウド無料枠を前提にした評価。Windowsへの同種DB復元を先に行い、その後はPCの容量・検索性能・バックアップを評価します。追加収集は停止中です。
 

@@ -1,0 +1,57 @@
+{
+  "archive_name": "keiba-handoff-20261108T122719-JST.zip",
+  "archive_path": "/workspace/keiba/work/exports/keiba-handoff-20261108T122719-JST.zip",
+  "archive_bytes": 76320379,
+  "archive_sha256": "70c276c4f96352599ef657563845b799b410ebdf91c32776c6fce5bed78be8b0",
+  "created_at_jst": "2026-11-08T12:29:20.310307+09:00",
+  "source_commit_before_export": "d4c60af6771a8977aee8fd330d692c91b10e19dc",
+  "application_version": "0.5.2",
+  "dump_bytes": 76240687,
+  "dump_sha256": "6c384a2f0fe189ed1f8d5398ccf5d2f46958a457b067fd237918253566e59a9f",
+  "database_fingerprint_sha256": "fd65529d0dfb1547d06c037a0b652327111d1c8b404bd9fc988449d15b12873f",
+  "counts": {
+    "acquisition_jobs": 1,
+    "analysis_races": 256,
+    "analysis_snapshots": 276,
+    "catalog_runs": 11,
+    "keiba_settings": 3,
+    "race_catalog": 1399,
+    "saved_searches": 0,
+    "source_blobs": 4543,
+    "source_fetches": 4790
+  },
+  "latest_entries": 3831,
+  "coverage_by_year": {
+    "2016": {
+      "races": 128,
+      "entries": 1917
+    },
+    "2017": {
+      "races": 127,
+      "entries": 1896
+    },
+    "2025": {
+      "races": 1,
+      "entries": 18
+    }
+  },
+  "validated": {
+    "empty_postgres_restore": true,
+    "all_table_contents_equal": true,
+    "originals_sha_verified": 4543,
+    "snapshots_sha_verified": 276,
+    "analysis_cases_equal": 5,
+    "source_unchanged": true,
+    "windows_restore": false,
+    "windows_app_startup": false,
+    "rejects_incorrect_expected_baseline": true
+  },
+  "zip_integrity_and_all_payload_checksums": true,
+  "restore_database": "keiba_handoff_restore_20261108_032719",
+  "transfer_to_windows_pc": "not yet performed",
+  "delivery": "file link to archive in this task workspace; no public web upload",
+  "credentials_included": false,
+  "original_database_and_external_vault": "retained; collector not restarted",
+  "checksum_file": "keiba-handoff-20261108T122719-JST.zip.sha256",
+  "verification_tool_sha256": "43c16b5ccbc9b4890b95904b910dc0c0bd99c0d835314a5a57c8acb9f5098dfe"
+}
