@@ -1,0 +1,81 @@
+{
+  "checked_at_jst": "2026-11-08T10:15:01.843779+09:00",
+  "units": "Provider GB/MB labels retained; do not treat per-account totals as one database.",
+  "providers": [
+    {
+      "provider": "Sites managed D1",
+      "database_limit_gb": 10,
+      "sources": [
+        "https://help.openai.com/en/articles/20001339-creating-and-using-chatgpt-sites",
+        "https://learn.chatgpt.com/docs/sites#pricing"
+      ],
+      "free_status": "Learn describes free hosting through 2026-12-31 and plan allowance/overage metering from 2027-01-01; current Help describes shared plan limits and Enterprise waivers. This account allowance and enforced zero-charge cutoff are not established.",
+      "decision": "retain existing data; not approved as permanent zero-cost final analytical store"
+    },
+    {
+      "provider": "Cloudflare Workers Free D1 (direct account; not Sites)",
+      "database_limit_mb": 500,
+      "account_total_gb": 5,
+      "rows_read_per_day": 5000000,
+      "rows_written_per_day": 100000,
+      "max_row_bytes": 2000000,
+      "sources": [
+        "https://developers.cloudflare.com/d1/platform/limits/",
+        "https://developers.cloudflare.com/d1/platform/pricing/"
+      ],
+      "decision": "raw+snapshot single DB does not fit reference; indexed query prototype and actual read budget needed"
+    },
+    {
+      "provider": "Neon Free",
+      "postgres_gb_per_project": 1,
+      "object_gb_per_project": 5,
+      "egress_gb_per_project_per_month": 5,
+      "cu_hours_per_project_per_month": 100,
+      "sources": [
+        "https://neon.com/pricing",
+        "https://neon.com/docs/introduction/plans"
+      ],
+      "free_status": "No time limit/card; compute suspends at compute/egress limits; writes increasing storage fail at storage limits; data not deleted.",
+      "decision": "current all-in-Postgres schema rejected; typed SQL plus separately validated archive is a candidate only"
+    },
+    {
+      "provider": "Supabase Free",
+      "database_mb": 500,
+      "objects_gb": 1,
+      "egress_gb": 5,
+      "sources": [
+        "https://supabase.com/pricing"
+      ],
+      "decision": "current raw+snapshots do not fit; no capacity advantage for this design"
+    },
+    {
+      "provider": "Turso Free",
+      "database_gb": 5,
+      "monthly_rows_read": 500000000,
+      "monthly_rows_written": 10000000,
+      "monthly_sync_gb": 3,
+      "sources": [
+        "https://turso.tech/pricing",
+        "https://docs.turso.tech/help/usage-and-billing"
+      ],
+      "decision": "possible typed SQL alternative; different dialect/driver, real performance, overage-disable state and backup unverified; not provisioned"
+    },
+    {
+      "provider": "Cloudflare R2 Standard",
+      "free_storage_gb_month": 10,
+      "sources": [
+        "https://developers.cloudflare.com/r2/pricing/"
+      ],
+      "decision": "free allowance is not a guarantee of zero charges; no adoption until account/payment rules and enforced cutoff verified"
+    },
+    {
+      "provider": "Backblaze B2",
+      "free_storage_gb": 10,
+      "sources": [
+        "https://www.backblaze.com/cloud-storage/pricing",
+        "https://www.backblaze.com/docs/cloud-storage-data-caps-and-alerts"
+      ],
+      "decision": "archive candidate only; actual free-account caps, charge cutoff, independent restore and growth headroom unverified; not provisioned"
+    }
+  ]
+}

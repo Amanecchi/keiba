@@ -1,0 +1,51 @@
+{
+  "checked_at_jst": "2026-11-08T10:10:13.093468+09:00",
+  "endpoint": "GET /api/status",
+  "method": "existing session, service authentication, TLS verification on; no writes",
+  "samples_ms": [
+    1585.491,
+    226.499,
+    195.261,
+    187.57,
+    170.105
+  ],
+  "median_ms": 195.261,
+  "max_ms": 1585.491,
+  "status": {
+    "database": "persistent D1",
+    "counts": {
+      "keiba_settings": 2,
+      "source_blobs": 4543,
+      "source_fetches": 4790,
+      "race_catalog": 1399,
+      "catalog_runs": 11,
+      "analysis_snapshots": 276,
+      "analysis_races": 256,
+      "saved_searches": 0,
+      "acquisition_jobs": 1,
+      "vault_checkpoints": 231
+    },
+    "entries": 3831,
+    "checkpoint": {
+      "checked_at": "2026-11-07T15:33:31.296288+00:00",
+      "counts": {
+        "acquisition_jobs": 1,
+        "analysis_races": 256,
+        "analysis_snapshots": 276,
+        "catalog_runs": 11,
+        "race_catalog": 1399,
+        "saved_searches": 0,
+        "source_blobs": 4543,
+        "source_fetches": 4790
+      }
+    }
+  },
+  "job": {
+    "state": "failed",
+    "cursor": 255,
+    "total": 1399,
+    "message": "一部のデータを確認できません。前の成功データを保持して停止しました。",
+    "updated_at": "2026-11-07T15:33:31.020293+00:00"
+  },
+  "limits": "Current 256-race vault status only; not an analysis request, not 500k-row remote SQL performance, not browser end-to-end."
+}

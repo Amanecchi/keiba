@@ -1,0 +1,19 @@
+{
+  "kind": "local SQLite copy using deployed D1 schema, source data read only",
+  "deployed_schema_sha256": "87de6b6a3ac528e9fe4c7cc6f5d56466a4e8d94e8e66e941bee4327cf0bdeb98",
+  "tables_copied": {
+    "keiba_settings": 2,
+    "source_blobs": 4543,
+    "source_fetches": 4790,
+    "race_catalog": 1399,
+    "catalog_runs": 11,
+    "analysis_races": 256,
+    "analysis_snapshots": 276,
+    "saved_searches": 0,
+    "acquisition_jobs": 1
+  },
+  "file_bytes": 103837696,
+  "omitted": "vault_checkpoints (231 rows); source collector_lease omitted like actual mirror",
+  "all_snapshot_gzip_bytes": 4235011,
+  "not_measured": "actual D1 provider physical allocation, cache, replicas or billing"
+}

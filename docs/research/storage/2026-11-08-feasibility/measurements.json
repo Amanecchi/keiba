@@ -1,0 +1,261 @@
+{
+  "checked_at_jst": "2026-11-08T10:09:19.372975+09:00",
+  "network": "source/benchmark Postgres on loopback; no JRA requests",
+  "synthetic_warning": "Cyclic real templates, fabricated IDs/dates/classes; not acquired races or production SLA",
+  "source_job": {
+    "state": "failed",
+    "cursor": 255,
+    "total": 1399
+  },
+  "postgres_version": "17.11",
+  "source_table_sizes": [
+    {
+      "relname": "acquisition_jobs",
+      "heap_bytes": 8192,
+      "total_bytes": 147456
+    },
+    {
+      "relname": "analysis_races",
+      "heap_bytes": 98304,
+      "total_bytes": 212992
+    },
+    {
+      "relname": "analysis_snapshots",
+      "heap_bytes": 106496,
+      "total_bytes": 8921088
+    },
+    {
+      "relname": "catalog_runs",
+      "heap_bytes": 8192,
+      "total_bytes": 32768
+    },
+    {
+      "relname": "keiba_settings",
+      "heap_bytes": 8192,
+      "total_bytes": 65536
+    },
+    {
+      "relname": "race_catalog",
+      "heap_bytes": 1458176,
+      "total_bytes": 1884160
+    },
+    {
+      "relname": "saved_searches",
+      "heap_bytes": 0,
+      "total_bytes": 16384
+    },
+    {
+      "relname": "source_blobs",
+      "heap_bytes": 548864,
+      "total_bytes": 70049792
+    },
+    {
+      "relname": "source_fetches",
+      "heap_bytes": 3923968,
+      "total_bytes": 5283840
+    }
+  ],
+  "source_database_bytes": 94762675,
+  "latest_races": 256,
+  "latest_payload_bytes": 28760668,
+  "latest_payload_gzip_bytes": 4041318,
+  "originals": {
+    "count": 4543,
+    "uncompressed_bytes": 460392294,
+    "individual_gzip_bytes": 62751753,
+    "pack_gzip_bytes": 61568124,
+    "pack_count": 28,
+    "all_hashes_restored": true,
+    "warning": "Offline copy only; 16 MiB packs, SHA-sorted; no production pack index, crash protocol or remote restore yet"
+  },
+  "existing_broad_pipeline_timing": {
+    "runs": 5,
+    "median_ms": 298.62,
+    "p95_ms": 315.16,
+    "samples_ms": [
+      298.62,
+      315.16,
+      273.337,
+      294.669,
+      306.041
+    ]
+  },
+  "existing_broad_response_bytes": 1801410,
+  "existing_broad_pipeline_peak_traced_bytes": 27849410,
+  "latest_entries": 3831,
+  "golden_condition_counts": {
+    "match": 1020,
+    "nonmatch": 2811,
+    "unknown": 0
+  },
+  "golden_summary": {
+    "matched_count": 1020,
+    "started_count": 1017,
+    "wins": 85,
+    "top2_count": 167,
+    "top3_count": 258,
+    "win_rate": "8.4",
+    "top2_rate": "16.4",
+    "top3_rate": "25.4",
+    "nonstarter_count": 3,
+    "unknown_outcome_count": 0,
+    "bets": {
+      "単勝": {
+        "confirmed_count": 1017,
+        "purchase_yen": 101700,
+        "payout_yen": 72080,
+        "hits": 85,
+        "hit_rate": "8.4",
+        "return_rate": "70.9",
+        "refunded_count": 2,
+        "unknown_count": 0
+      },
+      "複勝": {
+        "confirmed_count": 1017,
+        "purchase_yen": 101700,
+        "payout_yen": 74710,
+        "hits": 258,
+        "hit_rate": "25.4",
+        "return_rate": "73.5",
+        "refunded_count": 2,
+        "unknown_count": 0
+      }
+    }
+  },
+  "typed_sql_golden_agrees": true,
+  "typed_sql_benchmarks": [
+    {
+      "rows": 500000,
+      "full_summary": {
+        "runs": 7,
+        "median_ms": 270.159,
+        "p95_ms": 299.863,
+        "samples_ms": [
+          270.159,
+          272.438,
+          268.912,
+          299.863,
+          266.299,
+          285.398,
+          269.851
+        ],
+        "returned_bytes_json": 78
+      },
+      "selective_summary": {
+        "runs": 7,
+        "median_ms": 3.417,
+        "p95_ms": 4.165,
+        "samples_ms": [
+          4.165,
+          3.44,
+          3.417,
+          3.239,
+          3.225,
+          3.855,
+          2.533
+        ],
+        "returned_bytes_json": 24
+      },
+      "first_page_25": {
+        "runs": 7,
+        "median_ms": 0.55,
+        "p95_ms": 0.983,
+        "samples_ms": [
+          0.983,
+          0.568,
+          0.531,
+          0.428,
+          0.55,
+          0.803,
+          0.298
+        ],
+        "returned_bytes_json": 2105
+      },
+      "grouped": {
+        "runs": 7,
+        "median_ms": 101.957,
+        "p95_ms": 117.672,
+        "samples_ms": [
+          103.703,
+          100.413,
+          102.341,
+          100.947,
+          100.244,
+          101.957,
+          117.672
+        ],
+        "returned_bytes_json": 113
+      },
+      "table_total_bytes": 203489280,
+      "table_heap_bytes": 147980288,
+      "indexes_bytes": 55427072
+    },
+    {
+      "rows": 1000000,
+      "full_summary": {
+        "runs": 7,
+        "median_ms": 518.534,
+        "p95_ms": 846.098,
+        "samples_ms": [
+          846.098,
+          540.783,
+          517.569,
+          515.406,
+          518.534,
+          532.272,
+          505.552
+        ],
+        "returned_bytes_json": 81
+      },
+      "selective_summary": {
+        "runs": 7,
+        "median_ms": 5.373,
+        "p95_ms": 10.192,
+        "samples_ms": [
+          10.192,
+          5.89,
+          5.373,
+          5.164,
+          5.011,
+          5.429,
+          5.24
+        ],
+        "returned_bytes_json": 24
+      },
+      "first_page_25": {
+        "runs": 7,
+        "median_ms": 0.565,
+        "p95_ms": 1.164,
+        "samples_ms": [
+          1.164,
+          0.601,
+          0.564,
+          0.471,
+          0.565,
+          0.445,
+          0.698
+        ],
+        "returned_bytes_json": 2105
+      },
+      "grouped": {
+        "runs": 7,
+        "median_ms": 222.893,
+        "p95_ms": 245.93,
+        "samples_ms": [
+          222.893,
+          235.321,
+          222.301,
+          236.374,
+          213.756,
+          245.93,
+          216.469
+        ],
+        "returned_bytes_json": 117
+      },
+      "table_total_bytes": 410533888,
+      "table_heap_bytes": 295952384,
+      "indexes_bytes": 114458624
+    }
+  ],
+  "benchmark_schema": "probe_010936982871"
+}

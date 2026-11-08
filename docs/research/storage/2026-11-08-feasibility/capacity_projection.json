@@ -1,0 +1,111 @@
+{
+  "method": "Reference linear scaling from 256 graded races / 3831 entries; not a measured future dataset or a statistical prediction. Page reuse, horse careers, revisions and retention change the result.",
+  "annual_volume_source": "https://japanracing.jp/_statistics/2025/s01.html",
+  "annual_volume_includes": "All JRA races including jumps: planning reference for future flat-race expansion, not the exact count of flat or maiden races.",
+  "annual_volumes": [
+    {
+      "year": 2016,
+      "races": 3454,
+      "starters": 49910
+    },
+    {
+      "year": 2017,
+      "races": 3455,
+      "starters": 49148
+    },
+    {
+      "year": 2018,
+      "races": 3454,
+      "starters": 48433
+    },
+    {
+      "year": 2019,
+      "races": 3452,
+      "starters": 47345
+    },
+    {
+      "year": 2020,
+      "races": 3456,
+      "starters": 48127
+    },
+    {
+      "year": 2021,
+      "races": 3456,
+      "starters": 47660
+    },
+    {
+      "year": 2022,
+      "races": 3456,
+      "starters": 47054
+    },
+    {
+      "year": 2023,
+      "races": 3456,
+      "starters": 47493
+    },
+    {
+      "year": 2024,
+      "races": 3454,
+      "starters": 46994
+    },
+    {
+      "year": 2025,
+      "races": 3455,
+      "starters": 47715
+    }
+  ],
+  "total_2016_2025": {
+    "races": 34548,
+    "starters": 479879
+  },
+  "scenarios": [
+    {
+      "name": "initial_graded_order_of_magnitude",
+      "entries": 20000,
+      "existing_postgres_bytes_reference": 494715087,
+      "current_vault_schema_local_sqlite_bytes_reference": 542091861,
+      "original_gzip_bytes_reference": 327599859,
+      "all_snapshot_gzip_bytes_reference": 22109167,
+      "archive_one_copy_bytes_reference": 349709026,
+      "archive_two_full_copies_bytes_reference": 699418052,
+      "json_database_to_python_bytes_per_broad_read_reference": 150147053,
+      "python_peak_traced_bytes_reference": 145389768
+    },
+    {
+      "name": "all_JRA_10_year_reference",
+      "entries": 479879,
+      "existing_postgres_bytes_reference": 11870169072,
+      "current_vault_schema_local_sqlite_bytes_reference": 13006925011,
+      "original_gzip_bytes_reference": 7860414638,
+      "all_snapshot_gzip_bytes_reference": 530486255,
+      "archive_one_copy_bytes_reference": 8390900893,
+      "archive_two_full_copies_bytes_reference": 16781801786,
+      "json_database_to_python_bytes_per_broad_read_reference": 3602620882,
+      "python_peak_traced_bytes_reference": 3488474816
+    },
+    {
+      "name": "ten_year_scale_stress",
+      "entries": 500000,
+      "existing_postgres_bytes_reference": 12367877186,
+      "current_vault_schema_local_sqlite_bytes_reference": 13552296528,
+      "original_gzip_bytes_reference": 8189996476,
+      "all_snapshot_gzip_bytes_reference": 552729183,
+      "archive_one_copy_bytes_reference": 8742725659,
+      "archive_two_full_copies_bytes_reference": 17485451318,
+      "json_database_to_python_bytes_per_broad_read_reference": 3753676325,
+      "python_peak_traced_bytes_reference": 3634744192
+    },
+    {
+      "name": "twenty_year_scale_stress",
+      "entries": 1000000,
+      "existing_postgres_bytes_reference": 24735754372,
+      "current_vault_schema_local_sqlite_bytes_reference": 27104593057,
+      "original_gzip_bytes_reference": 16379992952,
+      "all_snapshot_gzip_bytes_reference": 1105458366,
+      "archive_one_copy_bytes_reference": 17485451318,
+      "archive_two_full_copies_bytes_reference": 34970902636,
+      "json_database_to_python_bytes_per_broad_read_reference": 7507352649,
+      "python_peak_traced_bytes_reference": 7269488384
+    }
+  ]
+}

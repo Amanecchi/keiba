@@ -1,0 +1,20 @@
+{
+  "checked_at_jst": "2026-11-08T10:22:32.124499+09:00",
+  "local_source_counts": {
+    "source_blobs": 4543,
+    "source_fetches": 4790,
+    "analysis_snapshots": 276,
+    "analysis_races": 256,
+    "race_catalog": 1399
+  },
+  "latest_entries": 3831,
+  "job": {
+    "state": "failed",
+    "cursor": 255,
+    "total": 1399
+  },
+  "matches_external_read_snapshot": true,
+  "collector_restarted": false,
+  "source_database_access": "read only during assessment; synthetic writes in separate database",
+  "limits": "Row counts/state verification; not a claim of byte-identical database files or complete application validation"
+}
